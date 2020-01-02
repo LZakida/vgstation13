@@ -12,7 +12,6 @@
 	access = list(access_hydroponics, access_bar, access_kitchen, access_morgue, access_weapons)
 	minimal_access = list(access_bar,access_weapons)
 
-	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/bar
 
 /datum/job/bartender/equip(var/mob/living/carbon/human/H)
@@ -76,7 +75,6 @@
 	minimal_access = list(access_kitchen, access_morgue, access_bar)
 	alt_titles = list("Cook")
 
-	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/chef
 
 /datum/job/chef/equip(var/mob/living/carbon/human/H)
@@ -125,7 +123,6 @@
 	minimal_access = list(access_hydroponics, access_morgue) // Removed tox and chem access because STOP PISSING OFF THE CHEMIST GUYS // //Removed medical access because WHAT THE FUCK YOU AREN'T A DOCTOR YOU GROW WHEAT //Given Morgue access because they have a viable means of cloning.
 	alt_titles = list("Hydroponicist", "Beekeeper", "Gardener")
 
-	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/botanist
 
 /datum/job/hydro/equip(var/mob/living/carbon/human/H)
@@ -186,7 +183,6 @@
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mint, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mint, access_mining, access_mining_station)
 
-	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/quartermaster
 
 /datum/job/qm/equip(var/mob/living/carbon/human/H)
@@ -231,7 +227,6 @@
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mint, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
 
-	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/cargo
 
 /datum/job/cargo_tech/equip(var/mob/living/carbon/human/H)
@@ -275,7 +270,6 @@
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mint, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mint, access_mining_station, access_mailsorting)
 
-	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/shaftminer
 
 /datum/job/mining/equip(var/mob/living/carbon/human/H)
@@ -326,7 +320,6 @@
 	minimal_access = list(access_clown, access_theatre)
 	alt_titles = list("Jester")
 
-	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/clown
 
 /datum/job/clown/equip(var/mob/living/carbon/human/H)
@@ -392,7 +385,7 @@
 	access = list(access_mime, access_theatre, access_maint_tunnels)
 	minimal_access = list(access_mime, access_theatre)
 
-	pdaslot=slot_belt
+
 	pdatype=/obj/item/device/pda/mime
 
 /datum/job/mime/equip(var/mob/living/carbon/human/H)
@@ -484,7 +477,7 @@
 	access = list(access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
 
-	pdaslot=slot_belt
+
 	pdatype=/obj/item/device/pda/janitor
 
 /datum/job/janitor/equip(var/mob/living/carbon/human/H)
@@ -535,7 +528,7 @@
 	minimal_access = list(access_library)
 	alt_titles = list("Journalist", "Game Master")
 
-	pdaslot=slot_belt
+
 	pdatype=/obj/item/device/pda/librarian
 
 /datum/job/librarian/equip(var/mob/living/carbon/human/H)
@@ -589,7 +582,7 @@
 	minimal_access = list(access_lawyer, access_court, access_heads, access_RC_announce, access_sec_doors, access_cargo,  access_bar, access_kitchen)
 	alt_titles = list("Lawyer", "Bridge Officer")
 
-	pdaslot=slot_belt
+
 	pdatype=/obj/item/device/pda/lawyer
 
 /datum/job/lawyer/equip(var/mob/living/carbon/human/H)

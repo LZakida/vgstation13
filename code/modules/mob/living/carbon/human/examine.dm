@@ -174,6 +174,8 @@
 		else
 			*/
 		msg += "[t_He] [t_is] wearing [bicon(wear_id)] \a [wear_id]. [format_examine(wear_id, "Examine")]\n"
+	if(wear_pda)
+		msg += "[t_He] [t_is] wearing [bicon(wear_pda)] \a [wear_pda]. [format_examine(wear_pda, "Examine")]\n"
 
 	switch(jitteriness)
 		if(JITTER_HIGH to INFINITY)

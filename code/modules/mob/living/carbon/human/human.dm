@@ -469,6 +469,8 @@
 		else
 			dat += "<BR>[HTMLTAB]&#8627;<B>Pockets:</B> <A href='?src=\ref[src];pockets=left'>[(l_store && !(src.l_store.abstract)) ? "Left (Full)" : "<font color=grey>Left (Empty)</font>"]</A>"
 			dat += " <A href='?src=\ref[src];pockets=right'>[(r_store && !(src.r_store.abstract)) ? "Right (Full)" : "<font color=grey>Right (Empty)</font>"]</A>"
+
+		dat += "<BR>[HTMLTAB]&#8627;<B>PDA:</B> <A href='?src=\ref[src];item=[slot_pda]'>[makeStrippingButton(wear_pda)]</A>"
 		dat += "<BR>[HTMLTAB]&#8627;<B>ID:</B> <A href='?src=\ref[src];id=1'>[makeStrippingButton(wear_id)]</A>"
 	dat += "<BR>"
 	if(handcuffed || mutual_handcuffs)
@@ -1299,6 +1301,8 @@
 		ACL |= I.GetAccess()
 	if(wear_id)
 		ACL |= wear_id.GetAccess()
+	if(wear_pda)
+		ACL |= wear_pda.GetAccess()
 	return ACL
 
 /mob/living/carbon/human/get_visible_id()
@@ -1949,7 +1953,7 @@ mob/living/carbon/human/isincrit()
 	return 1
 
 //this method handles user getting attacked with an emag - the original logic was in human_defense.dm,
-//but it's better that it belongs to human.dm 
+//but it's better that it belongs to human.dm
 /mob/living/carbon/human/emag_act(var/mob/attacker, var/datum/organ/external/affecting, var/obj/item/weapon/card/emag)
 	var/hit_area = affecting.display_name
 	if(!(affecting.status & ORGAN_ROBOT))

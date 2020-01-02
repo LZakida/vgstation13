@@ -16,7 +16,6 @@
 
 	species_whitelist = list("Human")
 
-	pdaslot=slot_l_store
 	pdatype=/obj/item/device/pda/captain
 
 /datum/job/captain/equip(var/mob/living/carbon/human/H)
@@ -92,7 +91,6 @@
 			            access_theatre, access_chapel_office, access_library, access_science, access_mining, access_heads_vault, access_mining_station,
 			            access_clown, access_mime, access_hop, access_RC_announce, access_keycard_auth, access_gateway)
 
-	pdaslot=slot_l_store
 	pdatype=/obj/item/device/pda/heads/hop
 
 /datum/job/hop/equip(var/mob/living/carbon/human/H)

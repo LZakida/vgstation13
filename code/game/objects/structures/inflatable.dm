@@ -421,6 +421,9 @@
 			stow(D,user.r_store,user)
 		if(user.wear_id)
 			stow(D,user.wear_id,user)
+		if(user.wear_pda)
+			stow(D,user.wear_pda,user)
+
 		if(user.belt)
 			stow(D,user.belt,user)
 		stow(D,user.w_uniform,user)

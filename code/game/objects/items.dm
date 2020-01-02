@@ -637,6 +637,11 @@
 				if(!istype(src, /obj/item/device/pda))
 					return CANNOT_EQUIP
 				else
+					if(!H.w_uniform)
+						if(!disable_warning)
+							to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this PDA.</span>")
+						return CANNOT_EQUIP
+
 					if(H.wear_pda)
 						if(automatic)
 							return CANNOT_EQUIP

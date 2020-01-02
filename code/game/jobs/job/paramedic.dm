@@ -12,7 +12,7 @@
 	access = list(access_paramedic, access_medical, access_sec_doors, access_maint_tunnels, access_external_airlocks, access_eva, access_morgue)
 	minimal_access=list(access_paramedic, access_medical, access_sec_doors, access_maint_tunnels, access_external_airlocks, access_eva, access_morgue)
 
-	pdaslot=slot_belt
+
 	pdatype=/obj/item/device/pda/medical
 
 /datum/job/paramedic/equip(var/mob/living/carbon/human/H)

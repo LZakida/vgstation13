@@ -19,8 +19,6 @@
 			            access_heads, access_construction, access_sec_doors,
 			            access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload, access_mechanic)
 	minimal_player_age = 20
-
-	pdaslot=slot_l_store
 	pdatype=/obj/item/device/pda/heads/ce
 
 
@@ -77,8 +75,6 @@
 	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics)
 	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction)
 	alt_titles = list("Maintenance Technician","Engine Technician","Electrician")
-
-	pdaslot=slot_l_store
 	pdatype=/obj/item/device/pda/engineering
 
 
@@ -134,8 +130,6 @@
 	idtype = /obj/item/weapon/card/id/engineering
 	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics)
 	minimal_access = list(access_atmospherics, access_maint_tunnels, access_emergency_storage, access_construction, access_engine_equip, access_external_airlocks)
-
-	pdaslot=slot_l_store
 	pdatype=/obj/item/device/pda/atmos
 
 
@@ -182,8 +176,6 @@
 	access = list(access_eva, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_mechanic, access_tcomsat, access_science)
 	minimal_access = list(access_maint_tunnels, access_emergency_storage, access_construction, access_engine_equip, access_external_airlocks, access_mechanic, access_tcomsat, access_science)
 	alt_titles = list("Telecommunications Technician", "Spacepod Mechanic", "Greasemonkey")
-
-	pdaslot=slot_l_store
 	pdatype=/obj/item/device/pda/mechanic
 
 

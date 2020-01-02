@@ -202,6 +202,7 @@
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>[user.name] ([user.ckey]) has failed to reverse-pickpocket \a [place_item] into this mob's ID slot.</font>")
 			log_attack("[user.name] ([user.ckey]) has failed to reverse-pickpocket \a [place_item] into [src.name]'s ([src.ckey]) ID slot.")
 
+
 /mob/living/carbon/proc/handle_strip_pocket(var/mob/living/user, var/pocket_side)
 	var/pocket_id = (pocket_side == "right" ? slot_r_store : slot_l_store)
 	var/obj/item/pocket_item = get_item_by_slot(pocket_id)
@@ -275,7 +276,7 @@
 /mob/living/carbon/proc/set_internals(var/mob/living/user)
 	if(user.incapacitated())
 		return
-	
+
 	if(!has_breathing_mask())
 		to_chat(user, "<span class='warning'>\The [src] is not wearing a breathing mask.</span>")
 		return

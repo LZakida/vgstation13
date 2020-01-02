@@ -19,7 +19,7 @@
 	minimal_player_age = 20
 
 
-	pdaslot=slot_belt
+
 	pdatype=/obj/item/device/pda/heads/cmo
 
 /datum/job/cmo/equip(var/mob/living/carbon/human/H)
@@ -76,7 +76,7 @@
 	minimal_access = list(access_medical, access_morgue, access_surgery, access_virology)
 	alt_titles = list("Emergency Physician", "Nurse", "Surgeon")
 
-	pdaslot=slot_belt
+
 	pdatype=/obj/item/device/pda/medical
 
 /datum/job/doctor/equip(var/mob/living/carbon/human/H)
@@ -150,7 +150,7 @@
 	minimal_access = list(access_medical, access_chemistry)
 	alt_titles = list("Pharmacist")
 
-	pdaslot=slot_belt
+
 	pdatype=/obj/item/device/pda/chemist
 
 /datum/job/chemist/equip(var/mob/living/carbon/human/H)
@@ -200,7 +200,7 @@
 	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_science, access_eva)
 	minimal_access = list(access_medical, access_morgue, access_genetics, access_science)
 
-	pdaslot=slot_belt
+
 	pdatype=/obj/item/device/pda/geneticist
 
 /datum/job/geneticist/equip(var/mob/living/carbon/human/H)
@@ -247,7 +247,7 @@
 	minimal_access = list(access_medical, access_virology, access_biohazard)
 	alt_titles = list("Pathologist", "Microbiologist")
 
-	pdaslot=slot_belt
+
 	pdatype=/obj/item/device/pda/viro
 
 /datum/job/virologist/equip(var/mob/living/carbon/human/H)
