@@ -257,24 +257,25 @@ var/MAX_EXPLOSION_RANGE = 14
 
 
 //slots
-#define slot_back 1
-#define slot_wear_mask 2
-#define slot_handcuffed 3
-#define slot_belt 4
-#define slot_wear_id 5
-#define slot_ears 6
-#define slot_glasses 7
-#define slot_gloves 8
-#define slot_head 9
-#define slot_shoes 10
-#define slot_wear_suit 11
-#define slot_w_uniform 12
-#define slot_l_store 13
-#define slot_r_store 14
-#define slot_s_store 15
-#define slot_in_backpack 16
-#define slot_legcuffed 17
-#define slot_legs 18
+#define slot_back			1
+#define slot_wear_mask		2
+#define slot_handcuffed		3
+#define slot_belt			4
+#define slot_wear_id		5
+#define slot_pda			6
+#define slot_ears			7
+#define slot_glasses		8
+#define slot_gloves			9
+#define slot_head			10
+#define slot_shoes			11
+#define slot_wear_suit		12
+#define slot_w_uniform		13
+#define slot_l_store		14
+#define slot_r_store		15
+#define slot_s_store		16
+#define slot_in_backpack	17
+#define slot_legcuffed 		18
+#define slot_legs 			19
 
 #define is_valid_hand_index(index) ((index > 0) && (index <= held_items.len))
 

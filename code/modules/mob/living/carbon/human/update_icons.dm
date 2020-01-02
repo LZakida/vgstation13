@@ -635,6 +635,10 @@ var/global/list/damage_icon_parts = list()
 	if(update_icons)
 		update_icons()
 
+/mob/living/carbon/human/update_inv_wear_pda()
+	if(wear_pda)
+		wear_pda.screen_loc = ui_pda
+
 /mob/living/carbon/human/update_inv_gloves(var/update_icons=1)
 	overlays -= obj_overlays[GLOVES_LAYER]
 	var/obj/abstract/Overlays/O = obj_overlays[GLOVES_LAYER]

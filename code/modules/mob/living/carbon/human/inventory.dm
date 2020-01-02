@@ -141,6 +141,8 @@
 			return belt
 		if(slot_wear_id)
 			return wear_id
+		if(slot_pda)
+			return wear_pda
 		if(slot_ears)
 			return ears
 		if(slot_glasses)
@@ -209,6 +211,8 @@
 			return has_organ(LIMB_CHEST)
 		if(slot_wear_id)
 			// the only relevant check for this is the uniform check
+			return 1
+		if(slot_pda)
 			return 1
 		if(slot_ears)
 			return has_organ(LIMB_HEAD)
@@ -306,6 +310,13 @@
 		success = 1
 		slot = slot_wear_id
 		update_inv_wear_id()
+
+	else if (W == wear_pda)
+		wear_pda = null
+		success = 1
+		slot = slot_pda
+		update_inv_wear_pda()
+
 	else if (W == r_store)
 		r_store = null
 		success = 1
@@ -452,6 +463,9 @@
 		if(slot_wear_id)
 			src.wear_id = W
 			update_inv_wear_id(redraw_mob)
+		if(slot_pda)
+			src.wear_pda = W
+			update_inv_wear_pda()
 		if(slot_ears)
 			ears = W
 			update_inv_ears(redraw_mob)

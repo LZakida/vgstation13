@@ -194,6 +194,18 @@
 	src.adding += inv_box
 
 	inv_box = getFromPool(/obj/abstract/screen/inventory)
+	inv_box.name = "pda"
+	inv_box.dir = NORTH
+	inv_box.icon = ui_style
+	inv_box.icon_state = "pda"
+	inv_box.screen_loc = ui_pda
+	inv_box.slot_id = slot_pda
+	inv_box.layer = HUD_BASE_LAYER
+	inv_box.color = ui_color
+	inv_box.alpha = ui_alpha
+	src.adding += inv_box
+
+	inv_box = getFromPool(/obj/abstract/screen/inventory)
 	inv_box.name = "suit storage"
 	inv_box.icon = ui_style
 	inv_box.dir = 8 //The sprite at dir=8 has the background whereas the others don't.

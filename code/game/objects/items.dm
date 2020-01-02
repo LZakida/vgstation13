@@ -633,6 +633,18 @@
 					else
 						return CANNOT_EQUIP
 				return CAN_EQUIP
+			if(slot_pda)
+				if(!istype(src, /obj/item/device/pda))
+					return CANNOT_EQUIP
+				else
+					if(H.wear_pda)
+						if(automatic)
+							return CANNOT_EQUIP
+						else
+							return CAN_EQUIP_BUT_SLOT_TAKEN
+					else
+						return CAN_EQUIP
+
 			if(slot_l_store)
 				if(!H.w_uniform)
 					if(!disable_warning)
