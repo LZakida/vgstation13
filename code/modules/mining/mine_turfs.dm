@@ -30,6 +30,10 @@
 	var/mining_difficulty = MINE_DIFFICULTY_NORM
 
 
+/turf/unsimulated/mineral/red
+	icon_state = "red_rock"
+	overlay_state = "red_rock_overlay"
+
 /turf/unsimulated/mineral/snow
 	icon_state = "snow_rock"
 	base_icon_state = "snow_rock"
