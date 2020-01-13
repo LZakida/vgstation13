@@ -129,6 +129,14 @@
 	melt_temperature = MELTPOINT_POTASSIUM
 	starting_materials = list(MAT_CLOWN = CC_PER_SHEET_CLOWN)
 
+/obj/item/stack/ore/mime
+	name = "Tranquillite ore"
+	icon_state = "Mime ore"
+	origin_tech = Tc_MATERIALS + "=4"
+	melt_temperature = MELTPOINT_POTASSIUM
+	starting_materials = list(MAT_MIME = CC_PER_SHEET_MIME)
+
+
 /obj/item/stack/ore/phazon
 	name = "Phazite"
 	desc = "What the fuck?"
@@ -504,6 +512,18 @@
 	credits = 10
 	melt_temperature=MELTPOINT_GLASS
 	siemens_coefficient = 0.5
+
+
+
+/obj/item/weapon/coin/mime
+	material=MAT_MIME
+	name = "tranquillite coin"
+	desc = "They say money talks, but this coin's giving you the silent treatment!"
+	icon_state = "coin_mime"
+	credits = 10
+	melt_temperature=MELTPOINT_GLASS
+	siemens_coefficient = 0.5
+
 
 /obj/item/weapon/coin/phazon
 	material=MAT_PHAZON

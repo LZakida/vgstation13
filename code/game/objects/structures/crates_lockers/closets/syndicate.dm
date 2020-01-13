@@ -108,6 +108,7 @@
 		/obj/item/stack/sheet/mineral/plasma,
 		/obj/item/stack/sheet/mineral/uranium,
 		/obj/item/stack/sheet/mineral/diamond,
+		/obj/item/stack/sheet/mineral/mime,
 		/obj/item/stack/sheet/mineral/clown,
 		/obj/item/stack/sheet/plasteel,
 		/obj/item/stack/rods,

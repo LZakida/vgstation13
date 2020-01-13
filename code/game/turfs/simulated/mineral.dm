@@ -46,6 +46,17 @@
 	floor_tile = getFromPool(/obj/item/stack/tile/mineral/clown, null)
 	..()
 
+//TRANQUILLITE
+/turf/simulated/floor/mineral/mime
+	name = "silent floor"
+	icon_state = "tranquillite"
+//	shoe_running_volume = 0
+//	shoe_walking_volume = 0
+
+/turf/simulated/floor/mineral/mime/New()
+	floor_tile = getFromPool(/obj/item/stack/tile/mineral/mime, null)
+	..()
+
 //DIAMOND
 
 /turf/simulated/floor/mineral/diamond

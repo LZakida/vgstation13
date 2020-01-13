@@ -1,3 +1,4 @@
+/*
 #define MAT_IRON		"$iron"
 #define MAT_GLASS		"$glass"
 #define MAT_GOLD		"$gold"
@@ -28,7 +29,40 @@
 #define MAT_COBRYL    "$cobryl"
 #define MAT_CERENKITE "$cerenkite"
 #define MAT_MOLITZ    "$molitz"
+*/
 
+
+#define MAT_IRON		/datum/material/iron
+#define MAT_GLASS		/datum/material/glass
+#define MAT_GOLD		/datum/material/gold
+#define MAT_SILVER		/datum/material/silver
+#define MAT_URANIUM		/datum/material/uranium
+#define MAT_DIAMOND		/datum/material/diamond
+#define MAT_PHAZON		/datum/material/phazon
+#define MAT_PLASMA		/datum/material/plasma
+#define MAT_CLOWN		/datum/material/clown
+#define MAT_MIME		/datum/material/mime/
+#define MAT_PLASTIC		/datum/material/plastic
+#define MAT_CARDBOARD   /datum/material/cardboard
+#define MAT_WOOD		/datum/material/wood
+#define MAT_BRASS   	/datum/material/brass
+#define MAT_RALLOY   	/datum/material/ralloy
+#define MAT_ICE			/datum/material/ice
+#define MAT_MYTHRIL		/datum/material/mythril
+#define MAT_TELECRYSTAL	/datum/material/telecrystal
+
+#define MAT_PHAROSIUM /datum/material/pharosium
+#define MAT_CHAR      /datum/material/char
+#define MAT_CLARETINE /datum/material/claretine
+#define MAT_BOHRUM    /datum/material/bohrum
+#define MAT_SYRELINE  /datum/material/syreline
+#define MAT_EREBITE   /datum/material/erebite
+#define MAT_CYTINE    /datum/material/cytine
+#define MAT_UQILL     /datum/material/uqill
+#define MAT_MAUXITE   /datum/material/mauxite
+#define MAT_COBRYL    /datum/material/cobryl
+#define MAT_CERENKITE /datum/material/cerenkite
+#define MAT_MOLITZ    /datum/material/molitz
 
 #define VALUE_IRON 0.2
 #define VALUE_GLASS 0.2
@@ -38,6 +72,7 @@
 #define VALUE_SILVER 1
 #define VALUE_URANIUM 1
 #define VALUE_CLOWN 1
+#define VALUE_MIME	1
 #define VALUE_PHAZON 1
 #define VALUE_MYTHRIL 1
 #define VALUE_TELECRYSTAL 1
@@ -54,6 +89,7 @@
 #define CC_PER_SHEET_SILVER      CC_PER_SHEET_MISC
 #define CC_PER_SHEET_URANIUM     CC_PER_SHEET_MISC
 #define CC_PER_SHEET_CLOWN       CC_PER_SHEET_MISC
+#define CC_PER_SHEET_MIME        CC_PER_SHEET_MISC
 #define CC_PER_SHEET_PLASTIC     CC_PER_SHEET_MISC
 #define CC_PER_SHEET_ICE         CC_PER_SHEET_MISC
 #define CC_PER_SHEET_MYTHRIL     CC_PER_SHEET_MISC

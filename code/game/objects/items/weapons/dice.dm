@@ -330,6 +330,7 @@
 					getFromPool(/obj/item/stack/sheet/mineral/phazon,user.loc,10)
 					getFromPool(/obj/item/stack/sheet/mineral/diamond,user.loc,10)
 					getFromPool(/obj/item/stack/sheet/mineral/clown,user.loc,10)
+					getFromPool(/obj/item/stack/sheet/mineral/mime,user.loc,10)
 					user.dna.SetSEState(XRAYBLOCK,1)
 					user.dna.SetSEState(TELEBLOCK,1)
 					user.dna.SetSEState(INCREASERUNBLOCK,1)

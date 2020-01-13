@@ -11,12 +11,14 @@
 */
 
 proc/initialize_materials()
+	log_startup_progress("Initializing Materials")
 	for(var/matdata in subtypesof(/datum/material))
 		var/datum/material/mat = new matdata
-		material_list += list(mat.id = mat)
+		log_startup_progress("Initialized [mat.name]")
+		material_list += list(mat.type = mat)
 		if (!mat.sheettype)
 			continue
-		initial_materials += list(mat.id = 0) // This is for machines in r&d who have a material holder. If you can't make sheets of the material, you can't put in an r_n_d machine to begin with.
+		initial_materials += list(mat.type = 0) // This is for machines in r&d who have a material holder. If you can't make sheets of the material, you can't put in an r_n_d machine to begin with.
 
 var/global/list/material_list		//Stores an instance of all the datums as an assoc with their matids
 var/global/list/initial_materials	//Stores all the matids = 0 in helping New
@@ -166,7 +168,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 /datum/material
 	var/name=""
 	var/processed_name=""
-	var/id=""
+//	var/id=""
 	var/cc_per_sheet=CC_PER_SHEET_DEFAULT
 	var/oretype=null
 	var/sheettype=null
@@ -187,7 +189,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 /datum/material/New()
 	if(processed_name=="")
 		processed_name=name
-
+	return TRUE
 /datum/material/proc/on_use(obj/source, atom/target, mob/user)
 	ASSERT(source)
 	if(isobserver(user))
@@ -196,7 +198,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/iron
 	name="Iron"
-	id=MAT_IRON
+//	id=MAT_IRON
 	value=VALUE_IRON
 	cc_per_sheet=CC_PER_SHEET_METAL
 	oretype=/obj/item/stack/ore/iron
@@ -211,7 +213,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 /datum/material/glass
 	name="Sand"
 	processed_name="Glass"
-	id=MAT_GLASS
+//	id=MAT_GLASS
 	value=VALUE_GLASS
 	cc_per_sheet=CC_PER_SHEET_GLASS
 	oretype=/obj/item/stack/ore/glass
@@ -233,7 +235,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/diamond
 	name="Diamond"
-	id=MAT_DIAMOND
+//	id=MAT_DIAMOND
 	value=VALUE_DIAMOND
 	cc_per_sheet = CC_PER_SHEET_DIAMOND
 	oretype=/obj/item/stack/ore/diamond
@@ -248,7 +250,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/plasma
 	name="Plasma"
-	id=MAT_PLASMA
+//	id=MAT_PLASMA
 	value=VALUE_PLASMA
 	oretype=/obj/item/stack/ore/plasma
 	sheettype=/obj/item/stack/sheet/mineral/plasma
@@ -268,7 +270,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/gold
 	name="Gold"
-	id=MAT_GOLD
+//	id=MAT_GOLD
 	value=VALUE_GOLD
 	oretype=/obj/item/stack/ore/gold
 	sheettype=/obj/item/stack/sheet/mineral/gold
@@ -282,7 +284,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/silver
 	name="Silver"
-	id=MAT_SILVER
+//	id=MAT_SILVER
 	value=VALUE_SILVER
 	oretype=/obj/item/stack/ore/silver
 	sheettype=/obj/item/stack/sheet/mineral/silver
@@ -297,7 +299,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/uranium
 	name="Uranium"
-	id=MAT_URANIUM
+//	id=MAT_URANIUM
 	value=VALUE_URANIUM
 	oretype=/obj/item/stack/ore/uranium
 	sheettype=/obj/item/stack/sheet/mineral/uranium
@@ -319,7 +321,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/clown
 	name="Bananium"
-	id=MAT_CLOWN
+//	id=MAT_CLOWN
 	value=VALUE_CLOWN
 	oretype=/obj/item/stack/ore/clown
 	sheettype=/obj/item/stack/sheet/mineral/clown
@@ -330,6 +332,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 /datum/material/clown/New()
 	if(!..())
 		return
+
 	brunt_damage_mod = rand(1,2)/rand(1,8)
 	sharpness_mod = rand(1,2)/rand(1,8)
 	quality_mod = rand(1,2)/rand(1,8)
@@ -346,9 +349,21 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 	if(prob(10*source.quality))
 		playsound(get_turf(source), 'sound/items/bikehorn.ogg', 100, 1)
 
+/datum/material/mime/
+	name = "Tranquillite"
+	value = VALUE_MIME
+	oretype = /obj/item/stack/ore/mime
+	sheettype = /obj/item/stack/sheet/mineral/mime
+	cointype = /obj/item/weapon/coin/mime
+	melt_temperature = MELTPOINT_POTASSIUM
+	cc_per_sheet = CC_PER_SHEET_MIME
+	quality_mod = 1.5
+
+
+	color = "#FFFFFF"
 /datum/material/phazon
 	name="Phazon"
-	id=MAT_PHAZON
+//	id=MAT_PHAZON
 	value=VALUE_PHAZON
 	cc_per_sheet = 1500
 	oretype=/obj/item/stack/ore/phazon
@@ -378,7 +393,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/plastic
 	name="Plastic"
-	id=MAT_PLASTIC
+//	id=MAT_PLASTIC
 	value=0
 	oretype=null
 	sheettype=/obj/item/stack/sheet/mineral/plastic
@@ -388,7 +403,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/cardboard
 	name="Cardboard"
-	id=MAT_CARDBOARD
+//	id=MAT_CARDBOARD
 	value=0
 	oretype=null
 	sheettype=/obj/item/stack/sheet/cardboard
@@ -397,7 +412,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/wood
 	name="Wood"
-	id=MAT_WOOD
+//	id=MAT_WOOD
 	value=0
 	oretype=null
 	sheettype=/obj/item/stack/sheet/wood
@@ -407,7 +422,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/brass
 	name = "Brass"
-	id = MAT_BRASS
+//	id = MAT_BRASS
 	value = 0
 	oretype = null
 	sheettype = /obj/item/stack/sheet/brass
@@ -418,7 +433,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/ralloy
 	name = "Replicant Alloy"
-	id = MAT_RALLOY
+//	id = MAT_RALLOY
 	value = 0
 	oretype = null
 	sheettype = /obj/item/stack/sheet/ralloy
@@ -428,14 +443,14 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/ice
 	name = "Ice"
-	id = MAT_ICE
+//	id = MAT_ICE
 	value = 0
 	oretype = /obj/item/ice_crystal
 	cc_per_sheet = CC_PER_SHEET_ICE
 
 /datum/material/mythril
 	name="mythril"
-	id=MAT_MYTHRIL
+//	id=MAT_MYTHRIL
 	value=VALUE_MYTHRIL
 	oretype=/obj/item/stack/ore/mythril
 	sheettype=/obj/item/stack/sheet/mineral/mythril
@@ -449,7 +464,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/telecrystal
 	name="telecrystal"
-	id=MAT_TELECRYSTAL
+//	id=MAT_TELECRYSTAL
 	value=VALUE_TELECRYSTAL
 	oretype=/obj/item/stack/ore/telecrystal
 	sheettype=/obj/item/bluespace_crystal
@@ -459,7 +474,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/pharosium
 	name="Pharosium"
-	id=MAT_PHAROSIUM
+//	id=MAT_PHAROSIUM
 	value=10
 	oretype=/obj/item/stack/ore/pharosium
 	sheettype=/obj/item/stack/sheet/mineral/pharosium
@@ -470,7 +485,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/char
 	name="Char"
-	id=MAT_CHAR
+//	id=MAT_CHAR
 	value=5
 	oretype=/obj/item/stack/ore/char
 	sheettype=/obj/item/stack/sheet/mineral/char
@@ -481,7 +496,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/claretine
 	name="Claretine"
-	id=MAT_CLARETINE
+//	id=MAT_CLARETINE
 	value=50
 	oretype=/obj/item/stack/ore/claretine
 	sheettype=/obj/item/stack/sheet/mineral/claretine
@@ -492,7 +507,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/bohrum
 	name="Bohrum"
-	id=MAT_BOHRUM
+//	id=MAT_BOHRUM
 	value=50
 	oretype=/obj/item/stack/ore/bohrum
 	sheettype=/obj/item/stack/sheet/mineral/bohrum
@@ -503,7 +518,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/syreline
 	name="Syreline"
-	id=MAT_SYRELINE
+//	id=MAT_SYRELINE
 	value=70
 	oretype=/obj/item/stack/ore/syreline
 	sheettype=/obj/item/stack/sheet/mineral/syreline
@@ -514,7 +529,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/erebite
 	name="Erebite"
-	id=MAT_EREBITE
+//	id=MAT_EREBITE
 	value=50
 	oretype=/obj/item/stack/ore/erebite
 	sheettype=/obj/item/stack/sheet/mineral/erebite
@@ -525,7 +540,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/cytine
 	name="Cytine"
-	id=MAT_CYTINE
+//	id=MAT_CYTINE
 	value=30
 	oretype=/obj/item/stack/ore/cytine
 	sheettype=/obj/item/stack/sheet/mineral/cytine
@@ -536,7 +551,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/uqill
 	name="Uqill"
-	id=MAT_UQILL
+//	id=MAT_UQILL
 	value=90
 	oretype=/obj/item/stack/ore/uqill
 	sheettype=/obj/item/stack/sheet/mineral/uqill
@@ -547,7 +562,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/mauxite
 	name="Mauxite"
-	id=MAT_MAUXITE
+//	id=MAT_MAUXITE
 	value=5
 	oretype=/obj/item/stack/ore/mauxite
 	sheettype=/obj/item/stack/sheet/mineral/mauxite
@@ -558,7 +573,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/cobryl
 	name="Cobryl"
-	id=MAT_COBRYL
+//	id=MAT_COBRYL
 	value=30
 	oretype=/obj/item/stack/ore/cobryl
 	sheettype=/obj/item/stack/sheet/mineral/cobryl
@@ -569,7 +584,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/cerenkite
 	name="Cerenkite"
-	id=MAT_CERENKITE
+//	id=MAT_CERENKITE
 	value=50
 	oretype=/obj/item/stack/ore/cerenkite
 	sheettype=/obj/item/stack/sheet/mineral/cerenkite
@@ -579,7 +594,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 
 /datum/material/molitz
 	name="Molitz"
-	id=MAT_MOLITZ
+//	id=MAT_MOLITZ
 	value=10
 	oretype=/obj/item/stack/ore/molitz
 	sheettype=/obj/item/stack/sheet/mineral/molitz

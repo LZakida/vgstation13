@@ -99,6 +99,13 @@ mineral/clown
 	spread = 0
 	ore = /obj/item/stack/ore/clown
 
+mineral/mime
+	display_name = "Tranquillite"
+	name = "Mime"
+	result_amount = 3
+	spread = 0
+	ore = /obj/item/stack/ore/mime
+
 mineral/phazon
 	display_name = "Phazon"
 	name = "Phazon"

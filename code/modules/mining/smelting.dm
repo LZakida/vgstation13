@@ -95,6 +95,14 @@
 	)
 	yieldtype = /obj/item/stack/sheet/mineral/clown
 
+
+/datum/smelting_recipe/mime
+	name = "Tranquillite"
+	ingredients=list(
+		MAT_MIME = CC_PER_SHEET_MIME
+	)
+	yieldtype = /obj/item/stack/sheet/mineral/mime
+
 /datum/smelting_recipe/plasma_glass
 	name = "Plasma Glass"
 	ingredients=list(

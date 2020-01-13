@@ -111,6 +111,19 @@
 	material = "bananium"
 	var/spam_flag = 0
 
+/obj/item/stack/tile/mineral/mime
+	name = "silent tile"
+	singular_name = "silent floor tile"
+	desc = "A tile made out of tranquillite, SHHHHHHHHH!"
+	icon_state = "tile_mime"
+	material = "tranquillite"
+	w_class = W_CLASS_MEDIUM
+	force = 1.0
+	throwforce = 1.0
+	throw_speed = 3
+	throw_range = 7
+	max_amount = 60
+
 /obj/item/stack/tile/mineral/plastic
 	name = "plastic tile"
 	singular_name = "plastic floor tile"

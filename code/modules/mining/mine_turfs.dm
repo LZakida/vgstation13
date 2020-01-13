@@ -834,6 +834,7 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 		"Silver"  = 5,
 		"Plasma"  = 25,
 		"Clown"   = 15,
+		"Mime"   = 15,
 		"Phazon"  = 10
 	)
 
@@ -887,6 +888,11 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 	name = "Bananium deposit"
 	icon_state = "rock_Clown"
 	mineral = new /mineral/clown
+
+/turf/unsimulated/mineral/mime
+	name = "Tranquillite deposit"
+	icon_state = "rock_Mime"
+	mineral = new /mineral/mime
 
 
 /turf/unsimulated/mineral/phazon

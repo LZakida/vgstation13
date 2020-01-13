@@ -17,13 +17,13 @@ Mineral Sheets
 
 /obj/item/stack/sheet/mineral
 	w_type = RECYK_METAL
-	var/recyck_mat
+//	var/recyck_mat
 
 /obj/item/stack/sheet/mineral/recycle(var/datum/materials/rec)
-	if(!recyck_mat)
+	if(!mat_type)
 		return 0
 
-	rec.addAmount(recyck_mat, amount * get_material_cc_per_sheet(recyck_mat))
+	rec.addAmount(mat_type, amount * get_material_cc_per_sheet(mat_type))
 	. = 1
 
 /*
@@ -39,7 +39,7 @@ Mineral Sheets
 	origin_tech = Tc_MATERIALS + "=1"
 	sheettype = "sandstone"
 	melt_temperature = MELTPOINT_GLASS
-	recyck_mat = MAT_GLASS
+//	recyck_mat = MAT_GLASS
 
 var/list/datum/stack_recipe/sandstone_recipes = list ( \
 	new/datum/stack_recipe("pile of dirt", /obj/machinery/portable_atmospherics/hydroponics/soil, 3, time = 10, one_per_turf = 1, on_floor = 1), \
@@ -83,7 +83,7 @@ var/list/datum/stack_recipe/sandstone_recipes = list ( \
 	perunit = CC_PER_SHEET_DIAMOND
 	sheettype = "diamond"
 	melt_temperature = 3820 // In a vacuum, but fuck dat
-	recyck_mat = MAT_DIAMOND
+//	recyck_mat = MAT_DIAMOND
 	mat_type = MAT_DIAMOND
 
 var/list/datum/stack_recipe/diamond_recipes = list ( \
@@ -113,7 +113,7 @@ var/list/datum/stack_recipe/diamond_recipes = list ( \
 	perunit = CC_PER_SHEET_URANIUM
 	sheettype = "uranium"
 	melt_temperature = 1132+T0C
-	recyck_mat = MAT_URANIUM
+//	recyck_mat = MAT_URANIUM
 	mat_type = MAT_URANIUM
 
 var/list/datum/stack_recipe/uranium_recipes = list ( \
@@ -145,7 +145,7 @@ var/list/datum/stack_recipe/uranium_recipes = list ( \
 	perunit = CC_PER_SHEET_PLASMA
 	sheettype = "plasma"
 	melt_temperature = MELTPOINT_STEEL + 500
-	recyck_mat = MAT_PLASMA
+//	recyck_mat = MAT_PLASMA
 	mat_type = MAT_PLASMA
 
 var/list/datum/stack_recipe/plasma_recipes = list ( \
@@ -173,7 +173,7 @@ var/list/datum/stack_recipe/plasma_recipes = list ( \
 	perunit = CC_PER_SHEET_PLASTIC
 	melt_temperature = MELTPOINT_PLASTIC
 	sheettype = "plastic"
-	recyck_mat = MAT_PLASTIC
+//	recyck_mat = MAT_PLASTIC
 	mat_type = MAT_PLASTIC
 
 var/list/datum/stack_recipe/plastic_recipes = list ( \
@@ -222,7 +222,7 @@ var/list/datum/stack_recipe/plastic_recipes = list ( \
 	perunit = CC_PER_SHEET_GOLD
 	melt_temperature = 1064+T0C
 	sheettype = "gold"
-	recyck_mat = MAT_GOLD
+//	recyck_mat = MAT_GOLD
 	mat_type = MAT_GOLD
 
 var/list/datum/stack_recipe/gold_recipes = list ( \
@@ -265,7 +265,7 @@ var/list/datum/stack_recipe/phazon_recipes = list( \
 	flags = FPRINT
 	siemens_coefficient = 1
 	origin_tech = Tc_MATERIALS + "=9"
-	recyck_mat = MAT_PHAZON
+//	recyck_mat = MAT_PHAZON
 	mat_type = MAT_PHAZON
 
 /obj/item/stack/sheet/mineral/phazon/New(var/loc, var/amount=null)
@@ -287,7 +287,7 @@ var/list/datum/stack_recipe/phazon_recipes = list( \
 	origin_tech = Tc_MATERIALS + "=3"
 	perunit = CC_PER_SHEET_SILVER
 	sheettype = "silver"
-	recyck_mat = MAT_SILVER
+//	recyck_mat = MAT_SILVER
 	mat_type = MAT_SILVER
 
 var/list/datum/stack_recipe/silver_recipes = list ( \
@@ -319,7 +319,7 @@ var/list/datum/stack_recipe/silver_recipes = list ( \
 	origin_tech = Tc_MATERIALS + "=4"
 	perunit = CC_PER_SHEET_CLOWN
 	sheettype = "clown"
-	recyck_mat = MAT_CLOWN
+//	recyck_mat = MAT_CLOWN
 	mat_type = MAT_CLOWN
 
 var/list/datum/stack_recipe/clown_recipes = list ( \
@@ -334,6 +334,38 @@ var/list/datum/stack_recipe/clown_recipes = list ( \
 	recipes = clown_recipes
 	..()
 
+/*
+ * Mime
+ */
+
+/obj/item/stack/sheet/mineral/mime
+	name = "tranquillite"
+	icon_state = "sheet-mime"
+	singular_name = "beret"
+	force = 5.0
+	throwforce = 5
+	w_class = W_CLASS_MEDIUM
+	throw_speed = 3
+	throw_range = 3
+	origin_tech = Tc_MATERIALS + "=4"
+	perunit = CC_PER_SHEET_MIME
+	sheettype = "mime"
+	mat_type = MAT_MIME
+
+var/list/datum/stack_recipe/mime_recipes = list ( \
+/*	new/datum/stack_recipe("invisible wall", /obj/structure/barricade/mime, 5, one_per_turf = 1, on_floor = 1, time = 50), \*/
+	null, \
+	new/datum/stack_recipe("silent floor tile", /obj/item/stack/tile/mineral/mime, 1, 40, 20), \
+	new/datum/stack_recipe/dorf("dorf chair",/obj/structure/bed/chair, 20, one_per_turf = 1, on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),\
+	new/datum/stack_recipe/dorf("training sword", /obj/item/weapon/melee/training_sword,	12, time = 12,	on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),
+	null,
+	blacksmithing_recipes,
+	)
+
+
+/obj/item/stack/sheet/mineral/mime/New(var/loc, var/amount=null)
+	recipes = mime_recipes
+	..()
 /****************************** Others ****************************/
 /*
  * Adamantine
@@ -363,7 +395,7 @@ var/list/datum/stack_recipe/clown_recipes = list ( \
 	throw_range = 3
 	origin_tech = Tc_MATERIALS + "=4"
 	perunit = CC_PER_SHEET_MYTHRIL
-	recyck_mat = MAT_MYTHRIL
+//	recyck_mat = MAT_MYTHRIL
 	mat_type = MAT_MYTHRIL
 
 var/list/datum/stack_recipe/mythril_recipes = list ( \
