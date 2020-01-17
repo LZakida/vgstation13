@@ -353,7 +353,7 @@ var/list/datum/stack_recipe/clown_recipes = list ( \
 	mat_type = MAT_MIME
 
 var/list/datum/stack_recipe/mime_recipes = list ( \
-/*	new/datum/stack_recipe("invisible wall", /obj/structure/barricade/mime, 5, one_per_turf = 1, on_floor = 1, time = 50), \*/
+	new/datum/stack_recipe("invisible wall", /obj/structure/window/barricade/full/mime, 5, one_per_turf = 1, on_floor = 1, time = 50), \
 	null, \
 	new/datum/stack_recipe("silent floor tile", /obj/item/stack/tile/mineral/mime, 1, 40, 20), \
 	new/datum/stack_recipe/dorf("dorf chair",/obj/structure/bed/chair, 20, one_per_turf = 1, on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),\

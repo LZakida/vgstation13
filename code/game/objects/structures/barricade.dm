@@ -163,3 +163,13 @@
 	icon_state = "barricade_block"
 	health = 35 //Can take a few hits, but not very robust at all
 	sheetamount = 1
+
+/obj/structure/window/barricade/full/mime
+	name = "floor"
+	desc = "Is... this a floor?"
+	icon = 'icons/effects/water.dmi'
+	icon_state = "wet_floor_static"
+	materialtype = /obj/item/stack/sheet/mineral/mime
+
+/obj/structure/window/barricade/full/mime/mrcd //Used by the Reticence Mech
+	materialtype = null
