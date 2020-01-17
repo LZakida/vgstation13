@@ -6,8 +6,14 @@
  */
 
 /obj/item/stack/tile
-	var/material
+	var/datum/material/material
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/sheets_n_ores.dmi', "right_hand" = 'icons/mob/in-hand/right/sheets_n_ores.dmi')
+
+
+/obj/item/stack/tile/New()
+	..()
+	if(material)
+		material = material_list[material]
 
 /obj/item/stack/tile/proc/adjust_slowdown(mob/living/L, current_slowdown)
 	return current_slowdown
@@ -35,6 +41,9 @@
 	returnToPool(src)
 	return 2
 
+
+/obj/item/stack/tile/proc/update_floor_icon(var/turf/simulated/floor/FL)
+	return
 /*
  * Grass
  */
@@ -53,7 +62,12 @@
 	max_amount = 60
 	origin_tech = Tc_BIOTECH + "=1"
 
-	material = "grass"
+	material = MAT_GRASS
+
+/obj/item/stack/tile/grass/update_floor_icon(var/turf/simulated/floor/FL)
+	if(!FL.broken && !FL.burnt)
+		if(!(FL.icon_state in list("grass1","grass2","grass3","grass4")))
+			return "grass[pick("1","2","3","4")]"
 
 /*
  * Wood
@@ -72,7 +86,12 @@
 	siemens_coefficient = 0 //no conduct
 	max_amount = 60
 	sheet_type = /obj/item/stack/sheet/wood
-	material = "wood"
+	material = MAT_WOOD
+
+/obj/item/stack/tile/wood/update_floor_icon(var/turf/simulated/floor/FL)
+	if(!FL.broken && !FL.burnt)
+		if( !(FL.icon_state in wood_icons) )
+			return "wood"
 
 /obj/item/stack/tile/wood/proc/build(turf/S as turf)
 	if(S.air)
@@ -129,7 +148,50 @@
 	siemens_coefficient = 0 //no conduct
 	max_amount = 60
 
-	material = "fabric"
+	material = MAT_FABRIC
+
+/obj/item/stack/tile/carpet/update_floor_icon(var/turf/simulated/floor/FL)
+	if(!FL.broken && !FL.burnt)
+		var/connectdir = 0
+		for(var/direction in cardinal)
+			if(istype(get_step(FL,direction),/turf/simulated/floor))
+				var/turf/simulated/floor/FF = get_step(FL,direction)
+				if(FF.is_carpet_floor())
+					connectdir |= direction
+
+		//Check the diagonal connections for corners, where you have, for example, connections both north and east. In this case it checks for a north-east connection to determine whether to add a corner marker or not.
+		var/diagonalconnect = 0 //1 = NE; 2 = SE; 4 = NW; 8 = SW
+
+		//Northeast
+		if(connectdir & NORTH && connectdir & EAST)
+			if(istype(get_step(FL,NORTHEAST),/turf/simulated/floor))
+				var/turf/simulated/floor/FF = get_step(FL,NORTHEAST)
+				if(FF.is_carpet_floor())
+					diagonalconnect |= 1
+
+		//Southeast
+		if(connectdir & SOUTH && connectdir & EAST)
+			if(istype(get_step(FL,SOUTHEAST),/turf/simulated/floor))
+				var/turf/simulated/floor/FF = get_step(FL,SOUTHEAST)
+				if(FF.is_carpet_floor())
+					diagonalconnect |= 2
+
+		//Northwest
+		if(connectdir & NORTH && connectdir & WEST)
+			if(istype(get_step(FL,NORTHWEST),/turf/simulated/floor))
+				var/turf/simulated/floor/FF = get_step(FL,NORTHWEST)
+				if(FF.is_carpet_floor())
+					diagonalconnect |= 4
+
+		//Southwest
+		if(connectdir & SOUTH && connectdir & WEST)
+			if(istype(get_step(FL,SOUTHWEST),/turf/simulated/floor))
+				var/turf/simulated/floor/FF = get_step(FL,SOUTHWEST)
+				if(FF.is_carpet_floor())
+					diagonalconnect |= 8
+
+		return "carpet[connectdir]-[diagonalconnect]"
+
 
 /obj/item/stack/tile/arcade
 	name = "length of arcade carpet"
@@ -145,9 +207,13 @@
 	siemens_coefficient = 0 //no conduct
 	max_amount = 60
 
-	material = "fabric"
+	material = MAT_FABRIC
+/obj/item/stack/tile/arcade/update_floor_icon(var/turf/simulated/floor/FL)
+	if(!FL.broken && !FL.burnt)
+		return "arcade"
 
-obj/item/stack/tile/slime
+
+/obj/item/stack/tile/slime
 	name = "tile of slime"
 	desc = "A flat piece of slime made through xenobiology"
 	icon_state = "tile-slime"
@@ -159,6 +225,10 @@ obj/item/stack/tile/slime
 	flags = FPRINT
 	siemens_coefficient = 1
 	max_amount = 60
+
+obj/item/stack/tile/slime/update_floor_icon(var/turf/simulated/floor/FL)
+		return "tile-slime"
+
 
 /obj/item/stack/tile/slime/adjust_slowdown(mob/living/L, current_slowdown)
 	if(isslimeperson(L) || isslime(L))

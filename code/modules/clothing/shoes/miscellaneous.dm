@@ -309,6 +309,7 @@
 	heat_conductivity = INS_SHOE_HEAT_CONDUCTIVITY
 	bonus_kick_damage = 3
 	footprint_type = /obj/effect/decal/cleanable/blood/tracks/footprints/boots
+	step_sound = "jackboot"
 
 /obj/item/clothing/shoes/jackboots/knifeholster/New() //This one comes with preloaded knife holster
 	..()

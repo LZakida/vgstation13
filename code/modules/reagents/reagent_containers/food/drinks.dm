@@ -1224,6 +1224,16 @@
 		desc = "A bottle filled with nothing"
 		reagents.add_reagent(NOTHING, 100)
 
+/obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofbanana
+	name = "Jolly Jug"
+	desc = "A jug filled with banana juice."
+	icon_state = "bottleofjolly"
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofbanana/New()
+	..()
+	reagents.add_reagent(BANANA, 100)
+
+
 /obj/item/weapon/reagent_containers/food/drinks/bottle/patron
 	name = "Wrapp Artiste Patron"
 	desc = "Silver laced tequila, served in space night clubs across the galaxy."

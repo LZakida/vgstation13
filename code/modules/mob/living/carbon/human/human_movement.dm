@@ -139,11 +139,11 @@
 	if(.)
 		if(shoes && istype(shoes, /obj/item/clothing/shoes))
 			var/obj/item/clothing/shoes/S = shoes
-			S.step_action()
+			S.step_action(NewLoc)
 
 		if(wear_suit && istype(wear_suit, /obj/item/clothing/suit))
 			var/obj/item/clothing/suit/SU = wear_suit
-			SU.step_action()
+			SU.step_action(NewLoc)
 
 		for(var/obj/item/weapon/bomberman/dispenser in src)
 			if(dispenser.spam_bomb)

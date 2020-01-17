@@ -32,7 +32,7 @@ var/list/wood_icons = list("wood","wood-broken")
 	var/lava = 0
 	var/broken = 0
 	var/burnt = 0
-	var/material = "metal"
+	var/datum/material/material
 	var/spam_flag = 0 //For certain interactions, like bananium floors honking when stepped on
 	var/obj/item/stack/tile/floor_tile
 	var/image/floor_overlay
@@ -46,6 +46,10 @@ var/list/wood_icons = list("wood","wood-broken")
 	if(!floor_tile)
 		floor_tile = getFromPool(/obj/item/stack/tile/plasteel, null)
 		floor_tile.amount = 1
+	material = floor_tile.material
+	if(!material)
+		material = material_list[MAT_IRON]
+	volume_mult = material.sound_multiplier
 	if(icon_state in icons_to_ignore_at_floor_init) //so damaged/burned tiles or plating icons aren't saved as the default
 		icon_regular_floor = "floor"
 	else
@@ -103,83 +107,16 @@ turf/simulated/floor/update_icon()
 
 	if(lava)
 		return
-	else if(is_plasteel_floor())
-		if(!broken && !burnt)
-			icon_state = icon_regular_floor
+
 	else if(is_plating())
 		if(!broken && !burnt)
 			icon_state = icon_plating //Because asteroids are 'platings' too.
-	else if(is_slime_floor())
-		icon_state = "tile-slime"
-	else if(is_light_floor())
-		var/obj/item/stack/tile/light/T = floor_tile
-		if(T.on)
-			set_light(5)
-			floor_overlay = T.get_turf_image()
-			icon_state = "light_base"
-			overlays += floor_overlay
-			light_color = floor_overlay.color
-		else
-			set_light(0)
-			icon_state = "light_off"
-			overlays -= floor_overlay //Removes overlay when off without removing other overlays.
-	else if(is_grass_floor())
-		if(!broken && !burnt)
-			if(!(icon_state in list("grass1","grass2","grass3","grass4")))
-				icon_state = "grass[pick("1","2","3","4")]"
-	else if(is_carpet_floor())
-		if(!broken && !burnt)
-			var/connectdir = 0
-			for(var/direction in cardinal)
-				if(istype(get_step(src,direction),/turf/simulated/floor))
-					var/turf/simulated/floor/FF = get_step(src,direction)
-					if(FF.is_carpet_floor())
-						connectdir |= direction
+	else if(floor_tile)
+		var/new_icon = floor_tile.update_floor_icon(src)
+		if(new_icon)
+			icon_state = floor_tile.update_floor_icon(src)
 
-			//Check the diagonal connections for corners, where you have, for example, connections both north and east. In this case it checks for a north-east connection to determine whether to add a corner marker or not.
-			var/diagonalconnect = 0 //1 = NE; 2 = SE; 4 = NW; 8 = SW
 
-			//Northeast
-			if(connectdir & NORTH && connectdir & EAST)
-				if(istype(get_step(src,NORTHEAST),/turf/simulated/floor))
-					var/turf/simulated/floor/FF = get_step(src,NORTHEAST)
-					if(FF.is_carpet_floor())
-						diagonalconnect |= 1
-
-			//Southeast
-			if(connectdir & SOUTH && connectdir & EAST)
-				if(istype(get_step(src,SOUTHEAST),/turf/simulated/floor))
-					var/turf/simulated/floor/FF = get_step(src,SOUTHEAST)
-					if(FF.is_carpet_floor())
-						diagonalconnect |= 2
-
-			//Northwest
-			if(connectdir & NORTH && connectdir & WEST)
-				if(istype(get_step(src,NORTHWEST),/turf/simulated/floor))
-					var/turf/simulated/floor/FF = get_step(src,NORTHWEST)
-					if(FF.is_carpet_floor())
-						diagonalconnect |= 4
-
-			//Southwest
-			if(connectdir & SOUTH && connectdir & WEST)
-				if(istype(get_step(src,SOUTHWEST),/turf/simulated/floor))
-					var/turf/simulated/floor/FF = get_step(src,SOUTHWEST)
-					if(FF.is_carpet_floor())
-						diagonalconnect |= 8
-
-			icon_state = "carpet[connectdir]-[diagonalconnect]"
-
-	else if(is_arcade_floor())
-		if(!broken && !burnt)
-			icon_state = "arcade"
-	else if(is_wood_floor())
-		if(!broken && !burnt)
-			if( !(icon_state in wood_icons) )
-				icon_state = "wood"
-//				to_chat(world, "[icon_state]y's got [icon_state]")
-	else if(is_mineral_floor())
-		if(!broken && !burnt)
-			icon_state = floor_tile.material
 	/*spawn(1)
 		if(istype(src,/turf/simulated/floor)) //Was throwing runtime errors due to a chance of it changing to space halfway through.
 			if(air)
@@ -304,17 +241,17 @@ turf/simulated/floor/update_icon()
 			make_plating()
 		return //slime burns up or completely loses form
 	else if(is_mineral_floor())
-		if(material=="diamond")
+		if(material.type == MAT_DIAMOND)
 			return //diamond doesn't break
-		if(material=="plastic")
+		if(material.type == MAT_PLASTIC)
 			return //you can't break legos
-		if(material=="phazon") //Phazon shatters
+		if(material.type == MAT_PHAZON) //Phazon shatters
 			spawn(rand(2,10))
 				playsound(src, "shatter", 70, 1)
 				make_plating()
 			return
 
-		src.icon_state = "[material]_broken"
+		src.icon_state = "[lowertext(material.name)]_broken"
 
 /turf/simulated/floor/proc/burn_tile()
 	if(istype(src,/turf/simulated/floor/engine))
@@ -370,7 +307,8 @@ turf/simulated/floor/update_icon()
 	intact = 0
 	broken = 0
 	burnt = 0
-	material = "metal"
+	material = material_list[MAT_IRON]
+	volume_mult = material.sound_multiplier
 	plane = PLATING_PLANE
 
 	update_icon()
@@ -577,6 +515,7 @@ turf/simulated/floor/update_icon()
 					floor_tile = null
 					floor_tile = getFromPool(T.type, null)
 					material = floor_tile.material
+					volume_mult = material.sound_multiplier
 					intact = 1
 					plane = TURF_PLANE
 					if(istype(T,/obj/item/stack/tile/light))
@@ -640,14 +579,14 @@ turf/simulated/floor/update_icon()
 	.=..()
 
 	if(AM && istype(AM,/mob/living))
-		switch(material)
-			if("bananium")
+		switch(material.type)
+			if(MAT_CLOWN)
 				if(!spam_flag)
 					spam_flag = 1
 					playsound(src, "clownstep", 50, 1)
 					spawn(20)
 						spam_flag = 0
-			if("uranium")
+			if(MAT_URANIUM)
 				if(!spam_flag)
 					spam_flag = 1
 					set_light(3)

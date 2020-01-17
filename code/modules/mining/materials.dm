@@ -14,7 +14,6 @@ proc/initialize_materials()
 	log_startup_progress("Initializing Materials")
 	for(var/matdata in subtypesof(/datum/material))
 		var/datum/material/mat = new matdata
-		log_startup_progress("Initialized [mat.name]")
 		material_list += list(mat.type = mat)
 		if (!mat.sheettype)
 			continue
@@ -183,6 +182,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 	var/quality_mod = 1
 	var/melt_temperature = MELTPOINT_STEEL
 	var/armor_mod = 1
+	var/sound_multiplier = 1
 	var/default_show_in_menus = TRUE // If false, stuff like the smelter won't show these *unless it has some*.
 
 
@@ -358,6 +358,7 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 	melt_temperature = MELTPOINT_POTASSIUM
 	cc_per_sheet = CC_PER_SHEET_MIME
 	quality_mod = 1.5
+	sound_multiplier = 0
 
 
 	color = "#FFFFFF"
@@ -419,6 +420,24 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 	cointype=null
 	cc_per_sheet = CC_PER_SHEET_WOOD
 	color = "#663300" //rgb: 102, 51, 0
+
+/datum/material/grass //This is little more than a placeholder right now.
+	name="Grass"
+	value=0
+	oretype=null
+	sheettype=null
+	cointype=null
+	cc_per_sheet = 0
+	color = "#3AAA32"
+
+/datum/material/fabric //Ditto
+	name="Fabric"
+	value=0
+	oretype=null
+	sheettype=null
+	cointype=null
+	cc_per_sheet = 0
+	color = "#6C2B24"
 
 /datum/material/brass
 	name = "Brass"

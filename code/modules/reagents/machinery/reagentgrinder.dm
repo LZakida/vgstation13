@@ -37,6 +37,7 @@ var/global/list/juice_items = list (
 		/obj/item/stack/sheet/mineral/plasma  = list(PLASMA = 20),
 		/obj/item/stack/sheet/mineral/uranium = list(URANIUM = 20),
 		/obj/item/stack/sheet/mineral/clown   = list(BANANA = 20),
+		/obj/item/stack/sheet/mineral/mime    = list(NOTHING = 20),
 		/obj/item/stack/sheet/mineral/silver  = list(SILVER = 20),
 		/obj/item/stack/sheet/mineral/gold    = list(GOLD = 20),
 		/obj/item/stack/sheet/mineral/phazon  = list(PHAZON = 1),

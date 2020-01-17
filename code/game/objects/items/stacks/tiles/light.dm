@@ -29,7 +29,7 @@ var/global/list/lightfloor_colors = list(
 	max_amount = 60
 	attack_verb = list("bashes", "batters", "bludgeons", "thrashes", "smashes")
 
-	material = "glass"
+	material = MAT_GLASS
 
 	var/on = 1
 
@@ -50,6 +50,19 @@ var/global/list/lightfloor_colors = list(
 	color_overlay = image('icons/obj/items.dmi', icon_state = "light_tile_overlay")
 	color_overlay.color = rgb(color_r,color_g,color_b)
 	overlays += color_overlay
+/obj/item/stack/tile/light/update_floor_icon(var/turf/simulated/floor/FL)
+	if(on)
+		FL.set_light(5)
+		FL.floor_overlay = get_turf_image()
+		FL.overlays += FL.floor_overlay
+		FL.light_color = FL.floor_overlay.color
+		return "light_base"
+	else
+		FL.set_light(0)
+		FL.overlays -= FL.floor_overlay //Removes overlay when off without removing other overlays.
+		return "light_off"
+
+
 
 /obj/item/stack/tile/light/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O,/obj/item/weapon/crowbar))

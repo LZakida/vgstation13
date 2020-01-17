@@ -16,7 +16,7 @@
 	max_amount = 60
 	var/active
 
-	material = "metal"
+	material = MAT_IRON
 
 /obj/item/stack/tile/plasteel/New(var/loc, var/amount=null)
 	. = ..()
@@ -28,6 +28,9 @@
 	if(active)
 		returnToPool(active)
 		active = null
+/obj/item/stack/tile/plasteel/update_floor_icon(var/turf/simulated/floor/FL)
+	if(!FL.broken && !FL.burnt)
+		return FL.icon_regular_floor
 
 /obj/item/stack/tile/plasteel/attack_self(mob/user)
 	if(!active) //Start click drag construction

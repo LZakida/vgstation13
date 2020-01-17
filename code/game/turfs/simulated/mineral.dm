@@ -2,12 +2,12 @@
 //Includes: PLASMA, GOLD, SILVER, BANANIUM, DIAMOND, URANIUM, PHAZON
 
 //PLASMA
-
+/*
 /turf/simulated/floor/mineral/New()
 	if(floor_tile)
 		material = floor_tile.material
 	..()
-
+*/
 /turf/simulated/floor/mineral/plasma
 	name = "plasma floor"
 	icon_state = "plasma"
@@ -50,8 +50,7 @@
 /turf/simulated/floor/mineral/mime
 	name = "silent floor"
 	icon_state = "tranquillite"
-//	shoe_running_volume = 0
-//	shoe_walking_volume = 0
+	material = MAT_MIME
 
 /turf/simulated/floor/mineral/mime/New()
 	floor_tile = getFromPool(/obj/item/stack/tile/mineral/mime, null)

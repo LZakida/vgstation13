@@ -1,5 +1,10 @@
 /obj/item/stack/tile/mineral
 
+/obj/item/stack/tile/mineral/update_floor_icon(var/turf/simulated/floor/FL)
+	if(!FL.broken && !FL.burnt)
+		return lowertext(material.name)
+
+
 /obj/item/stack/tile/mineral/plasma
 	name = "plasma tile"
 	singular_name = "plasma floor tile"
@@ -12,7 +17,7 @@
 	throw_range = 7
 	max_amount = 60
 
-	material = "plasma"
+	material = MAT_PLASMA
 
 /obj/item/stack/tile/mineral/uranium
 	name = "uranium tile"
@@ -26,7 +31,7 @@
 	throw_range = 7
 	max_amount = 60
 
-	material = "uranium"
+	material = MAT_URANIUM
 
 /obj/item/stack/tile/mineral/uranium/safe
 	name = "isolated uranium tile"
@@ -34,7 +39,11 @@
 	desc = "A tile made out of uranium, with an added layer of reinforced glass on top of it."
 	icon_state = "tile_uraniumsafe"
 
-	material = "uranium_safe"
+	material = MAT_GLASS
+
+/obj/item/stack/tile/mineral/uranium/safe/update_floor_icon(var/turf/simulated/floor/FL)
+	if(!FL.broken && !FL.burnt)
+		return "uranium_safe"
 
 /obj/item/stack/tile/mineral/uranium/safe/attackby(obj/item/W as obj, mob/user as mob)
 	if(iscrowbar(W))
@@ -66,7 +75,7 @@
 	throw_range = 7
 	max_amount = 60
 
-	material = "gold"
+	material = MAT_GOLD
 
 /obj/item/stack/tile/mineral/silver
 	name = "silver tile"
@@ -80,7 +89,7 @@
 	throw_range = 7
 	max_amount = 60
 
-	material = "silver"
+	material = MAT_SILVER
 
 /obj/item/stack/tile/mineral/diamond
 	name = "diamond tile"
@@ -94,7 +103,7 @@
 	throw_range = 7
 	max_amount = 60
 
-	material = "diamond"
+	material = MAT_DIAMOND
 
 /obj/item/stack/tile/mineral/clown
 	name = "bananium tile"
@@ -108,7 +117,7 @@
 	throw_range = 7
 	max_amount = 60
 
-	material = "bananium"
+	material = MAT_CLOWN
 	var/spam_flag = 0
 
 /obj/item/stack/tile/mineral/mime
@@ -124,6 +133,8 @@
 	throw_range = 7
 	max_amount = 60
 
+	material = MAT_MIME
+
 /obj/item/stack/tile/mineral/plastic
 	name = "plastic tile"
 	singular_name = "plastic floor tile"
@@ -136,7 +147,7 @@
 	throw_range = 7
 	max_amount = 60
 
-	material = "plastic"
+	material = MAT_PLASTIC
 
 /obj/item/stack/tile/mineral/phazon
 	name = "phazon tile"
@@ -150,7 +161,7 @@
 	max_amount = 60
 	origin_tech = Tc_MATERIALS + "=9"
 
-	material = "phazon"
+	material = MAT_PHAZON
 
 /obj/item/stack/tile/mineral/phazon/adjust_slowdown(mob/living/L, current_slowdown)
 	current_slowdown *= 0.75
@@ -168,4 +179,4 @@
 	throw_range = 7
 	max_amount = 60
 
-	material = "brass"
+	material = MAT_BRASS

@@ -64,6 +64,9 @@
 #define MAT_CERENKITE /datum/material/cerenkite
 #define MAT_MOLITZ    /datum/material/molitz
 
+#define MAT_GRASS     /datum/material/grass
+#define MAT_FABRIC    /datum/material/fabric
+
 #define VALUE_IRON 0.2
 #define VALUE_GLASS 0.2
 #define VALUE_DIAMOND 4
