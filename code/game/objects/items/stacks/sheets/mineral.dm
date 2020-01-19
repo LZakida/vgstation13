@@ -46,6 +46,8 @@ var/list/datum/stack_recipe/sandstone_recipes = list ( \
 	new/datum/stack_recipe("sandstone door", /obj/machinery/door/mineral/sandstone, 10, one_per_turf = 1, on_floor = 1), \
 /*	new/datum/stack_recipe("sandstone wall", ???), \
 		new/datum/stack_recipe("sandstone floor", ???),\ */
+	new/datum/stack_recipe("Assistant Statue", /obj/structure/statue/sandstone/assistant, 5, one_per_turf = 1, on_floor = 1), \
+	null, \
 	new/datum/stack_recipe("forge", /obj/structure/forge, 20, time = 10 SECONDS, one_per_turf = 1, on_floor = 1)
 	)
 
@@ -88,6 +90,11 @@ var/list/datum/stack_recipe/sandstone_recipes = list ( \
 
 var/list/datum/stack_recipe/diamond_recipes = list ( \
 	new/datum/stack_recipe("diamond floor tile", /obj/item/stack/tile/mineral/diamond, 1, 4, 20), \
+	null, \
+	new/datum/stack_recipe("Captain Statue", /obj/structure/statue/diamond/captain, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("AI Hologram Statue", /obj/structure/statue/diamond/ai1, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("AI Core Statue", /obj/structure/statue/diamond/ai2, 5, one_per_turf = 1, on_floor = 1), \
+	null, \
 	new/datum/stack_recipe("diamond door", /obj/machinery/door/mineral/transparent/diamond, 10, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe/dorf("dorf chair",/obj/structure/bed/chair, 20, one_per_turf = 1, on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),
 	new/datum/stack_recipe/dorf("training sword", /obj/item/weapon/melee/training_sword,	12, time = 12,	on_floor = 1, inherit_material = TRUE, gen_quality = TRUE)
@@ -118,6 +125,10 @@ var/list/datum/stack_recipe/diamond_recipes = list ( \
 
 var/list/datum/stack_recipe/uranium_recipes = list ( \
 	new/datum/stack_recipe("uranium floor tile", /obj/item/stack/tile/mineral/uranium, 1, 4, 20), \
+	null, \
+	new/datum/stack_recipe("Nuke Statue", /obj/structure/statue/uranium/nuke, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("Engineer Statue", /obj/structure/statue/uranium/eng, 5, one_per_turf = 1, on_floor = 1), \
+	null, \
 	new/datum/stack_recipe("uranium door", /obj/machinery/door/mineral/uranium, 10, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe/dorf("dorf chair",/obj/structure/bed/chair, 20, one_per_turf = 1, on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),
 	new/datum/stack_recipe/dorf("training sword", /obj/item/weapon/melee/training_sword,	12, time = 12,	on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),
@@ -150,6 +161,11 @@ var/list/datum/stack_recipe/uranium_recipes = list ( \
 
 var/list/datum/stack_recipe/plasma_recipes = list ( \
 	new/datum/stack_recipe("plasma floor tile", /obj/item/stack/tile/mineral/plasma, 1, 4, 20), \
+	null, \
+	new/datum/stack_recipe("Scientist Statue", /obj/structure/statue/plasma/scientist, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("Xenomorph Statue", /obj/structure/statue/plasma/xeno, 5, one_per_turf = 1, on_floor = 1), \
+	null, \
+
 	new/datum/stack_recipe("plasma door", /obj/machinery/door/mineral/transparent/plasma, 10, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe/dorf("dorf chair",/obj/structure/bed/chair, 20, one_per_turf = 1, on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),
 	new/datum/stack_recipe/dorf("training sword", /obj/item/weapon/melee/training_sword,	12, time = 12,	on_floor = 1, inherit_material = TRUE, gen_quality = TRUE)
@@ -227,6 +243,13 @@ var/list/datum/stack_recipe/plastic_recipes = list ( \
 
 var/list/datum/stack_recipe/gold_recipes = list ( \
 	new/datum/stack_recipe("golden floor tile", /obj/item/stack/tile/mineral/gold, 1, 4, 20), \
+	null, \
+	new/datum/stack_recipe("HoS Statue", /obj/structure/statue/gold/hos, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("HoP Statue", /obj/structure/statue/gold/hop, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("CE Statue", /obj/structure/statue/gold/ce, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("RD Statue", /obj/structure/statue/gold/rd, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("CMO Statue", /obj/structure/statue/gold/cmo, 5, one_per_turf = 1, on_floor = 1), \
+	null, \
 	new/datum/stack_recipe("golden door", /obj/machinery/door/mineral/gold, 10, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("gold tooth", /obj/item/stack/teeth/gold, 1, 1, 20), \
 	new/datum/stack_recipe/dorf("dorf chair",/obj/structure/bed/chair, 20,one_per_turf = 1, on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),\
@@ -293,6 +316,13 @@ var/list/datum/stack_recipe/phazon_recipes = list( \
 var/list/datum/stack_recipe/silver_recipes = list ( \
 	new/datum/stack_recipe("silver floor tile", /obj/item/stack/tile/mineral/silver, 1, 4, 20), \
 	new/datum/stack_recipe("silver door", /obj/machinery/door/mineral/silver, 10, one_per_turf = 1, on_floor = 1), \
+	null, \
+	new/datum/stack_recipe("Janitor Statue", /obj/structure/statue/silver/janitor, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("Sec Officer Statue", /obj/structure/statue/silver/sec, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("Sec Borg Statue", /obj/structure/statue/silver/secborg, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("Med Doctor Statue", /obj/structure/statue/silver/md, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("Med Borg Statue", /obj/structure/statue/silver/medborg, 5, one_per_turf = 1, on_floor = 1), \
+	null, \
 	new/datum/stack_recipe/dorf("dorf chair",/obj/structure/bed/chair, 20,one_per_turf = 1, on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),\
 	new/datum/stack_recipe/dorf("training sword", /obj/item/weapon/melee/training_sword,	12, time = 12,	on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),
 	new/datum/stack_recipe/dorf("chain", /obj/item/stack/chains, 2, 1, 20, 5, inherit_material = TRUE),
@@ -324,6 +354,9 @@ var/list/datum/stack_recipe/silver_recipes = list ( \
 
 var/list/datum/stack_recipe/clown_recipes = list ( \
 	new/datum/stack_recipe("bananium floor tile", /obj/item/stack/tile/mineral/clown, 1, 40, 20), \
+	null, \
+	new/datum/stack_recipe("Clown Statue", /obj/structure/statue/bananium/clown, 5, one_per_turf = 1, on_floor = 1), \
+	null, \
 	new/datum/stack_recipe/dorf("dorf chair",/obj/structure/bed/chair, 20, one_per_turf = 1, on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),\
 	new/datum/stack_recipe/dorf("training sword", /obj/item/weapon/melee/training_sword,	12, time = 12,	on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),
 	null,
@@ -356,6 +389,9 @@ var/list/datum/stack_recipe/mime_recipes = list ( \
 	new/datum/stack_recipe("invisible wall", /obj/structure/window/barricade/full/mime, 5, one_per_turf = 1, on_floor = 1, time = 50), \
 	null, \
 	new/datum/stack_recipe("silent floor tile", /obj/item/stack/tile/mineral/mime, 1, 40, 20), \
+	null, \
+	new/datum/stack_recipe("Mime Statue", /obj/structure/statue/tranquillite/mime, 5, one_per_turf = 1, on_floor = 1), \
+	null, \
 	new/datum/stack_recipe/dorf("dorf chair",/obj/structure/bed/chair, 20, one_per_turf = 1, on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),\
 	new/datum/stack_recipe/dorf("training sword", /obj/item/weapon/melee/training_sword,	12, time = 12,	on_floor = 1, inherit_material = TRUE, gen_quality = TRUE),
 	null,

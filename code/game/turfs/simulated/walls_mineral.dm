@@ -151,15 +151,19 @@
 		napalm.adjust_gas(GAS_PLASMA, toxinsToDeduce)
 		target_tile.assume_air(napalm)
 		spawn (0) target_tile.hotspot_expose(temperature, 400,surfaces=1)
-	for(var/obj/structure/falsewall/plasma/F in range(3,src))//Hackish as fuck, but until fire_act works, there is nothing I can do -Sieve
+	var/list/R = range(3,src)
+	R -= src
+	for(var/obj/structure/falsewall/plasma/F in R)//Hackish as fuck, but until fire_act works, there is nothing I can do -Sieve
 		var/turf/T = get_turf(F)
 		T.ChangeTurf(/turf/simulated/wall/mineral/plasma/)
 		qdel (F)
 		F = null
-	for(var/turf/simulated/wall/mineral/plasma/W in range(3,src))
+	for(var/turf/simulated/wall/mineral/plasma/W in R)
 		W.ignite((temperature/4))//Added so that you can't set off a massive chain reaction with a small flame
-	for(var/obj/machinery/door/airlock/plasma/D in range(3,src))
+	for(var/obj/machinery/door/airlock/plasma/D in R)
 		D.ignite(temperature/4)
+
+
 
 /turf/simulated/wall/mineral/plasma/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)//Doesn't fucking work because walls don't interact with air :(
 	if(exposed_temperature > 300)
