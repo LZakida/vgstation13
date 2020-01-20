@@ -105,6 +105,24 @@
 		else
 			playsound(H, step_sound, 20, 1)
 
+//Mime's Hardsuit
+/obj/item/clothing/head/helmet/space/mime
+	name = "mime helmet"
+	desc = ". . ."
+	icon_state = "spacemimehelmet"
+	item_state = "spacemimehelmet"
+	species_restricted = list("exclude",VOX_SHAPED)
+	species_fit = null
+
+/obj/item/clothing/suit/space/mime
+	name = "mime spacesuit"
+	desc = ". . ."
+	icon_state = "spacemime_suit"
+	item_state = "spacemime_items"
+	species_restricted = list("exclude",VOX_SHAPED)
+	species_fit = null
+
+
 //Prisoner Softsuits. Syndi-sprite merely cosmetic and has shit stats
 /obj/item/clothing/head/helmet/space/prison
 	name = "Prisoner Helmet"
