@@ -4,6 +4,7 @@
 /datum/emote/living/carbon/human/cry
 	key = "cry"
 	key_third_person = "cries"
+	gerund = "crying"
 	message = "cries."
 	emote_type = EMOTE_AUDIBLE
 
@@ -21,6 +22,7 @@
 /datum/emote/living/carbon/human/grumble
 	key = "grumble"
 	key_third_person = "grumbles"
+	gerund = "grumbling"
 	message = "grumbles!"
 	message_mime = "grumbles silently!"
 	emote_type = EMOTE_AUDIBLE
@@ -43,6 +45,7 @@
 /datum/emote/living/carbon/human/mumble
 	key = "mumble"
 	key_third_person = "mumbles"
+	gerund = "mumbling"
 	message = "mumbles!"
 	message_mime = "mumbles silently!"
 	emote_type = EMOTE_AUDIBLE
@@ -73,6 +76,7 @@
 /datum/emote/living/carbon/human/fart
 	key = "fart"
 	key_third_person = "farts"
+	gerund = "farting"
 
 /datum/emote/living/carbon/human/fart/run_emote(mob/user, params, type_override, ignore_status = FALSE)
 	if(!(type_override) && !(can_run_emote(user, !ignore_status))) // ignore_status == TRUE means that status_check should be FALSE and vise-versa

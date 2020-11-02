@@ -3,6 +3,8 @@
 	name = "H.O.N.K"
 	icon_state = "honker"
 	initial_icon = "honker"
+	stepsound = "clownstep"
+	stepvolume = 70
 	step_in = 2
 	health = 140
 	deflect_chance = 60
@@ -139,8 +141,8 @@
 /obj/mecha/combat/honker/mechstep(direction)
 	var/result = step(src,direction)
 	if(result)
-		if(!squeak)
-			playsound(src, "clownstep", 70, 1)
+		if(!squeak && stepsound)
+			playsound(src, (istext(stepsound) ? get_sfx(stepsound) : stepsound), stepvolume, 1)
 			squeak = 1
 		else
 			squeak = 0

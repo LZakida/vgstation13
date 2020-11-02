@@ -18,6 +18,7 @@
 /datum/emote/living/carbon/clap
 	key = "clap"
 	key_third_person = "claps"
+	gerund = "clapping"
 	message = "claps."
 	muzzle_ignore = TRUE
 	restraint_check = TRUE
@@ -32,6 +33,7 @@
 /datum/emote/living/carbon/moan
 	key = "moan"
 	key_third_person = "moans"
+	gerund = "moaning"
 	message = "moans!"
 	message_mime = "appears to moan!"
 	emote_type = EMOTE_AUDIBLE
@@ -113,18 +115,21 @@
 /datum/emote/living/carbon/yawn
 	key = "yawn"
 	key_third_person = "yawns"
+	gerund = "yawning"
 	message = "yawns."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/sniff
 	key = "sniff"
 	key_third_person = "sniffs"
+	gerund = "sniffing"
 	message = "sniffs."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/snore
 	key = "snore"
 	key_third_person = "snores"
+	gerund = "snoring"
 	message = "snores."
 	message_mime = "sleeps soundly."
 	emote_type = EMOTE_AUDIBLE
@@ -133,30 +138,35 @@
 /datum/emote/living/carbon/pout
 	key = "pout"
 	key_third_person = "pouts"
+	gerund = "pouting"
 	message = "pouts."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/scowl
 	key = "scowl"
 	key_third_person = "scowls"
+	gerund = "scowling"
 	message = "scowls."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/shake
 	key = "shake"
 	key_third_person = "shakes"
+	gerund = "shaking"
 	message = "shakes their head."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/shiver
 	key = "shiver"
 	key_third_person = "shiver"
+	gerund = "shivering"
 	message = "shivers."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/kiss
 	key = "kiss"
 	key_third_person = "kisses"
+	gerund = "kissing"
 	message = "blows a kiss."
 	message_param = "blows a kiss to %t."
 	emote_type = EMOTE_AUDIBLE
@@ -164,6 +174,7 @@
 /datum/emote/living/carbon/laugh
 	key = "laugh"
 	key_third_person = "laughs"
+	gerund = "laughing"
 	message = "laughs."
 	message_mime = "laughs silently!"
 	emote_type = EMOTE_AUDIBLE
@@ -171,6 +182,7 @@
 /datum/emote/living/carbon/gag
 	key = "gag"
 	key_third_person = "gags"
+	gerund = "gagging"
 	message = "gags."
 	message_mime = "gags silently."
 	emote_type = EMOTE_AUDIBLE
@@ -178,6 +190,7 @@
 /datum/emote/living/carbon/gasp
 	key = "gasp"
 	key_third_person = "gasps"
+	gerund = "gasping"
 	message = "gasps!"
 	message_mime = "gasps silently!"
 	emote_type = EMOTE_AUDIBLE
@@ -198,17 +211,20 @@
 /datum/emote/living/carbon/groan
 	key = "groan"
 	key_third_person = "groans"
+	gerund = "groaning"
 	message = "groans!"
 	message_mime = "appears to groan!"
 
 /datum/emote/living/carbon/grimace
 	key = "grimace"
 	key_third_person = "grimaces"
+	gerund = "grimacing"
 	message = "grimaces."
 
 /datum/emote/living/carbon/burp
 	key = "burp"
 	key_third_person = "burps"
+	gerund = "burping"
 	message = "burps."
 	message_mime = "appears to burp."
 	emote_type = EMOTE_AUDIBLE
@@ -216,12 +232,14 @@
 /datum/emote/living/carbon/choke
 	key = "choke"
 	key_third_person = "chokes"
+	gerund = "choking"
 	message = "chokes!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/chuckle
 	key = "chuckle"
 	key_third_person = "chuckles"
+	gerund = "chuckling"
 	message = "chuckles."
 	message_mime = "imitates a smug chuckle."
 	emote_type = EMOTE_AUDIBLE
@@ -230,14 +248,14 @@
 	key = "blush"
 	key_third_person = "blushes"
 	message = "blushes."
-	
+
 /datum/emote/living/carbon/fear
 	key = "fear"
 	key_third_person = "fears"
 	message = "screams in fear!"
 	message_mime = "acts out a fearful scream!"
 	emote_type = EMOTE_AUDIBLE
-	
+
 /datum/emote/living/carbon/sound
 	var/list/science_sounds = null
 	var/list/male_sounds = null
@@ -248,6 +266,7 @@
 /datum/emote/living/carbon/sound/scream
 	key = "scream"
 	key_third_person = "screams"
+	gerund = "screaming"
 	message = "screams!"
 	message_mime = "acts out a scream!"
 	emote_type = EMOTE_AUDIBLE

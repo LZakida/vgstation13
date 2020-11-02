@@ -20,6 +20,7 @@
 /datum/emote/living/alien/roar
 	key = "roar"
 	key_third_person = "roars"
+	gerund = "roaring"
 	message_alien = "roars."
 	message_larva = "softly roars."
 	emote_type = EMOTE_AUDIBLE

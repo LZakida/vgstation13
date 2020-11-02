@@ -194,7 +194,7 @@ obj/item/projectile/bullet/suffocationbullet
 	..()
 	explosion(target, 0,1,1,5)
 	qdel(src)
-	
+
 /obj/item/projectile/bullet/boombullet
 	name = "small exploding bullet"
 	embed = 0
@@ -736,7 +736,7 @@ obj/item/projectile/bullet/suffocationbullet
 	burn_damage = 10
 	jet_pressure = 0
 	gas_jet = null
-	
+
 /obj/item/projectile/bullet/fire_plume/dragonsbreath/New()
 	..()
 	var/datum/gas_mixture/firemix = new /datum/gas_mixture
@@ -973,3 +973,24 @@ obj/item/projectile/bullet/suffocationbullet
 
 /obj/item/projectile/bullet/syringe/dart
 	stealthy = TRUE
+
+/obj/item/projectile/bullet/mime
+	damage = 0
+	stun = 5
+	weaken = 5
+//	slur = 20 I'll get back to this later-Quisoves
+	stutter = 20
+
+/obj/item/projectile/bullet/mime/on_hit(var/atom/target, var/blocked = 0)
+	..(target, blocked)
+	if(iscarbon(target))
+		var/mob/living/carbon/M = target
+		if(M.silent < 10)
+			M.silent = 10
+	else if(istype(target, /obj/mecha/combat/honker))
+		var/obj/mecha/chassis = target
+		chassis.occupant_message("A mimetech anti-honk bullet has hit \the [chassis]!")
+		chassis.use_power(chassis.get_charge() / 2)
+		for(var/obj/item/mecha_parts/mecha_equipment/weapon/honker in chassis.equipment)
+			honker.set_ready_state(0)
+

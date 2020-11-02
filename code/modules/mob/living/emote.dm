@@ -20,12 +20,14 @@
 /datum/emote/living/collapse
 	key = "collapse"
 	key_third_person = "collapses"
+	gerund = "collapsing"
 	message = "collapses!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/glare
 	key = "glare"
 	key_third_person = "glares"
+	gerund = "glaring"
 	message = "glares."
 	message_mommi = "glares as best a robot spider can glare."
 	message_param = "glares at %t."
@@ -162,6 +164,7 @@
 /datum/emote/living/sigh
 	key = "sigh"
 	key_third_person = "sighs"
+	gerund = "sighing"
 	message = "sighs."
 	message_mime = "performs a silent theatrical sigh."
 	emote_type = EMOTE_AUDIBLE
@@ -179,6 +182,7 @@
 /datum/emote/living/carbon/sneeze
 	key = "sneeze"
 	key_third_person = "sneezes"
+	gerund = "sneezing"
 	message = "sneezes."
 	emote_type = EMOTE_AUDIBLE
 
@@ -206,6 +210,7 @@
 /datum/emote/living/surrender
 	key = "surrender"
 	key_third_person = "surrenders"
+	gerund = "surrendering"
 	message = "puts their hands on their head and falls to the ground. They surrender%s!"
 	emote_type = EMOTE_AUDIBLE
 

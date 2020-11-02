@@ -6,6 +6,7 @@
 /datum/emote
 	var/key = "" //What calls the emote
 	var/key_third_person = "" //This will also call the emote
+	var/gerund = "" //For use in Hear_Emote()
 	var/message = "" //Message displayed when emote is used
 	var/message_mime = "" //Message displayed if the user is a mime
 	var/message_alien = "" //Message displayed if the user is a grown alien
@@ -62,6 +63,12 @@
 
 	if (emote_type == EMOTE_VISIBLE)
 		user.visible_message(msg)
+	else if (emote_type == EMOTE_AUDIBLE)
+		for(var/atom/movable/O in get_hearers_in_view(world.view, user))
+			O.Hear_Emote(src, user)
+			if(istype(O, /mob/))
+				var/mob/M_O = O
+				M_O.show_message(msg)
 	else
 		for(var/mob/O in get_hearers_in_view(world.view, user))
 			O.show_message(msg)

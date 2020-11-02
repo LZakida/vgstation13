@@ -56,6 +56,12 @@ var/list/stationary_hearers = list(	/obj/item/device/radio/intercom,
 	else
 		returnToPool(src)
 
+/mob/virtualhearer/Hear_Emote(var/datum/emote/emote, var/mob/user)
+	if(attached)
+		world.log << "[attached] has heard emote [emote.message]"
+		attached.Hear_Emote(emote, user)
+	else
+		returnToPool(src)
 /mob/virtualhearer/ex_act()
 	return
 

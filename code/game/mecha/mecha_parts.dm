@@ -237,6 +237,58 @@
 	icon_state = "ripley_r_leg"
 */
 
+
+////////// Reticence
+
+/obj/item/mecha_parts/chassis/reticence
+	name = "Reticence Chassis"
+	flags = FPRINT | HEAR
+
+/obj/item/mecha_parts/chassis/reticence/New()
+	..()
+	construct = new /datum/construction/mecha_chassis/reticence(src)
+
+/obj/item/mecha_emote_step
+	var/emote
+
+/obj/item/mecha_emote_step/New(e)
+	emote = e
+
+/obj/item/mecha_parts/chassis/reticence/Hear_Emote(var/datum/emote/emote, var/mob/user)
+	if(!istype(user, /mob/living/) || !istype(construct, /datum/construction/reversible/mecha/reticence))
+		return
+	// is the current step the dummy emote object?
+	var/datum/construction/reversible/R = construct
+	var/next = R.get_forward_step(R.index)
+	if(!(next[Co_KEY]))
+		next[Co_VIS_MSG] = replacetext(next[Co_VIS_MSG], "{EMOTE}", emote.key_third_person)
+		R.construct_message(R.steps[R.index], user, FORWARD, 1)
+		R.update_index(FORWARD, user)
+
+/obj/item/mecha_parts/part/reticence_torso
+	name = "Reticence Torso"
+	icon_state = "reticence_harness"
+
+/obj/item/mecha_parts/part/reticence_head
+	name = "Reticence Head"
+	icon_state = "reticence_head"
+
+/obj/item/mecha_parts/part/reticence_left_arm
+	name = "Reticence Left Arm"
+	icon_state = "reticence_l_arm"
+
+/obj/item/mecha_parts/part/reticence_right_arm
+	name = "Reticence Right Arm"
+	icon_state = "reticence_r_arm"
+
+/obj/item/mecha_parts/part/reticence_left_leg
+	name = "Reticence Left Leg"
+	icon_state = "reticence_l_leg"
+
+/obj/item/mecha_parts/part/reticence_right_leg
+	name = "Reticence Right Leg"
+	icon_state = "reticence_r_leg"
+
 ////////// HONK
 
 /obj/item/mecha_parts/chassis/honker
@@ -503,6 +555,22 @@
 /obj/item/weapon/circuitboard/mecha/honker/main
 	name = "Circuit board (H.O.N.K Central Control module)"
 	icon_state = "mainboard"
+
+/obj/item/weapon/circuitboard/mecha/reticence
+	origin_tech = Tc_PROGRAMMING + "=3;" + Tc_ENGINEERING + "=3"
+
+/obj/item/weapon/circuitboard/mecha/reticence/peripherals
+	name = "circuit board (Reticence Peripherals Control module)"
+	icon_state = "mcontroller"
+
+/obj/item/weapon/circuitboard/mecha/reticence/targeting
+	name = "circuit board (Reticence Weapon Control and Targeting module)"
+	icon_state = "mcontroller"
+
+/obj/item/weapon/circuitboard/mecha/reticence/main
+	name = "circuit board (Reticence Central Control module)"
+	icon_state = "mainboard"
+
 
 /obj/item/weapon/circuitboard/mecha/odysseus
 	origin_tech = Tc_PROGRAMMING + "=3"

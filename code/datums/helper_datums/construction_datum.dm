@@ -94,23 +94,26 @@
 	return 1
 
 
-/datum/construction/proc/fixText(text,user,self=0)
+/datum/construction/proc/fixText(var/list/step, text,user,self=0)
 	if(self)
 		text = replacetext(text, "{s}", "")
 		text = replacetext(text, "{USER}", "You")
+		text = replacetext(text, "{VERB}", step["verb_2nd"] ? step["verb_2nd"] : "")
 	else
 		text = replacetext(text, "{s}", "s")
-		text = replacetext(text,"{USER}","[user]")
+		text = replacetext(text, "{USER}","[user]")
+		text = replacetext(text, "{VERB}", step["verb_3rd"] ? step["verb_3rd"] : "")
+
 	text = replacetext(text,"{HOLDER}","[holder]")
 	return text
 
 /datum/construction/proc/construct_message(step, mob/user)
 	if(Co_VIS_MSG in step)
-		user.visible_message(fixText(step[Co_VIS_MSG],user), fixText(step[Co_VIS_MSG],user,1))
+		user.visible_message(fixText(step, step[Co_VIS_MSG],user), fixText(step, step[Co_VIS_MSG],user,1))
 
 /datum/construction/proc/start_construct_message(step, mob/user, atom/movable/used_atom)
 	if(Co_START_MSG in step)
-		user.visible_message(fixText(step[Co_START_MSG],user), fixText(step[Co_START_MSG],user,1))
+		user.visible_message(fixText(step, step[Co_START_MSG],user), fixText(step, step[Co_START_MSG],user,1))
 
 /datum/construction/proc/check_all_steps(atom/used_atom,mob/user as mob) //check all steps, remove matching one.
 	for(var/i=1;i<=steps.len;i++)
@@ -266,10 +269,10 @@
 	else if (Co_BACKSTEP in step)
 		message_step = step[Co_BACKSTEP]
 	if(message_step)
-		user.visible_message(fixText(message_step[Co_VIS_MSG],user), fixText(message_step[Co_VIS_MSG],user,1))
+		user.visible_message(fixText(message_step, message_step[Co_VIS_MSG],user), fixText(message_step, message_step[Co_VIS_MSG],user,1))
 
 /datum/construction/reversible/start_construct_message(step, mob/user, atom/movable/used_atom)
-	user.visible_message(fixText(step[Co_START_MSG],user), fixText(step[Co_START_MSG],user,1))
+	user.visible_message(fixText(step, step[Co_START_MSG],user), fixText(step, step[Co_START_MSG],user,1))
 
 /datum/construction/reversible/add_max_amounts()
 	for(var/i = 1; i <= steps.len; i++)
@@ -282,9 +285,9 @@
 			dir_step.Add(list(Co_MAX_AMOUNT = dir_step[Co_AMOUNT]))
 
 	//NOT IN PLACE: message segments like verbs can be written as {UN|forwardmessage|backwardmessage}. This formats that in selection
-/datum/construction/reversible/fixText(message, mob/user, self = 0)
+/*/datum/construction/reversible/fixText(message, mob/user, self = 0)
 	return ..(message, user, self)
-		/*
+
 		while("{UN|" in text)
 			var/start_bracket = findtext(text, "{")
 			var/this_verb = copytext(text, start_bracket, findtext(text, "}", start_bracket + 1))

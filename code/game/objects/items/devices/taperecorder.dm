@@ -27,6 +27,12 @@
 		timestamp += timerecorded
 		storedinfo += "\[[time2text(timerecorded*10,"mm:ss")]\] \"[html_encode(speech.message)]\""
 
+
+/obj/item/device/taperecorder/Hear_Emote(var/datum/emote/emote, var/mob/user)
+	if(recording && emote.gerund)
+		timestamp += timerecorded
+		storedinfo += "\[[time2text(timerecorded*10,"mm:ss")]\] [html_encode("*[emote.gerund]*")]"
+
 /obj/item/device/taperecorder/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/weapon/card/emag))

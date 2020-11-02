@@ -3,6 +3,7 @@
 	name = "Clarke"
 	icon_state = "clarke"
 	initial_icon = "clarke"
+	turnsound = 'sound/mecha/mechmove01.ogg'
 	step_in = 1
 	step_energy_drain = 2
 	max_temperature = 100000
@@ -35,10 +36,10 @@
 		return 0
 	..()
 
-/obj/mecha/working/clarke/mechturn(direction)
+/*/obj/mecha/working/clarke/mechturn(direction)
 	dir = direction
 	playsound(src,'sound/mecha/mechmove01.ogg',40,1)
-	return 1
+	return 1*/
 
 /obj/mecha/working/clarke/mechstep(direction)
 	if(istype(get_turf(src), /turf/space))

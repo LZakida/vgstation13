@@ -4,6 +4,8 @@
 	icon_state = "engineering_pod"
 	initial_icon = "engineering_pod"
 	desc = "Stubby and round, it has a human sized access hatch on the top."
+	stepsound = 'sound/machines/hiss.ogg'
+	turnsound = null
 	step_energy_drain = 2
 	step_in = 1
 	wreckage = /obj/effect/decal/mecha_wreckage/hoverpod
@@ -50,6 +52,7 @@
 		step_in = 1
 
 //these three procs overriden to play different sounds
+/*
 /obj/mecha/working/hoverpod/mechturn(direction)
 	dir = direction
 	//playsound(src,'sound/machines/hiss.ogg',40,1)
@@ -66,7 +69,7 @@
 	var/result = step_rand(src)
 	if(result)
 		playsound(src,'sound/machines/hiss.ogg',40,1)
-	return result
+	return result*/
 
 /obj/mecha/working/hoverpod/can_apply_inertia()
 	if(has_charge(step_energy_drain))

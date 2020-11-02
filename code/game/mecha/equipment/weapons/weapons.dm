@@ -153,6 +153,11 @@
 					if(thingy)
 						walk(thingy,0)
 		*/
+
+	for(var/obj/mecha/combat/reticence/R in oview(6, chassis))
+		R.occupant_message("\The [R] has protected you from [chassis]'s HONK at the cost of some power.")
+		R.use_power(R.get_charge() / 4)
+
 	chassis.use_power(energy_drain)
 	log_message("Honked from [src.name]. HONK!")
 	message_admins("[key_name_and_info(chassis.occupant)] used a Mecha Honker in ([formatJumpTo(chassis)])",0,1)
@@ -165,6 +170,40 @@
 	var/max_projectiles
 	var/projectiles
 	var/projectile_energy_cost
+	var/projectiles_per_shot = 1
+	var/firevolume = 50
+
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/action(atom/target)
+	if(!action_checks(target))
+		return
+	var/originaltarget = target
+	var/turf/curloc = get_turf(chassis)
+	var/turf/targloc = get_turf(target)
+	if(!curloc || !targloc)
+		return
+	for(var/i=1 to min(projectiles, projectiles_per_shot))
+		if(defective)
+			target = get_inaccuracy(originaltarget, 2, chassis)
+			targloc = get_turf(target)
+		if(!targloc || targloc == curloc)
+			break
+		playsound(chassis, fire_sound, firevolume, 1)
+		var/obj/item/projectile/A = new projectile(curloc)
+		src.projectiles--
+		A.firer = chassis.occupant
+		A.original = target
+		A.current = curloc
+		A.starting = curloc
+		A.yo = targloc.y - curloc.y
+		A.xo = targloc.x - curloc.x
+		set_ready_state(0)
+		A.OnFired()
+		A.process()
+	log_message("Fired from [src.name], targeting [originaltarget].")
+	message_admins("[key_name_and_info(chassis.occupant)] fired \a [src] towards [originaltarget] ([formatJumpTo(chassis)])",0,1)
+	log_attack("[key_name(chassis.occupant)] fired \a [src] from [chassis] towards [originaltarget] ([formatLocation(chassis)])")
+	do_after_cooldown()
+	return
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/New()
 	..()
@@ -220,10 +259,10 @@
 	fire_sound = 'sound/weapons/shotgun.ogg'
 	max_projectiles = 20
 	projectile_energy_cost = 25
-	var/projectiles_per_shot = 1
 	var/deviation = 0.7  //the shots were perfectly accurate no matter what this was set to
+	firevolume = 80
 
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot/action(atom/target)
+/*/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot/action(atom/target)
 	if(!action_checks(target))
 		return
 	var/originaltarget = target
@@ -258,8 +297,33 @@
 	message_admins("[key_name_and_info(chassis.occupant)] fired \a [src] towards [originaltarget] ([formatJumpTo(chassis)])",0,1)
 	log_attack("[key_name(chassis.occupant)] fired \a [src] from [chassis] towards [originaltarget] ([formatLocation(chassis)])")
 	do_after_cooldown()
-	return
+	return*/
 
+
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine
+	name = "FNX-66 Carbine"
+	icon_state = "mecha_carbine"
+	origin_tech = "materials=4;combat=4"
+	equip_cooldown = 5
+	projectile = /obj/item/projectile/bullet/fire_plume/dragonsbreath
+	fire_sound = 'sound/weapons/Gunshot.ogg'
+	max_projectiles = 24
+	projectile_energy_cost = 15
+
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine/silenced
+	name = "\improper S.H.H. \"Quietus\" Carbine"
+	fire_sound = 'sound/weapons/Gunshot_silenced.ogg'
+	icon_state = "mecha_mime"
+	equip_cooldown = 15
+	projectile = /obj/item/projectile/bullet/mime
+	max_projectiles = 20
+	projectile_energy_cost = 50
+
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine/silenced/can_attach(obj/mecha/combat/reticence/M as obj)
+	if(..())
+		if(istype(M))
+			return 1
+	return 0
 
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
@@ -270,10 +334,11 @@
 	fire_sound = 'sound/weapons/Gunshot_smg.ogg'
 	max_projectiles = 300
 	projectile_energy_cost = 20
-	var/projectiles_per_shot = 3
+	projectiles_per_shot = 3
 //	var/deviation = 0.3
 
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/action(atom/target)
+
+/*/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/action(atom/target)
 	if(!action_checks(target))
 		return
 	var/originaltarget = target
@@ -312,7 +377,7 @@
 	message_admins("[key_name_and_info(chassis.occupant)] fired \a [src] towards [originaltarget] ([formatJumpTo(chassis)])",0,1)
 	log_attack("[key_name(chassis.occupant)] fired \a [src] from [chassis] towards [originaltarget] ([formatLocation(chassis)])")
 	do_after_cooldown()
-	return
+	return*/
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack
 	name = "\improper SRM-8 Missile Rack"

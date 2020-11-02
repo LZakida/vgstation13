@@ -37,6 +37,8 @@ var/global/lastDecTalkUse = 0
 
 /atom/movable/proc/Hear(var/datum/speech/speech, var/rendered_speech="")
 	return
+/atom/movable/proc/Hear_Emote(var/datum/emote/emote, var/mob/user)
+	return
 
 /atom/movable/proc/can_speak()
 	return 1

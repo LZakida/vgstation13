@@ -1567,5 +1567,41 @@
 		return "[..()] ERROR: Tank empty. \[<a href='?src=\ref[src];eject=0'>eject tank</a>\]"
 	return "[..()] \[<a href='?src=\ref[src];toggle=0'>[collector.active ? "Deactivate" : "Activate"] radiation collector array</a>\]\[<a href='?src=\ref[src];eject=0'>eject tank</a>\]"
 
+
+/obj/item/mecha_parts/mecha_equipment/mimercd
+	name = "mounted MRCD"
+	desc = "An exosuit-mounted Mime Rapid Construction Device. (Can be attached to: Reticence)"
+	icon_state = "mecha_rcd"
+	origin_tech = Tc_MATERIALS + "=4;" + Tc_BLUESPACE + "=3;" + Tc_MAGNETS + "=4;" + Tc_POWERSTORAGE + "=4;" + Tc_ENGINEERING + "=4"
+
+	equip_cooldown = 10
+	energy_drain = 250
+	range = MELEE|RANGED
+
+/obj/item/mecha_parts/mecha_equipment/mimercd/can_attach(obj/mecha/combat/reticence/M)
+	if(..())
+		if(istype(M))
+			return 1
+	return 0
+
+/obj/item/mecha_parts/mecha_equipment/mimercd/action(atom/target)
+	if(istype(target, /turf/space/transit))//>implying these are ever made -Sieve
+		return
+	if(!istype(target, /turf))
+		target = get_turf(target)
+	if(!action_checks(target) || get_dist(chassis, target)>3)
+		return
+
+	if(istype(target, /turf/simulated/floor))
+		occupant_message("Building Wall...")
+		if(do_after_cooldown(target))
+			new /obj/structure/window/barricade/full/mime/mrcd(target)
+			spark(chassis, 5, FALSE)
+
+
+
+
+
 #undef MECHDRILL_SAND_SPEED
 #undef MECHDRILL_ROCK_SPEED
+

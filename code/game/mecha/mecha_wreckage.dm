@@ -218,6 +218,26 @@
 							/obj/item/mecha_parts/part/honker_right_leg)
 	welder_salvage += pick_random_loot(parts)
 
+
+/obj/effect/decal/mecha_wreckage/reticence
+	name = "\improper Reticence wreckage"
+	icon_state = "mime-broken"
+
+/*/obj/effect/decal/mecha_wreckage/reticence/New()
+	..()
+	var/list/parts = list(
+							/obj/item/mecha_parts/chassis/reticence,
+							/obj/item/mecha_parts/part/reticence_torso,
+							/obj/item/mecha_parts/part/reticence_head,
+							/obj/item/mecha_parts/part/reticence_left_arm,
+							/obj/item/mecha_parts/part/reticence_right_arm,
+							/obj/item/mecha_parts/part/reticence_left_leg,
+							/obj/item/mecha_parts/part/reticence_right_leg)
+	welder_salvage += pick_random_loot(parts)
+*/
+
+
+
 /obj/effect/decal/mecha_wreckage/durand
 	name = "Durand wreckage"
 	icon_state = "durand-broken"

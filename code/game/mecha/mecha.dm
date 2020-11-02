@@ -21,6 +21,10 @@
 	layer = MOB_LAYER //icon draw layer
 	plane = MOB_PLANE
 	infra_luminosity = 15 //byond implementation is bugged. This is supposedly infrared brightness. Lower for combat mechs.
+	var/stepsound = "mechstep"
+	var/turnsound = 'sound/mecha/mechturn.ogg'
+	var/stepvolume = 40
+	var/turnvolume = 40
 	var/list/hud_list = list()
 	var/initial_icon
 	var/can_move = 1
@@ -392,7 +396,8 @@
 
 /obj/mecha/proc/mechturn(direction)
 	dir = direction
-	playsound(src,'sound/mecha/mechturn.ogg',40,1)
+	if(turnsound)
+		playsound(src, (istext(turnsound) ?  get_sfx(turnsound) : turnsound),turnvolume,1)
 	return 1
 
 /obj/mecha/proc/mechstep(direction)
@@ -401,16 +406,16 @@
 	var/result = step(src,direction)
 	if(lock_dir)
 		dir = current_dir
-	if(result)
-	 playsound(src, get_sfx("mechstep"),40,1)
+	if(result && stepsound)
+		playsound(src, (istext(stepsound) ? get_sfx(stepsound) : stepsound),stepvolume,1)
 	return result
 
 
 /obj/mecha/proc/mechsteprand()
 	set_glide_size(DELAY2GLIDESIZE(step_in))
 	var/result = step_rand(src)
-	if(result)
-	 playsound(src, get_sfx("mechstep"),40,1)
+	if(result && stepsound)
+		playsound(src, (istext(stepsound) ? get_sfx(stepsound) : stepsound),stepvolume,1)
 	return result
 
 /obj/mecha/to_bump(atom/obstacle)

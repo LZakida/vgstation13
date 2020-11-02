@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net;
 using System.IO;
 using System.Text;
@@ -116,7 +116,7 @@ namespace DecTalk
                 string usableVoice = "";
                 foreach (InstalledVoice voice in _tts.GetInstalledVoices())
                 {
-                    //Console.WriteLine("Name : " + voice.VoiceInfo.Name + "/ ID : " + voice.VoiceInfo.Id);
+                    Console.WriteLine("Name : " + voice.VoiceInfo.Name + "/ ID : " + voice.VoiceInfo.Id);
                     if (voice.VoiceInfo.Name == tts_voice) {
                         usableVoice = voice.VoiceInfo.Name;
                         break;

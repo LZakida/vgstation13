@@ -17,11 +17,13 @@
 
 /datum/emote/brain/alarm
 	key = "alarm"
+	gerund = "alarm blaring"
 	message = "sounds an alarm."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/brain/alert
 	key = "alert"
+	gerund = "distressed whirring"
 	message = "lets out a distressed noise."
 	emote_type = EMOTE_AUDIBLE
 
@@ -31,11 +33,13 @@
 
 /datum/emote/brain/notice
 	key = "notice"
+	gerund = "loud electronic chirping"
 	message = "plays a loud tone."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/brain/whistle
 	key = "whistle"
 	key_third_person = "whistles"
+	gerund = "whistling"
 	message = "whistles."
 	emote_type = EMOTE_AUDIBLE
