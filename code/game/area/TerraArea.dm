@@ -27,9 +27,30 @@
 	name = "fuckoff"
 	icon_state = "dark128"
 
+
+//EXTERIOR AREAS -- For use with places that have no actual station on them but still are part of the station
+
 /area/exterior/rockstat
 	name = "Rockstation Exterior Cave"
 	icon_state = "yellow"
+
+//Rockstation uninhabited cavern-type area things of doom go here
+//They extend the area directly above here - add more if needed I guess
+/area/exterior/rockstat/pocket
+	name = "uninhabited cave"
+/area/exterior/rockstat/pocket/_1
+/area/exterior/rockstat/pocket/_2
+/area/exterior/rockstat/pocket/_3
+/area/exterior/rockstat/pocket/_4
+/area/exterior/rockstat/pocket/_5
+/area/exterior/rockstat/pocket/_6
+/area/exterior/rockstat/pocket/_7
+/area/exterior/rockstat/pocket/_8
+/area/exterior/rockstat/pocket/_9
+
+/area/exterior/rockstat/cargo //that area outside cargo, yes
+	name = "Cargo Exterior"
+	icon_state = "dark128"
 
 
 //TERRALABS AREAS -- Oh fuck
@@ -129,21 +150,29 @@
 	name = "Security Substation"
 
 
-// ENGINEERING AREAS THAT PARADISE CANNED FOR WHATEVER REASON
+// FURTHER ENGINEERING AREAS THAT MAY OR MAY NOT BE USEFUL TO ANYONE
 
-/area/engine/d_fab
+/area/engineering/d_fab
 	name = "Drone Fabrication"
 	icon_state = "engine"
 
-/area/engine/e_waste //no longer in use in rock2 since addition of tesla
+/area/engineering/e_waste
 	name = "Engine Waste Handling"
-	icon_state = "engine"
+	icon = 'icons/turf/areas2.dmi' //Using separate area icon file to avoid merge bullshit, as above
+	icon_state = "e_waste"
 
-//EXTRA ENGINEERING AREA DUE TO ROCK2 NEW DEMANDS WHYYY
+/area/engineering/hall
+	name = "Engineering Hall"
+	icon = 'icons/turf/areas2.dmi' //Using separate area icon file to avoid merge bullshit, as above
+	icon_state = "hall"
 
-/area/engine/exterior
+/area/engineering/exterior
 	name = "Engine Exterior"
 	icon_state = "engine"
+
+/area/engineering/monitor
+	name = "Engine Monitor Room"
+	icon_state = "engine_control"
 
 
 //OTHER MISCELLANY- QUI IS RESPONSIBLE FOR THIS PROBABLY
