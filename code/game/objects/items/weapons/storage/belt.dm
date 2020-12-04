@@ -121,8 +121,8 @@
 
 /obj/item/weapon/storage/belt/utility/chief/full/New() //This is mostly for testing I guess
 	..()
-	new /obj/item/weapon/crowbar(src)
-	new /obj/item/weapon/screwdriver(src)
+	new /obj/item/weapon/crowbar/power(src)
+	new /obj/item/weapon/screwdriver/power(src)
 	new /obj/item/weapon/weldingtool/hugetank(src)
 	new /obj/item/weapon/wirecutters(src)
 	new /obj/item/weapon/wrench(src)
@@ -170,7 +170,8 @@
 		"/obj/item/device/antibody_scanner",
 		"/obj/item/weapon/switchtool/surgery",
 		"/obj/item/weapon/grenade/chem_grenade",
-		"/obj/item/weapon/electrolyzer"
+		"/obj/item/weapon/electrolyzer",
+		"/obj/item/weapon/wrench/medical",
 	)
 
 /obj/item/weapon/storage/belt/slim
@@ -481,3 +482,23 @@
 		"/obj/item/weapon/mop",
 		"/obj/item/weapon/storage/bag/trash")
 
+
+
+/obj/item/weapon/storage/belt/abductor
+	name = "agent belt"
+	desc = "A belt used by abductor agents."
+	icon = 'icons/obj/abductor.dmi'
+	icon_state = "belt"
+	item_state = "security"
+	fits_max_w_class = W_CLASS_SMALL
+	max_combined_w_class = 14
+
+/obj/item/weapon/storage/belt/abductor/full/New()
+	..()
+	new /obj/item/weapon/screwdriver/abductor(src)
+	new /obj/item/weapon/wrench/abductor(src)
+	new /obj/item/weapon/weldingtool/abductor(src)
+	new /obj/item/weapon/crowbar/abductor(src)
+	new /obj/item/weapon/wirecutters/abductor(src)
+//	new /obj/item/device/multitool/abductor(src)
+	new /obj/item/stack/cable_coil(src, 30, "white")

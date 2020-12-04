@@ -481,11 +481,11 @@ Class Procs:
 		else
 			qdel(I)
 
-/obj/machinery/proc/crowbarDestroy(mob/user)
+/obj/machinery/proc/crowbarDestroy(mob/user,var/obj/item/weapon/crowbar/C)
 	user.visible_message(	"[user] begins to pry out the circuitboard from \the [src].",
 							"You begin to pry out the circuitboard from \the [src]...")
-	if(do_after(user, src, 40))
-		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+	if(do_after(user, src, 40 * C.toolspeed))
+		playsound(src, C.usesound, 50, 1)
 		dropFrame()
 		spillContents()
 		user.visible_message(	"<span class='notice'>[user] successfully pries out the circuitboard from \the [src]!</span>",
@@ -509,7 +509,7 @@ Class Procs:
 			icon_state = initial(icon_state)
 	to_chat(user, "<span class='notice'>[bicon(src)] You [panel_open ? "open" : "close"] the maintenance hatch of \the [src].</span>")
 	if(toggleitem.is_screwdriver(user))
-		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
+		playsound(src.loc, toggleitem.usesound, 50, 1)
 	update_icon()
 	return 1
 
@@ -591,7 +591,7 @@ Class Procs:
 				to_chat(user, "\The [src] has to be unwelded from the floor first.")
 				return -1 //state set to 2, can't do it
 			else
-				if(wrenchAnchor(user) && machine_flags & FIXED2WORK) //wrenches/unwrenches into place if possible, then updates the power and state if necessary
+				if(wrenchAnchor(user, O) && machine_flags & FIXED2WORK) //wrenches/unwrenches into place if possible, then updates the power and state if necessary
 					state = anchored
 					power_change() //updates us to turn on or off as necessary
 					return 1
@@ -607,9 +607,9 @@ Class Procs:
 	if(iswelder(O) && machine_flags & WELD_FIXED && canAffixHere(user))
 		return weldToFloor(O, user)
 
-	if(iscrowbar(O) && machine_flags & CROWDESTROY)
+	if(O.is_crowbar(user) && machine_flags & CROWDESTROY)
 		if(panel_open)
-			if(crowbarDestroy(user) == 1)
+			if(crowbarDestroy(user, O) == 1)
 				qdel(src)
 				return 1
 			else

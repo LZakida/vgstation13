@@ -93,10 +93,10 @@
 		qdel(I)
 		qdel(src)
 		return
-	if(iscrowbar(I) || istype(I,/obj/item/weapon/chisel))
+	if(I.is_crowbar(user) || istype(I,/obj/item/weapon/chisel))
 		to_chat(user, "<span class='notice'>You start to [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"].</span>")
 		playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 50, 1)
-		if(do_after(user, src, 30))
+		if(do_after(user, src, 30 * I.toolspeed))
 			user.visible_message("<span class='notice'>[user] [cistern ? "replaces the lid on the cistern" : "lifts the lid off the cistern"]!</span>", "<span class='notice'>You [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"]!</span>", "You hear grinding porcelain.")
 			cistern = !cistern
 			update_icon()
@@ -192,7 +192,7 @@
 	if(istype(I, /obj/item/weapon/crowbar))
 		to_chat(user, "<span class='notice'>You begin to disassemble \the [src].</span>")
 		playsound('sound/items/Crowbar.ogg', 50, 1)
-		if(do_after(user, src, 3 SECONDS))
+		if(do_after(user, src, 3 SECONDS * I.toolspeed))
 			getFromPool(/obj/item/stack/sheet/metal, loc, 2)
 			qdel(src)
 		return
@@ -281,8 +281,8 @@
 		if(I.is_wrench(user))
 			user.visible_message("<span class='warning'>[user] starts adjusting the bolts on \the [src].</span>", \
 								 "<span class='notice'>You start adjusting the bolts on \the [src].</span>")
-			playsound(src, 'sound/items/Ratchet.ogg', 100, 1)
-			if(do_after(user, src, 50))
+			playsound(src, I.usesound, 100, 1)
+			if(do_after(user, src, 50 * I.toolspeed))
 				if(anchored)
 					src.visible_message("<span class='warning'>[user] unbolts \the [src] from the floor.</span>", \
 								 "<span class='notice'>You unbolt \the [src] from the floor.</span>")
@@ -295,7 +295,7 @@
 		if(I.is_wrench(user))
 			user.visible_message("<span class='warning'>[user] begins to adjust \the [src]'s temperature valve with \a [I.name].</span>", \
 								 "<span class='notice'>You begin to adjust \the [src]'s temperature valve with \a [I.name].</span>")
-			if(do_after(user, src, 50))
+			if(do_after(user, src, 50 * I.toolspeed))
 				switch(watertemp)
 					if("cool")
 						watertemp = "freezing cold"

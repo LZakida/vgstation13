@@ -883,10 +883,10 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 /obj/machinery/newscaster/attackby(obj/item/I as obj, mob/user as mob)
 	switch(buildstage)
 		if(0)
-			if(iscrowbar(I))
+			if(I.is_crowbar(user))
 				playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
 				user.visible_message("<span class='notice'>[user] begins prying off the [src]!</span>", "<span class='notice'>You begin prying off the [src]</span>")
-				if(do_after(user, src,10))
+				if(do_after(user, src,10 * I.toolspeed))
 					to_chat(user, "<span class='notice'>You pry off the [src]!.</span>")
 					new /obj/item/mounted/frame/newscaster(loc)
 					qdel(src)
@@ -894,13 +894,13 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 			if(I.is_screwdriver(user) && !(stat & BROKEN))
 				user.visible_message("<span class='notice'>[user] screws in the [src]!</span>", "<span class='notice'>You screw in the [src]</span>")
-				playsound(src, 'sound/items/Screwdriver.ogg', 100, 1)
+				playsound(src, I.usesound, 100, 1)
 				buildstage = 1
 
 		if(1)
 			if(I.is_screwdriver(user) && !(stat & BROKEN))
 				user.visible_message("<span class='notice'>[user] unscrews the [src]!</span>", "<span class='notice'>You unscrew the [src]</span>")
-				playsound(src, 'sound/items/Screwdriver.ogg', 100, 1)
+				playsound(src, I.usesound, 100, 1)
 				buildstage = 0
 				update_icon()
 				return

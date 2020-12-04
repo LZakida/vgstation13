@@ -27,7 +27,7 @@
 				open(1)
 			else
 				close(1)
-		
+
 		if("open")
 			open(1)
 
@@ -48,7 +48,7 @@
 			toggle_bolts()
 			sleep(2)
 			update_icon()
-			
+
 		if("secure_cycle")
 			if(density)
 				if(locked)
@@ -298,7 +298,7 @@ obj/machinery/airlock_sensor/attackby(var/obj/item/W, var/mob/user)
 		return .
 	if(W.is_screwdriver(user))
 		to_chat(user, "You begin to pry \the [src] off the wall...")
-		if(do_after(user, src, 50))
+		if(do_after(user, src, 50 * W.toolspeed))
 			to_chat(user, "You successfully pry \the [src] off the wall.")
 			new /obj/item/mounted/frame/airlock_sensor(get_turf(src))
 			qdel(src)
@@ -375,7 +375,7 @@ obj/machinery/access_button/attackby(var/obj/item/W, var/mob/user)
 		return .
 	if(W.is_screwdriver(user))
 		to_chat(user, "You begin to pry \the [src] off the wall...")
-		if(do_after(user, src, 50))
+		if(do_after(user, src, 50 * W.toolspeed))
 			to_chat(user, "You successfully pry \the [src] off the wall.")
 			new /obj/item/mounted/frame/access_button(get_turf(src))
 			qdel(src)

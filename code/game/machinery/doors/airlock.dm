@@ -1127,10 +1127,10 @@ About the new airlock wires panel:
 
 
 //You can ALWAYS screwdriver a door. Period. Well, at least you can even if it's open
-/obj/machinery/door/airlock/togglePanelOpen(var/obj/toggleitem, mob/user)
+/obj/machinery/door/airlock/togglePanelOpen(var/obj/item/weapon/screwdriver/toggleitem, mob/user)
 	if(!operating)
 		panel_open = !panel_open
-		playsound(src, 'sound/items/Screwdriver.ogg', 25, 1, -6)
+		playsound(src, toggleitem.usesound, 25, 1, -6)
 		to_chat(user, "<span class='notice'>You [panel_open?"open":"close"] the panel.</span>")
 		update_icon()
 		return 1
@@ -1152,7 +1152,7 @@ About the new airlock wires panel:
 		"<span class='warning'>You hear slicing noises.</span>")
 		playsound(src, 'sound/items/Welder2.ogg', 100, 1)
 
-		if(do_after(user, src, 200))
+		if(do_after(user, src, 200 * I.toolspeed))
 			if(!istype(src))
 				return
 			user.visible_message("<span class='warning'>[user] slices through \the [src]!</span>", \
@@ -1202,28 +1202,53 @@ About the new airlock wires panel:
 			else
 				update_multitool_menu(user)
 		attack_hand(user)
-	else if (iswiretool(I))
+	else if (iswiretool(I, user))
 		if (!operating && panel_open)
 			wires.Interact(user)
-	else if (iscrowbar(I) || istype(I, /obj/item/weapon/fireaxe))
-		if(src.busy)
+	else if (I.is_crowbar(user) || istype(I, /obj/item/weapon/fireaxe))
+		if(busy)
 			return
-		src.busy = 1
+		busy = 1
 		var/beingcrowbarred = null
-		if(iscrowbar(I) )
+		if(I.is_crowbar(user) )
 			beingcrowbarred = 1 //derp, Agouri
 		else
 			beingcrowbarred = 0
-		if( beingcrowbarred && (operating == -1 || density && welded && !operating && src.panel_open && (!src.arePowerSystemsOn() || stat & NOPOWER) && !src.locked) )
-			playsound(src.loc, 'sound/items/Crowbar.ogg', 100, 1)
+		if( beingcrowbarred && (operating == -1 || density && welded && !operating && src.panel_open && (!arePowerSystemsOn() || stat & NOPOWER) && !locked) )
+			playsound(src.loc, I.usesound, 100, 1)
 			user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove electronics from the airlock assembly.")
 			// TODO: refactor the called proc
-			if (do_after(user, src, 40))
+			if (do_after(user, src, 40 * I.toolspeed))
 				to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
 				revert(user,null)
 				qdel(src)
 				return
-		else if(arePowerSystemsOn() && !(stat & NOPOWER))
+		if(istype(I, /obj/item/weapon/crowbar/power) && density)
+			if(isElectrified())
+				shock(user, 100)//it's like sticking a fork in a power socket
+				return
+
+			if(locked)
+				to_chat(user, "<span class='warning'>The bolts are down, it won't budge!</span>")
+				return
+
+			if(welded)
+				to_chat(user, "<span class='warning'>It's welded, it won't budge!</span>")
+				return
+
+			if(arePowerSystemsOn())
+				var/obj/item/weapon/crowbar/power/P = I
+				playsound(src, 'sound/machines/airlock_forced.ogg', 100, 1) //is it aliens or just the CE being a dick?
+				user.visible_message("<span class='notice'>[user] starts forcing [src] with \the [P]...</span>", \
+									 "<span class='notice'>You begin forcing [src] with \the [P]...</span>")
+				if(do_after(user, P.airlock_open_time * P.toolspeed, target = src))
+					user.visible_message("<span class='notice'>[user] forces [src] with \the [P].</span>", \
+						 "<span class='notice'>You force [src] with \the [P].</span>")
+					open(2)
+					if(density && !open(2))
+						to_chat(user, "<span class='warning'>Despite your attempts, the [src] refuses to open.</span>")
+				return
+		if(arePowerSystemsOn() && !(stat & NOPOWER))
 			to_chat(user, "<span class='notice'>The airlock's motors resist your efforts to force it.</span>")
 		else if(locked)
 			to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")

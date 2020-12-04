@@ -325,7 +325,7 @@
 		else
 			to_chat(user, "<span class='notice'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
 	else if(O.is_wrench(user))
-		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(loc, O.usesound, 50, 1)
 		anchored = !anchored
 		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] [src].</span>")
 	else if(istype(O, /obj/item/weapon/grab)) //For ass-copying.
@@ -358,10 +358,10 @@
 			to_chat(user, "You close the maintenance hatch of [src].")
 		return 1
 	if(opened)
-		if(iscrowbar(O))
+		if(O.is_crowbar(user))
 			to_chat(user, "You begin to remove the circuits from the [src].")
-			playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
-			if(do_after(user, src, 50))
+			playsound(src, O.usesound, 50, 1)
+			if(do_after(user, src, 50 * O.toolspeed))
 				var/obj/machinery/constructable_frame/machine_frame/M = new /obj/machinery/constructable_frame/machine_frame(src.loc)
 				M.state = 1
 				M.set_build_state(2)

@@ -317,7 +317,7 @@ Pipelines + Other Objects -> Pipe network
 	if ((int_air.return_pressure()-env_air.return_pressure()) > 2*ONE_ATMOSPHERE)
 		if(istype(W, /obj/item/weapon/wrench/socket) && istype(src, /obj/machinery/atmospherics/pipe))
 			to_chat(user, "<span class='warning'>You begin to open the pressure release valve on the pipe...</span>")
-			if(!do_after(user, src, 50) || !loc)
+			if(!do_after(user, src, 50 * W.toolspeed) || !loc)
 				return
 			playsound(src, 'sound/machines/hiss.ogg', 50, 1)
 			user.visible_message("[user] vents \the [src].",
@@ -328,9 +328,9 @@ Pipelines + Other Objects -> Pipe network
 		else
 			to_chat(user, "<span class='warning'>You cannot unwrench this [src], it's too exerted due to internal pressure.</span>")
 			return 1
-	playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+	playsound(src, W.usesound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	if (do_after(user, src, 40))
+	if (do_after(user, src, 40 * W.toolspeed))
 		user.visible_message( \
 			"[user] unfastens \the [src].", \
 			"<span class='notice'>You have unfastened \the [src].</span>", \

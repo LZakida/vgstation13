@@ -50,7 +50,8 @@ var/list/obj/machinery/flasher/flashers = list()
 
 //Don't want to render prison breaks impossible
 /obj/machinery/flasher/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if (iswirecutter(W))
+//	if (iswirecutter(W))
+	if (W.is_wirecutter(user))
 		add_fingerprint(user)
 		src.disable = !src.disable
 		if (src.disable)

@@ -402,8 +402,8 @@
 
 	if (W.is_wrench(user) && can_disassemble())
 		to_chat(user, "<span class='notice'>Now disassembling table...</span>")
-		playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
-		if(do_after(user, src,50))
+		playsound(src, W.usesound, 50, 1)
+		if(do_after(user, src,50 * W.toolspeed))
 			destroy()
 		return
 
@@ -581,7 +581,7 @@
 
 /obj/structure/table/reinforced/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
 	if(istype(W,/obj/item/weapon/stock_parts/scanning_module) && can_optable)
-		playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
+		playsound(src, W.usesound, 50, 1)
 		if(do_after(user, src, 40))
 			if(user.drop_item(W))
 				var/obj/machinery/optable/OPT = new /obj/machinery/optable(src.loc)
@@ -766,7 +766,7 @@
 
 /obj/structure/rack/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(W.is_wrench(user) && can_disassemble())
-		playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(src, W.usesound, 50, 1)
 		destroy(TRUE)
 		return
 

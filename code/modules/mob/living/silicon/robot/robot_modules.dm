@@ -327,7 +327,7 @@
 	modules += new /obj/item/weapon/screwdriver(src)
 	modules += new /obj/item/weapon/wrench(src)
 	modules += new /obj/item/weapon/wirecutters(src)
-	modules += new /obj/item/device/multitool(src)
+	modules += new /obj/item/device/multitool/cyborg(src)
 	modules += new /obj/item/device/t_scanner(src)
 	modules += new /obj/item/device/analyzer(src)
 	modules += new /obj/item/taperoll/atmos(src)
@@ -633,7 +633,7 @@
 	sensor_augs = list("Medical", "Disable")
 
 	fix_modules()
-	
+
 /obj/item/weapon/robot_module/starman
 	name = "starman robot module"
 	module_holder = "starman"

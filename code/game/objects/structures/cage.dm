@@ -91,8 +91,8 @@
 			to_chat(user, "<span class='info'>You start securing \the [src] to \the [loc].</span>")
 
 		spawn()
-			playsound(src, 'sound/items/Ratchet.ogg', 100, 1)
-			if(do_after(user, src, 50))
+			playsound(src, W.usesound, 100, 1)
+			if(do_after(user, src, 50 * W.toolspeed))
 				anchored = !anchored
 				to_chat(user, "<span class='info'>[anchored ? "You successfully secure \the [src] to \the [loc]." : "You successfully unsecure \the [src] from \the [loc]."]")
 

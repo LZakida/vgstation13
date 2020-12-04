@@ -241,10 +241,10 @@
 
 /obj/machinery/door/window/attackby(obj/item/weapon/I, mob/living/user)
 	// Make emagged/open doors able to be deconstructed
-	if(!density && operating != 1 && iscrowbar(I))
+	if(!density && operating != 1 && I.is_crowbar(user))
 		user.visible_message("[user] is removing \the [electronics.name] from \the [name].", "You start to remove \the [electronics.name] from \the [name].")
-		playsound(src, 'sound/items/Crowbar.ogg', 100, 1)
-		if(do_after(user, src, 40) && src && !density && operating != 1)
+		playsound(src, I.usesound, 100, 1)
+		if(do_after(user, src, 40 * I.toolspeed) && src && !density && operating != 1)
 			to_chat(user, "<span class='notice'>You removed \the [electronics.name]!</span>")
 			make_assembly()
 			if(smartwindow)

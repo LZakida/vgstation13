@@ -141,10 +141,10 @@
 /obj/machinery/media/receiver/boombox/wallmount/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	switch(buildstage)
 		if(SYSTEMISDONE)
-			if(iscrowbar(W))
+			if(W.is_crowbar(user))
 				to_chat(user, "<span class='notice'>You pry the cover off [src].</span>")
 				playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-				if(do_after(user, src, 10) && buildstage==SYSTEMISDONE)
+				if(do_after(user, src, 10 * W.toolspeed) && buildstage==SYSTEMISDONE)
 					on = 0
 					buildstage = SYSTEMISKINDADONE
 					update_icon()
@@ -153,17 +153,18 @@
 				return ..()
 		if(SYSTEMISKINDADONE)
 			if(W.is_screwdriver(user))
-				playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-				if(do_after(user, src, 10) && buildstage==SYSTEMISKINDADONE)
+				playsound(src, W.usesound, 50, 1)
+				if(do_after(user, src, 10 * W.toolspeed) && buildstage==SYSTEMISKINDADONE)
 					on = 1
 					buildstage = SYSTEMISDONE
 					to_chat(user, "<span class='notice'>You secure the cover.</span>")
 					update_icon()
 					update_on(TRUE)
 				return 1
-			else if(iswirecutter(W))
-				playsound(src, 'sound/items/Wirecutter.ogg', 50, 1)
-				if(do_after(user, src, 10) && buildstage==SYSTEMISKINDADONE)
+//			else if(iswirecutter(W))
+			else if(W.is_wirecutter(user))
+				playsound(src, W.usesound, 50, 1)
+				if(do_after(user, src, 10 * W.toolspeed) && buildstage==SYSTEMISKINDADONE)
 					getFromPool(/obj/item/stack/cable_coil,get_turf(src),5)
 					buildstage = SYSTEMISNOTDONE
 					update_icon()
@@ -174,15 +175,15 @@
 				if(coil.amount < 5)
 					to_chat(user, "<span class='warning'>You need more cable for this!</span>")
 					return
-				if(do_after(user, src, 10) && buildstage==SYSTEMISNOTDONE)
+				if(do_after(user, src, 10 * W.toolspeed) && buildstage==SYSTEMISNOTDONE)
 					coil.use(5)
 					to_chat(user, "<span class='notice'>You wire \the [src]!</span>")
 					buildstage = SYSTEMISKINDADONE
 				return 1
 			if(W.is_wrench(user))
 				to_chat(user, "<span class='notice'>You remove the securing bolts...</span>")
-				playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
-				if(do_after(user, src, 10) && buildstage==SYSTEMISNOTDONE)
+				playsound(src, W.usesound, 50, 1)
+				if(do_after(user, src, 10 * W.toolspeed) && buildstage==SYSTEMISNOTDONE)
 					new /obj/item/mounted/frame/soundsystem(get_turf(src))
 					to_chat(user, "<span class='notice'>The frame pops off.</span>")
 					qdel(src)

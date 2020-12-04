@@ -199,9 +199,11 @@ proc/move_mining_shuttle()
 	starting_materials = list(MAT_IRON = 3750) //one sheet, but where can you make them?
 	w_type = RECYK_METAL
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
+	toolspeed = 1
 	origin_tech = Tc_MATERIALS + "=1;" + Tc_ENGINEERING + "=1"
 	attack_verb = list("hits", "pierces", "slices", "attacks")
-	var/drill_sound = 'sound/weapons/Genhit.ogg'
+//	var/drill_sound = 'sound/weapons/Genhit.ogg'
+	usesound = 'sound/weapons/Genhit.ogg'
 	var/drill_verb = "picking"
 	var/diggables = DIG_ROCKS
 
@@ -218,6 +220,7 @@ proc/move_mining_shuttle()
 	icon_state = "spickaxe"
 	item_state = "spickaxe"
 	digspeed = 30
+	toolspeed = 0.75
 	origin_tech = Tc_MATERIALS + "=3"
 	desc = "This makes no metallurgic sense."
 
@@ -226,9 +229,13 @@ proc/move_mining_shuttle()
 	icon_state = "jackhammer"
 	item_state = "jackhammer"
 	digspeed = 20 //faster than drill, but cannot dig
+	toolspeed = 0.1
 	origin_tech = Tc_MATERIALS + "=3;" + Tc_POWERSTORAGE + "=2;" + Tc_ENGINEERING + "=2"
 	desc = "Cracks rocks with sonic blasts, perfect for killing cave lizards."
 	drill_verb = "hammering"
+	hitsound = 'sound/weapons/sonic_jackhammer.ogg'
+	usesound = 'sound/weapons/sonic_jackhammer.ogg'
+
 
 /obj/item/weapon/pickaxe/jackhammer/combat
 	name = "impact hammer"
@@ -248,6 +255,7 @@ proc/move_mining_shuttle()
 	icon_state = "gpickaxe"
 	item_state = "gpickaxe"
 	digspeed = 20
+	toolspeed = 0.6
 	origin_tech = Tc_MATERIALS + "=4"
 	desc = "This makes no metallurgic sense."
 
@@ -260,13 +268,14 @@ proc/move_mining_shuttle()
 	heat_production = 3800
 	source_temperature = TEMPERATURE_PLASMA
 	digspeed = 20 //Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
+	toolspeed = 1
 	sharpness = 1.0
 	sharpness_flags = SHARP_BLADE | HOT_EDGE | INSULATED_EDGE
 	origin_tech = Tc_MATERIALS + "=4;" + Tc_PLASMATECH + "=3;" + Tc_ENGINEERING + "=3"
 	desc = "A rock cutter that uses bursts of hot plasma"
 	diggables = DIG_ROCKS | DIG_WALLS
 	drill_verb = "cutting"
-	drill_sound = 'sound/items/Welder.ogg'
+	usesound = 'sound/items/Welder.ogg'
 
 /obj/item/weapon/pickaxe/plasmacutter/accelerator
 	name = "plasma cutter"
@@ -322,6 +331,7 @@ proc/move_mining_shuttle()
 	icon_state = "dpickaxe"
 	item_state = "dpickaxe"
 	digspeed = 10
+	toolspeed = 0.5
 	sharpness = 1.2
 	origin_tech = Tc_MATERIALS + "=6;" + Tc_ENGINEERING + "=4"
 	desc = "A pickaxe with a diamond pick head, this is just like minecraft."
@@ -331,17 +341,22 @@ proc/move_mining_shuttle()
 	icon_state = "handdrill"
 	item_state = "jackhammer"
 	digspeed = 30
+	toolspeed = 0.5
 	origin_tech = Tc_MATERIALS + "=2;" + Tc_POWERSTORAGE + "=3;" + Tc_ENGINEERING + "=2"
 	desc = "Yours is the drill that will pierce through the rock walls."
 	drill_verb = "drilling"
 
 	diggables = DIG_ROCKS | DIG_SOIL //drills are multipurpose
+	hitsound = 'sound/weapons/drill.ogg'
+	usesound = 'sound/weapons/drill.ogg'
+
 
 /obj/item/weapon/pickaxe/drill/diamond //When people ask about the badass leader of the mining tools, they are talking about ME!
 	name = "diamond mining drill"
 	icon_state = "diamonddrill"
 	item_state = "jackhammer"
 	digspeed = 5 //Digs through walls, girders, and can dig up sand
+	toolspeed = 0.25
 	origin_tech = Tc_MATERIALS + "=6;" + Tc_POWERSTORAGE + "=4;" + Tc_ENGINEERING + "=5"
 	desc = "Yours is the drill that will pierce the heavens!"
 
@@ -352,6 +367,7 @@ proc/move_mining_shuttle()
 	icon_state = "diamonddrill"
 	item_state = "jackhammer"
 	digspeed = 15
+	toolspeed = 0.25
 	desc = ""
 
 /*****************************Shovel********************************/
@@ -372,6 +388,8 @@ proc/move_mining_shuttle()
 
 
 	digspeed = 40
+	toolspeed = 1
+	usesound = 'sound/items/shovel.ogg'
 	diggables = DIG_SOIL //soil only
 
 /obj/item/weapon/pickaxe/shovel/spade
@@ -385,6 +403,7 @@ proc/move_mining_shuttle()
 	w_class = W_CLASS_SMALL
 
 	digspeed = 60 //slower than the large shovel
+	toolspeed = 2
 
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/

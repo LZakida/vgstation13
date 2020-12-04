@@ -62,7 +62,7 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 				if(istype(O,/obj/item/weapon/crowbar))
 					user.visible_message("[user] starts forcing open the bolt covers on [src].", "You start forcing open the anchoring bolt covers with [O]...")
 
-					if(do_after(user,  src, 15))
+					if(do_after(user,  src, 15 * O.toolspeed))
 						if(!src || !user)
 							return
 						user.visible_message("[user] forces open the bolt covers on [src].", "You force open the bolt covers.")
@@ -87,7 +87,7 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 
 					user.visible_message("[user] begins unwrenching the anchoring bolts on [src].", "You begin unwrenching the anchoring bolts...")
 
-					if(do_after(user, src, 50))
+					if(do_after(user, src, 50 * O.toolspeed))
 						if(!src || !user)
 							return
 						user.visible_message("[user] unwrenches the anchoring bolts on [src].", "You unwrench the anchoring bolts.")
@@ -99,7 +99,7 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 
 					user.visible_message("[user] begins lifting [src] off of the anchors.", "You begin lifting the device off the anchors...")
 
-					if(do_after(user, src, 80))
+					if(do_after(user, src, 80 * O.toolspeed))
 						if(!src || !user)
 							return
 						user.visible_message("[user] crowbars [src] off of the anchors. It can now be moved.", "You jam the crowbar under the nuclear device and lift it off its anchors. You can now move it!")

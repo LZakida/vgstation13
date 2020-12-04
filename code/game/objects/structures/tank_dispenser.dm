@@ -86,11 +86,11 @@
 	if(I.is_wrench(user))
 		if(anchored)
 			to_chat(user, "<span class='notice'>You lean down and unwrench [src].</span>")
-			playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+			playsound(src, I.usesound, 50, 1)
 			anchored = 0
 		else
 			to_chat(user, "<span class='notice'>You wrench [src] into place.</span>")
-			playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+			playsound(src, I.usesound, 50, 1)
 			anchored = 1
 		return
 

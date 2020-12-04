@@ -799,13 +799,13 @@
 		if(state==STATE_BOLTSEXPOSED)
 			state = STATE_BOLTSOPENED
 			to_chat(user, "You undo the securing bolts.")
-			playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+			playsound(src, W.usesound, 50, 1)
 		else if(state==STATE_BOLTSOPENED)
 			state = STATE_BOLTSEXPOSED
 			to_chat(user, "You tighten the securing bolts.")
-			playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+			playsound(src, W.usesound, 50, 1)
 		return
-	else if(iscrowbar(W))
+	else if(W.is_crowbar(user))
 		if(state==STATE_BOLTSOPENED)
 			var/list/removable_components = list()
 			if(cell)

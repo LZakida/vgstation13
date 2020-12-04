@@ -128,7 +128,9 @@ var/list/wireColours = list("red", "blue", "green", "black", "orange", "brown", 
 				I = L.get_active_hand()
 			holder.add_hiddenprint(L)
 			if(href_list["cut"]) // Toggles the cut/mend status
-				if(iswirecutter(I) || isswitchtool(I))
+//				if(iswirecutter(I) || isswitchtool(I))
+				if(I.is_wirecutter(L) || isswitchtool(I))
+					playsound(holder, I.usesound, 20, 1)
 					var/colour = href_list["cut"]
 					CutWireColour(colour)
 					holder.investigation_log(I_WIRES, "|| [GetWireName(wires[colour]) || colour] wire [IsColourCut(colour) ? "cut" : "mended"] by [key_name(usr)] ([src.type])")
@@ -177,8 +179,8 @@ var/list/wireColours = list("red", "blue", "green", "black", "orange", "brown", 
 
 // Called when wires cut/mended.
 /datum/wires/proc/UpdateCut(var/index, var/mended, mob/user)
-	playsound(holder, 'sound/items/wirecutter.ogg', 25, 1, -6)
-
+//	playsound(holder, 'sound/items/wirecutter.ogg', 25, 1, -6)
+	return
 // Called when wire pulsed. Add code here.
 /datum/wires/proc/UpdatePulsed(var/index, mob/user)
 	playsound(holder, 'sound/machines/airlock_beep.ogg', 25, 1, -6)

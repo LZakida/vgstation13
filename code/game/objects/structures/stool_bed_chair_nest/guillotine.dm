@@ -174,7 +174,7 @@
 	if(user == victim)
 		return
 	if(W.is_wrench(user))
-		wrenchAnchor(user)
+		wrenchAnchor(user, W)
 
 /obj/structure/bed/guillotine/wrenchAnchor(var/mob/user)
 	if(victim)

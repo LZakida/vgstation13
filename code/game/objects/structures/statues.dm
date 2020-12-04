@@ -14,10 +14,10 @@
 	user.delayNextAttack(10)
 	if(W.is_wrench(user))
 		if(anchored)
-			playsound(src, 'sound/items/Ratchet.ogg', 100, 1)
+			playsound(src, W.usesound, 100, 1)
 			user.visible_message("[user] is loosening the [name]'s bolts.", \
 								 "<span class='notice'>You are loosening the [name]'s bolts...</span>")
-			if(do_after(user, src, 40))
+			if(do_after(user, src, 40 * W.toolspeed))
 				if(!loc || !anchored)
 					return
 				user.visible_message("[user] loosened the [name]'s bolts!", \
@@ -27,10 +27,10 @@
 			if(!istype(loc, /turf/simulated/floor))
 				user.visible_message("<span class='warning'>A floor must be present to secure the [name]!</span>")
 				return
-			playsound(loc, 'sound/items/Ratchet.ogg', 100, 1)
+			playsound(loc, W.usesound, 100, 1)
 			user.visible_message("[user] is securing the [name]'s bolts...", \
 								 "<span class='notice'>You are securing the [name]'s bolts...</span>")
-			if(do_after(user, src, 40))
+			if(do_after(user, src, 40 * W.toolspeed))
 				if(!loc || anchored)
 					return
 				user.visible_message("[user] has secured the [name]'s bolts.", \
@@ -38,10 +38,10 @@
 				anchored = 1
 
 	else if(istype(W, /obj/item/weapon/pickaxe/plasmacutter/))
-		playsound(src, 'sound/items/Welder.ogg', 100, 1)
+		playsound(src, W.usesound, 100, 1)
 		user.visible_message("[user] is slicing apart the [name]...", \
 							 "<span class='notice'>You are slicing apart the [name]...</span>")
-		if(do_after(user, src, 40))
+		if(do_after(user, src, 40 * W.toolspeed))
 			if(!loc)
 				return
 			user.visible_message("[user] slices apart the [name].", \
@@ -54,19 +54,19 @@
 			return
 		user.visible_message("[user] destroys the [name]!", \
 							 "<span class='notice'>You destroy the [name].</span>")
-		playsound(D, 'sound/weapons/drill.ogg', 20, 1)
+		playsound(D, D.usesound, 20, 1)
 		qdel(src)
 
 	else if(iswelder(W) && !anchored)
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
-			playsound(loc, 'sound/items/Welder.ogg', 40, 1)
+			playsound(loc, WT.usesound, 40, 1)
 			user.visible_message("[user] is slicing apart the [name].", \
 								 "<span class='notice'>You are slicing apart the [name]...</span>")
-			if(do_after(user, src, 40))
+			if(do_after(user, src, 40 * WT.toolspeed))
 				if(!loc)
 					return
-				playsound(loc, 'sound/items/Welder.ogg', 50, 1)
+				playsound(loc, WT.usesound, 50, 1)
 				user.visible_message("[user] slices apart the [name].", \
 									 "<span class='notice'>You slice apart the [name]!</span>")
 				Dismantle(TRUE)

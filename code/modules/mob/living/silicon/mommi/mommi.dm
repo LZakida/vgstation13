@@ -102,7 +102,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 		for(var/mob/O in viewers(user, null))
 			O.show_message(text("<span class='warning'>[user] has fixed some of the burnt wires on [src]!</span>"), 1)
 
-	else if(iscrowbar(W))	// crowbar means open or close the cover
+	else if(W.is_crowbar(user))	// crowbar means open or close the cover
 		if(isDead())
 			to_chat(user, "You pop the MMI off the base.")
 			spawn(0)
@@ -112,7 +112,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 			if(mmi && wiresexposed && wires.IsAllCut())
 				//Cell is out, wires are exposed, remove MMI, produce damaged chassis, baleet original mob.
 				to_chat(user, "You jam the crowbar into \the [src] and begin levering [mmi].")
-				if(do_after(user, src,3))
+				if(do_after(user, src,3 * W.toolspeed))
 					to_chat(user, "You damage some parts of the casing, but eventually manage to rip out [mmi]!")
 					var/limbs = list(/obj/item/robot_parts/l_leg, /obj/item/robot_parts/r_leg, /obj/item/robot_parts/l_arm, /obj/item/robot_parts/r_arm)
 					for(var/newlimb = 1 to rand(2, 4))
@@ -145,7 +145,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 			to_chat(user, "You insert the power cell.")
 		updateicon()
 
-	else if(iswiretool(W))
+	else if(iswiretool(W, user))
 		if(wiresexposed)
 			wires.Interact(user)
 		else

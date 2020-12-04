@@ -9,6 +9,7 @@
 	w_class = W_CLASS_SMALL
 	throw_speed = 3
 	throw_range = 10
+	usesound = 'sound/items/Screwdriver.ogg'
 
 	var/secured = 0
 	var/obj/item/device/assembly/a_left = null

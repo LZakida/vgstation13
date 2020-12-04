@@ -350,15 +350,15 @@
 
 /obj/structure/flora/pottedplant/claypot/attackby(var/obj/item/O,var/mob/user)
 	if(O.is_wrench(user))
-		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
-		if(do_after(user, src, 30))
+		playsound(loc, O.usesound, 50, 1)
+		if(do_after(user, src, 30 * O.toolspeed))
 			anchored = !anchored
 			user.visible_message(	"<span class='notice'>[user] [anchored ? "wrench" : "unwrench"]es \the [src] [anchored ? "in place" : "from its fixture"].</span>",
 									"<span class='notice'>[bicon(src)] You [anchored ? "wrench" : "unwrench"] \the [src] [anchored ? "in place" : "from its fixture"].</span>",
 									"<span class='notice'>You hear a ratchet.</span>")
 	else if(plant_name && isshovel(O))
 		to_chat(user, "<span class='notice'>[bicon(src)] You start removing the [plant_name] from \the [src].</span>")
-		if(do_after(user, src, 30))
+		if(do_after(user, src, 30 * O.toolspeed))
 			playsound(loc, 'sound/items/shovel.ogg', 50, 1)
 			user.visible_message(	"<span class='notice'>[user] removes the [plant_name] from \the [src].</span>",
 									"<span class='notice'>[bicon(src)] You remove the [plant_name] from \the [src].</span>",

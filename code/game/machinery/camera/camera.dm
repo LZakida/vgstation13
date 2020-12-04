@@ -224,7 +224,7 @@ var/list/camera_messages = list()
 		//if(toggle_panel(user)) // No delay because no one likes screwdrivers trying to be hip and have a duration cooldown
 		togglePanelOpen(W, user, icon_state, icon_state)
 
-	else if(panel_open && iswiretool(W))
+	else if(panel_open && iswiretool(W, user))
 		wires.Interact(user)
 
 	else if(iswelder(W) && wires.CanDeconstruct())
@@ -258,7 +258,7 @@ var/list/camera_messages = list()
 		return
 
 	// Taking out upgrades
-	else if(iscrowbar(W))
+	else if(W.is_crowbar(user))
 		if (!panel_open)
 			to_chat(user, "You can't reach into the camera's circuitry while the maintenance panel is closed.")
 			return
@@ -269,7 +269,7 @@ var/list/camera_messages = list()
 			var/obj/U = locate(/obj) in assembly.upgrades
 			if(U)
 				to_chat(user, "You unattach \the [U] from the camera.")
-				playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+				playsound(src, W.usesound, 50, 1)
 				U.forceMove(get_turf(src))
 				assembly.upgrades -= U
 				update_upgrades()
@@ -366,7 +366,7 @@ var/list/camera_messages = list()
 				add_hiddenprint(user)
 			else
 				visible_message("<span class='warning'> \The [src] deactivates!</span>")
-			playsound(src, 'sound/items/Wirecutter.ogg', 50, 1)
+//			playsound(src, 'sound/items/Wirecutter.ogg', 50, 1)
 			add_hiddenprint(user)
 		else
 			if(user)
@@ -374,7 +374,7 @@ var/list/camera_messages = list()
 				add_hiddenprint(user)
 			else
 				visible_message("<span class='warning'> \The [src] reactivates!</span>")
-			playsound(src, 'sound/items/Wirecutter.ogg', 50, 1)
+//			playsound(src, 'sound/items/Wirecutter.ogg', 50, 1)
 			add_hiddenprint(user)
 		cameranet.updateVisibility(src, 0)
 	// now disconnect anyone using the camera

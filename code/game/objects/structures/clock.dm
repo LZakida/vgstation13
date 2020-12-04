@@ -19,8 +19,8 @@
 
 /obj/structure/clock/attackby(obj/item/weapon/W, mob/user)
 	if(W.is_wrench(user))
-		if(do_after(user, src, 3 SECONDS))
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
+		if(do_after(user, src, 3 SECONDS * W.toolspeed))
+			playsound(src.loc, W.usesound, 50, 1)
 			anchored = !anchored
 			update_icon()
 	else

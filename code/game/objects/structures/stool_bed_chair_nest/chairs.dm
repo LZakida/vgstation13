@@ -58,7 +58,7 @@
 			return
 
 	if(W.is_wrench(user))
-		playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(src, W.usesound, 50, 1)
 		drop_stack(sheet_type, loc, sheet_amt, user)
 		qdel(src)
 		return
@@ -157,9 +157,9 @@
 			return
 	change_dir(direction)
 	return 1
-	
+
 /obj/structure/bed/chair/AltClick(mob/user as mob)
-	buckle_chair(user,user)	
+	buckle_chair(user,user)
 
 /obj/structure/bed/chair/MouseDropTo(mob/M as mob, mob/user as mob)
 	buckle_chair(M,user)
@@ -171,7 +171,7 @@
 	var/mob/living/carbon/human/target = null
 	if(ishuman(M))
 		target = M
-		
+
 	if(!user.Adjacent(M) || !user.Adjacent(src))
 		return
 
@@ -181,7 +181,7 @@
 				"<span class='notice'>[M.name] has no butt, and slides right out of [src]!</span>",\
 				"Having no butt, you slide right out of the [src]",\
 				"You hear metal clanking.")
-				
+
 			M.Knockdown(5)
 			M.Stun(5)
 		else

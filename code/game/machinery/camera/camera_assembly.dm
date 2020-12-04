@@ -36,7 +36,7 @@
 		if(0)
 			// State 0
 			if(W.is_wrench(user) && isturf(src.loc))
-				playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+				playsound(src, W.usesound, 50, 1)
 				to_chat(user, "You wrench the assembly into place.")
 				anchored = 1
 				state = 1
@@ -54,7 +54,7 @@
 				return
 
 			else if(W.is_wrench(user))
-				playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+				playsound(src, W.usesound, 50, 1)
 				to_chat(user, "You unattach the assembly from it's place.")
 				anchored = 0
 				update_icon()
@@ -82,7 +82,7 @@
 		if(3)
 			// State 3
 			if(W.is_screwdriver(user))
-				playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+				playsound(src, W.usesound, 50, 1)
 
 				var/input = stripped_input(usr, "Which networks would you like to connect this camera to? seperate networks with a comma. No Spaces!\nFor example: SS13,Security,Secret ", "Set Network", CAMERANET_SS13)
 				if(!input)
@@ -113,10 +113,10 @@
 							break
 				return
 
-			else if(iswirecutter(W))
-
+//			else if(iswirecutter(W))
+			else if(W.is_wirecutter(user))
 				new/obj/item/stack/cable_coil(get_turf(src), 2)
-				playsound(src, 'sound/items/Wirecutter.ogg', 50, 1)
+				playsound(src, W.usesound, 50, 1)
 				to_chat(user, "You cut the wires from the circuits.")
 				state = 2
 				return
@@ -138,11 +138,11 @@
 		return
 
 	// Taking out upgrades
-	else if(iscrowbar(W) && upgrades.len)
+	else if(W.is_crowbar(user) && upgrades.len)
 		var/obj/U = locate(/obj) in upgrades
 		if(U)
 			to_chat(user, "You unattach \the [U] from the assembly.")
-			playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+			playsound(src, W.usesound, 50, 1)
 			U.forceMove(get_turf(src))
 			upgrades -= U
 		return
@@ -168,10 +168,10 @@
 		return 0
 
 	to_chat(user, "<span class='notice'>You start to weld the [src]...</span>")
-	playsound(src, 'sound/items/Welder.ogg', 50, 1)
+	playsound(src, WT.usesound, 50, 1)
 	WT.eyecheck(user)
 	busy = 1
-	if(do_after(user, src, 20))
+	if(do_after(user, src, 20 * WT.toolspeed))
 		busy = 0
 		if(!WT.isOn())
 			return 0

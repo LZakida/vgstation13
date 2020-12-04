@@ -46,7 +46,7 @@
 		return "uranium_safe"
 
 /obj/item/stack/tile/mineral/uranium/safe/attackby(obj/item/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		to_chat(user, "You pry off the layer of reinforced glass from [src].")
 
 		if(use(1))

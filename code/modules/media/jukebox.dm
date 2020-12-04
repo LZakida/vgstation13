@@ -431,7 +431,7 @@ var/global/list/loopModeNames=list(
 	. = ..()
 	if(.)
 		return .
-	if(iswiretool(W))
+	if(iswiretool(W, user))
 		if(panel_open)
 			wires.Interact(user)
 		return

@@ -89,7 +89,7 @@
 
 	if(!ismob(M) || (M.loc != src.loc)  || M.locked_to)
 		return
-		
+
 	if(!user.Adjacent(M))
 		return
 
@@ -149,7 +149,7 @@
 
 /obj/structure/bed/attackby(obj/item/weapon/W, mob/user)
 	if(W.is_wrench(user))
-		playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(src, W.usesound, 50, 1)
 		drop_stack(sheet_type, loc, 2, user)
 		qdel(src)
 		return

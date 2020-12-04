@@ -184,7 +184,7 @@
 				adjust_health(50)
 
 /obj/spacepod/attackby(obj/item/W, mob/user)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		hatch_open = !hatch_open
 		to_chat(user, "<span class='notice'>You [hatch_open ? "open" : "close"] the maintenance hatch.</span>")
 		if(hatch_open && contents.len)

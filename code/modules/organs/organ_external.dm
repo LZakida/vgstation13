@@ -159,7 +159,7 @@
 	"\The [owner]'s [display_name] [is_robotic() ? "is ripped into loose shreds" : "collapses into a lump of gore"]!")
 
 	owner.visible_message("<span class='danger'>[msg]</span>")
-	droplimb(1, spawn_limb = 0, display_message = FALSE)
+	droplimb(1, spawn_limb = 0, not_clean = FALSE)
 
 /datum/organ/external/proc/dust()
 	if(is_peg())
@@ -168,7 +168,7 @@
 	var/obj/I = O.ashtype()
 	qdel(O)
 	new I(owner.loc)
-	droplimb(1, spawn_limb = 0, display_message = FALSE)
+	droplimb(1, spawn_limb = 0, not_clean = FALSE)
 
 /datum/organ/external/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list())
 	if((brute <= 0) && (burn <= 0))
@@ -760,7 +760,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 //Handles dismemberment
 //Returns the organ item
-/datum/organ/external/proc/droplimb(var/override = 0, var/no_explode = 0, var/spawn_limb = 1, var/display_message = TRUE)
+/datum/organ/external/proc/droplimb(var/override = 0, var/no_explode = 0, var/spawn_limb = 1, var/not_clean = TRUE)
 	if(destspawn)
 		return
 	if(body_part == (UPPER_TORSO || LOWER_TORSO)) //We can't lose either, those cannot be amputated and will cause extremely serious problems
@@ -775,20 +775,19 @@ Note that amputating the affected organ does in fact remove the infection from t
 		destspawn = 1
 		//If your whole leg is missing, then yes, your foot is considered as "cleanly amputated".
 		setAmputatedTree()
-
 		if(spawn_limb)
 			organ = get_organ_item()
 
 			//If any organs are attached to this, attach them to the dropped organ item
 			for(var/datum/organ/external/O in children)
-				var/obj/item/organ/external/child_organ = O.droplimb(1, display_message = FALSE)
+				var/obj/item/organ/external/child_organ = O.droplimb(1, not_clean = FALSE)
 
 				if(istype(child_organ) && istype(organ))
 					organ.add_child(child_organ)
 		else
 			//If any organs are attached to this, destroy them
 			for(var/datum/organ/external/O in children)
-				O.droplimb(1, no_explode, spawn_limb, display_message)
+				O.droplimb(1, no_explode, spawn_limb, not_clean)
 
 		for(var/implant in implants)
 			qdel(implant)
@@ -831,14 +830,28 @@ Note that amputating the affected organ does in fact remove the infection from t
 			spark(src, 5, FALSE)
 
 		if(organ)
-			if(display_message)
+			if(not_clean)
 				owner.visible_message("<span class='danger'>[owner.name]'s [display_name] flies off in an arc.</span>", \
 				"<span class='danger'>Your [display_name] goes flying off!</span>", \
 				"<span class='danger'>You hear a terrible sound of ripping tendons and flesh.</span>")
 
-			//Throw organs around
+/*			//Throw organs around
 			var/randomdir = pick(cardinal)
-			step(organ, randomdir)
+			step(organ, randomdir)*/
+
+
+			organ.add_blood(owner)
+			var/matrix/M = matrix()
+			M.Turn(rand(180))
+			organ.transform = M
+			if(not_clean)
+				// Throw limb around.
+				if(organ && istype(organ.loc,/turf))
+					organ.throw_at(get_edge_target_turf(organ,pick(alldirs)),rand(1,3),30)
+				organ.dir = 2
+			brute_dam = 0
+			burn_dam = 0  //Reset the damage on the limb; the damage should have transferred to the parent; we don't want extra damage being re-applie when then limb is re-attached
+
 
 		owner.update_body(1)
 		owner.handle_organs(1)

@@ -57,7 +57,7 @@
 					playsound(user, fire_sound, 50, 1)
 					user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='danger'>[src] goes off in your face!</span>")
 					return
-				if(do_after(user, src, 30))
+				if(do_after(user, src, 30 * A.toolspeed))
 					if(getAmmo())
 						to_chat(user, "<span class='notice'>You can't modify it!</span>")
 						return
@@ -73,7 +73,7 @@
 					playsound(user, fire_sound, 50, 1)
 					user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='danger'>[src] goes off in your face!</span>")
 					return
-				if(do_after(user, src, 30))
+				if(do_after(user, src, 30 * A.toolspeed))
 					if(getAmmo())
 						to_chat(user, "<span class='notice'>You can't modify it!</span>")
 						return
@@ -91,8 +91,8 @@
 	icon_state = "mateba"
 	origin_tech = Tc_COMBAT + "=2;" + Tc_MATERIALS + "=2"
 	recoil = 3
-	
-	
+
+
 /obj/item/weapon/gun/projectile/nagant //revolver that simple mob russians use
 	name = "nagant revolver"
 	desc = "Just like in those neo-russian spy movies! Uses 7.62x38R ammo."
@@ -104,7 +104,7 @@
 	gun_flags = SILENCECOMP
 	fire_sound = 'sound/weapons/nagant.ogg'
 	recoil = 3
-	
+
 /obj/item/weapon/gun/projectile/nagant/update_icon()
 	..()
 	icon_state = "[initial(icon_state)][silenced ? "-silencer" : ""]"

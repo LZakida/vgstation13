@@ -109,8 +109,8 @@
 
 	else if(istype(I, /obj/item/weapon/crowbar))
 		to_chat(user, "<span class='notice'>You begin to disassemble \the [src].</span>")
-		playsound('sound/items/Crowbar.ogg', 50, 1)
-		if(do_after(user, src, 3 SECONDS))
+		playsound(I.usesound, 50, 1)
+		if(do_after(user, src, 3 SECONDS * I.toolspeed))
 			if(shattered)
 				getFromPool(/obj/item/weapon/shard, loc)
 				getFromPool(/obj/item/stack/sheet/metal, loc, 1)

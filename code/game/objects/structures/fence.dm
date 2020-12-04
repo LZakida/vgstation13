@@ -67,7 +67,8 @@
 	hole_size = LARGE_HOLE
 
 /obj/structure/fence/attackby(obj/item/W, mob/user)
-	if(iswirecutter(W) && !shock(user, 100, W.siemens_coefficient))
+//	if(iswirecutter(W) && !shock(user, 100, W.siemens_coefficient))
+	if(W.is_wirecutter(user) && !shock(user, 100, W.siemens_coefficient))
 		if(!cuttable)
 			to_chat(user, "<span class='notice'>This section of the fence can't be cut.</span>")
 			return
@@ -83,7 +84,7 @@
 		user.visible_message("<span class='danger'>\The [user] starts cutting through \the [src] with \the [W].</span>",\
 		"<span class='danger'>You start cutting through \the [src] with \the [W].</span>")
 
-		if(do_after(user, src, CUT_TIME))
+		if(do_after(user, src, CUT_TIME * W.toolspeed))
 			if(current_stage == hole_size)
 
 				switch(++hole_size)

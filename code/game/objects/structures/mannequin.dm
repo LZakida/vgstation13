@@ -146,7 +146,7 @@
 
 /obj/structure/mannequin/attackby(var/obj/item/weapon/W,var/mob/user)
 	if(W.is_wrench(user))
-		return wrenchAnchor(user, 5 SECONDS)
+		return wrenchAnchor(user, W, 5 SECONDS)
 	else if(user.a_intent == I_HURT)
 		user.delayNextAttack(8)
 		getDamage(W.force)
@@ -775,7 +775,7 @@
 
 /obj/structure/block/attackby(var/obj/item/weapon/W,var/mob/user)
 	if(W.is_wrench(user))
-		return wrenchAnchor(user, 5 SECONDS)
+		return wrenchAnchor(user, W, 5 SECONDS)
 	else if(istype(W, /obj/item/weapon/chisel))
 
 		var/chosen_sculpture = input("Choose a sculpture type.", "[name]") as null|anything in available_sculptures
@@ -934,14 +934,14 @@
 			else
 				to_chat(user, "[bicon(src)] <span class='notice'>You close \the [src] and swipe your card, locking it.</span>")
 			update_icon()
-	else if(iscrowbar(W) && (!locked || destroyed))
+	else if(W.is_crowbar(user) && (!locked || destroyed))
 		user.visible_message("[user.name] pries \the [src] apart.", \
 			"You pry \the [src] apart.", \
 			"You hear something pop.")
 		var/turf/T=get_turf(src)
-		playsound(T, 'sound/items/Crowbar.ogg', 50, 1)
+		playsound(T, W.usesound, 50, 1)
 
-		if(do_after(user, src, 100))
+		if(do_after(user, src, 100 * W.toolspeed))
 			var/obj/item/weapon/circuitboard/airlock/C = new(src)
 			C.one_access=!(req_access && req_access.len>0)
 
@@ -970,7 +970,7 @@
 				return
 			var/obj/item/weapon/weldingtool/WT = W
 			if(WT.remove_fuel(5))
-				playsound(loc, 'sound/items/Welder.ogg', 50, 1)
+				playsound(loc, WT.usesound, 50, 1)
 				health = min(health + 20, maxHealth)
 				to_chat(user, "<span class='notice'>You fix some of the dents on \the [src]!</span>")
 			else
@@ -986,7 +986,7 @@
 				return
 			var/obj/item/weapon/weldingtool/WT = W
 			if(WT.remove_fuel(5))
-				playsound(loc, 'sound/items/Welder.ogg', 50, 1)
+				playsound(loc, WT.usesound, 50, 1)
 				health = min(health + 20, maxHealth)
 				to_chat(user, "<span class='notice'>You fix some of the dents on \the [src]!</span>")
 			else

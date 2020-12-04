@@ -155,11 +155,11 @@
 		else
 			to_chat(user, "[bicon(src)] <span class='notice'>You close \the [src] and swipe your card, locking it.</span>")
 		update_icon()
-	else if(iscrowbar(W) && (!locked || destroyed))
+	else if(W.is_crowbar(user) && (!locked || destroyed))
 		user.visible_message("[user.name] pries \the [src] apart.", \
 			"You pry \the [src] apart.", \
 			"You hear something pop.")
-		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+		playsound(src, W.usesound, 50, 1)
 		dump()
 
 		var/obj/item/weapon/circuitboard/airlock/C = circuit

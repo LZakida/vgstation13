@@ -24,7 +24,7 @@
 
 /obj/structure/reagent_dispensers/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(W.is_wrench(user) && wrenchable())
-		return wrenchAnchor(user)
+		return wrenchAnchor(user, W)
 
 /obj/structure/reagent_dispensers/examine(mob/user)
 	..()
@@ -476,7 +476,7 @@
 			enter_barrel(target)
 
 /obj/structure/reagent_dispensers/cauldron/barrel/container_resist(mob/user)
-	if (exiting.Remove(user)) 
+	if (exiting.Remove(user))
 		to_chat(user,"<span class='warning'>You stop climbing free of \the [src].</span>")
 		return
 	visible_message("<span class='warning'>[user] begins to climb free of the \the [src]!</span>")

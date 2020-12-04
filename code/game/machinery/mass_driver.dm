@@ -42,8 +42,8 @@ var/list/mass_drivers = list()
 
 	if(W.is_screwdriver(user))
 		to_chat(user, "You begin to unscrew the bolts off the [src]...")
-		playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-		if(do_after(user, src, 30))
+		playsound(src, W.usesound, 50, 1)
+		if(do_after(user, src, 30 * W.toolspeed))
 			var/obj/machinery/mass_driver_frame/F = new(get_turf(src))
 			F.dir = src.dir
 			F.anchored = 1
@@ -149,8 +149,8 @@ var/list/mass_drivers = list()
 					to_chat(user, "<span class = 'notice'>You can't anchor \the [src], as there's a mass driver in that location already.</span>")
 					return
 				to_chat(user, "You begin to anchor \the [src] on the floor.")
-				playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
-				if(do_after(user, src, 10) && (build == 0))
+				playsound(src, W.usesound, 50, 1)
+				if(do_after(user, src, 10 * W.toolspeed) && (build == 0))
 					to_chat(user, "<span class='notice'>You anchor \the [src]!</span>")
 					anchored = 1
 					build++
@@ -159,8 +159,8 @@ var/list/mass_drivers = list()
 		if(1) // Fixed to the floor
 			if(W.is_wrench(user))
 				to_chat(user, "You begin to de-anchor \the [src] from the floor.")
-				playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
-				if(do_after(user, src, 10) && (build == 1))
+				playsound(src, W.usesound, 50, 1)
+				if(do_after(user, src, 10 * W.toolspeed) && (build == 1))
 					build--
 					update_icon()
 					anchored = 0
@@ -185,18 +185,19 @@ var/list/mass_drivers = list()
 			if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/C=W
 				to_chat(user, "You start adding cables to \the [src]...")
-				playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-				if(do_after(user, src, 20) && (C.amount >= 3) && (build == 2))
+				playsound(src, W.usesound, 50, 1)
+				if(do_after(user, src, 20 * W.toolspeed) && (C.amount >= 3) && (build == 2))
 					C.use(3)
 					to_chat(user, "<span class='notice'>You've added cables to \the [src].</span>")
 					build++
 					update_icon()
 		if(3) // Wired
-			if(iswirecutter(W))
+//			if(iswirecutter(W))
+			if(W.is_wirecutter(user))
 				to_chat(user, "You begin to remove the wiring from \the [src].")
-				if(do_after(user, src, 10) && (build == 3))
+				if(do_after(user, src, 10 * W.toolspeed) && (build == 3))
 					new /obj/item/stack/cable_coil(loc,3)
-					playsound(src, 'sound/items/Wirecutter.ogg', 50, 1)
+					playsound(src, W.usesound, 50, 1)
 					to_chat(user, "<span class='notice'>You've removed the cables from \the [src].</span>")
 					build--
 					update_icon()
@@ -205,24 +206,24 @@ var/list/mass_drivers = list()
 				var/obj/item/stack/rods/R=W
 				to_chat(user, "You begin to complete \the [src]...")
 				playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-				if(do_after(user, src, 20) && (R.amount >= 3) && (build == 3))
+				if(do_after(user, src, 20 * W.toolspeed) && (R.amount >= 3) && (build == 3))
 					R.use(3)
 					to_chat(user, "<span class='notice'>You've added the grille to \the [src].</span>")
 					build++
 					update_icon()
 				return 1
 		if(4) // Grille in place
-			if(iscrowbar(W))
+			if(W.is_crowbar(user))
 				to_chat(user, "You begin to pry off the grille from \the [src]...")
-				playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
-				if(do_after(user, src, 30) && (build == 4))
+				playsound(src, W.usesound, 50, 1)
+				if(do_after(user, src, 30 * W.toolspeed) && (build == 4))
 					new /obj/item/stack/rods(loc,2)
 					build--
 					update_icon()
 				return 1
 			if(W.is_screwdriver(user))
 				to_chat(user, "You finalize the Mass Driver...")
-				playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+				playsound(src, W.usesound, 50, 1)
 				var/obj/machinery/mass_driver/M = new(get_turf(src))
 				M.dir = src.dir
 				qdel(src)

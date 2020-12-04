@@ -59,10 +59,12 @@
 /*	if(assembling)
 		if(unpacking.action(A, user))
 			return 1 */
-	if(iscrowbar(A) && !assembling)
-		if(stacked.len)
-			to_chat(user, "<span class='rose'>You can't open this flatpack while others are stacked on top of it!</span>")
-			return
+	if(istype(A, /obj/item))
+		var/obj/item/I = A
+		if(I.is_crowbar(user) && !assembling)
+			if(stacked.len)
+				to_chat(user, "<span class='rose'>You can't open this flatpack while others are stacked on top of it!</span>")
+				return
 		assembling = 1
 		user.visible_message("<span class='notice'>[user] begins to open the flatpack...</span>", "<span class='notice'>You begin to open the flatpack...</span>")
 		if(do_after(user, src, rand(10,40)))

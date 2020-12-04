@@ -156,7 +156,7 @@
 
 /obj/structure/closet/crate/bin/attackby(var/obj/item/weapon/W, var/mob/user)
     if(W.is_wrench(user) && wrenchable())
-        return wrenchAnchor(user)
+        return wrenchAnchor(user, W)
     ..()
 
 /obj/structure/closet/crate/bin/wrenchable()
@@ -221,7 +221,7 @@
 
 /obj/structure/closet/crate/secure/bin/attackby(var/obj/item/weapon/W, var/mob/user)
     if(W.is_wrench(user) && wrenchable())
-        return wrenchAnchor(user)
+        return wrenchAnchor(user, W)
     ..()
 
 /obj/structure/closet/crate/secure/bin/wrenchable()
@@ -537,7 +537,7 @@
 		togglelock(user)
 		return
 	else if(W.is_screwdriver(user) && !opened && !locked && src.has_lockless_type)
-		remove_lock(user)
+		remove_lock(user, W)
 		return
 	return ..()
 
@@ -606,10 +606,12 @@
 			if(user.drop_item(W, src.loc))
 				to_chat(user, "<span class='notice'>You attach [W] to [src].</span>")
 			return
-	else if(iswirecutter(W))
+//	else if(iswirecutter(W))
+	else if(W.is_wirecutter(user))
+
 		if(rigged)
 			to_chat(user, "<span class='notice'>You cut away the wiring.</span>")
-			playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
+			playsound(loc, W.usesound, 100, 1)
 			rigged = 0
 			return
 	else if(!place(user, W))

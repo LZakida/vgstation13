@@ -42,9 +42,9 @@
 	if (!W.is_wrench(user))
 		return ..()
 	var/turf/T = get_turf(src)
-	playsound(T, 'sound/items/Ratchet.ogg', 50, 1)
+	playsound(T, W.usesound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to remove \the [src]...</span>")
-	if (do_after(user, src, 40))
+	if (do_after(user, src, 40 * W.toolspeed))
 		user.visible_message( \
 			"[user] removes \the [src].", \
 			"<span class='notice'>You have removed \the [src].</span>", \

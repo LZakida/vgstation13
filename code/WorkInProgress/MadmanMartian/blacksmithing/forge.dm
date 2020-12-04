@@ -72,10 +72,10 @@
 				return 0
 			toggle_lit()
 			return 1
-	else if(iscrowbar(I))
+	else if(I.is_crowbar(user))
 		to_chat(user, "<span class = 'notice'>You begin to disassemble \the [src].</span>")
 		playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 50, 1)
-		if(do_after(user, src, 5 SECONDS))
+		if(do_after(user, src, 5 SECONDS * I.toolspeed))
 			drop_stack(/obj/item/stack/sheet/mineral/sandstone, get_turf(src), rand(5, 20))
 			qdel(src)
 			return 1

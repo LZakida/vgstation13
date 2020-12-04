@@ -5,6 +5,7 @@
 	w_class = W_CLASS_SMALL
 	var/rating = 1
 	melt_temperature = MELTPOINT_STEEL
+	usesound = 'sound/items/Deconstruct.ogg'
 
 /obj/item/weapon/stock_parts/New()
 	. = ..()
@@ -54,7 +55,7 @@
 			to_chat(user, "<span class='notice'>You can't secure \the [src] to [istype(src.loc,/turf/space) ? "space" : "this"]!</span>")
 			return
 		to_chat(user, "You discharge \the [src] and secure it to the floor.")
-		playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(src, W.usesound, 50, 1)
 		switch(src.type)
 			if(/obj/item/weapon/stock_parts/capacitor)
 				new /obj/machinery/power/secured_capacitor(get_turf(src.loc))

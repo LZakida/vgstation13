@@ -34,12 +34,12 @@
 			"[user] begins to [anchored ? "undo" : "wrench"] \the [src]'s securing bolts.",
 			"You begin to [anchored ? "undo" : "wrench"] \the [src]'s securing bolts..."
 			)
-		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(loc, W.usesound, 50, 1)
 
 		if(wrenching)
 			return
 		wrenching = 1
-		if(do_after(user, src, 30))
+		if(do_after(user, src, 30 * W.toolspeed))
 			if(src)
 				anchored = !anchored
 				user.visible_message(
@@ -137,12 +137,12 @@
 			"[user] begins to [anchored ? "undo" : "wrench"] \the [src]'s securing bolts.",
 			"You begin to [anchored ? "undo" : "wrench"] \the [src]'s securing bolts..."
 			)
-		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(loc, W.usesound, 50, 1)
 
 		if(wrenching)
 			return
 		wrenching = 1
-		if(do_after(user, src, 30))
+		if(do_after(user, src, 30 * W.toolspeed))
 			if(src)
 				anchored = !anchored
 				user.visible_message(
@@ -281,7 +281,7 @@
 			if(0)
 				if(W.is_wrench(user))
 					to_chat(user, "<span class='notice'>You deconstruct \the [src].</span>")
-					playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+					playsound(src, W.usesound, 50, 1)
 					//new /obj/item/stack/sheet/metal( get_turf(src.loc), 2)
 					var/obj/item/stack/sheet/metal/M = getFromPool(/obj/item/stack/sheet/metal, get_turf(src))
 					M.amount = 2
@@ -292,7 +292,7 @@
 					user.visible_message(
 						"<span class='warning'>[user.name] has added cables to \the [src]!</span>",
 						"You add cables to \the [src].")
-					playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
+					playsound(src, C.usesound, 50, 1)
 					C.use(1)
 					build_step++
 					update_icon()

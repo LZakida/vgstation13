@@ -39,7 +39,8 @@
 			if(C.lit)
 				lit(user,W)
 	else
-		if(iswirecutter(W))
+//		if(iswirecutter(W))
+		if(W.is_wirecutter(user))
 			fuse_lit = 0
 			update_icon()
 			to_chat(user, "<span class='warning'>You extinguish the fuse with [seconds_left] seconds left!</span>")

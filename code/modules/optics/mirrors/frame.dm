@@ -13,10 +13,10 @@
 /obj/structure/mirror_frame/attackby(var/obj/item/W,var/mob/user)
 	if(W.is_wrench(user))
 		to_chat(user, "<span class='info'>You begin to unfasten \the [src]'s bolts.</span>")
-		if(do_after(user, src,20))
+		if(do_after(user, src,20 * W.toolspeed))
 			anchored=!anchored
 			user.visible_message("<span class='info'>You unfasten \the [src]'s bolts.</span>", "[user] unfastens the [src]'s bolts.","You hear a ratchet.")
-			playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+			playsound(src, W.usesound, 50, 1)
 
 	if(iswelder(W))
 		var/obj/item/weapon/weldingtool/WT = W

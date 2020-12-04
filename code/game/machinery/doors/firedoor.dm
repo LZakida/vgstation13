@@ -220,7 +220,7 @@ var/global/list/alert_overlays_global = list()
 	if(ismob(AM))
 		var/mob/M = AM
 		var/obj/item/I = M.get_active_hand()
-		if((iscrowbar(I)||istype(I,/obj/item/weapon/fireaxe)) && M.a_intent == I_HURT)
+		if((I.is_crowbar(M)||istype(I,/obj/item/weapon/fireaxe)) && M.a_intent == I_HURT)
 			attackby(I,M)
 	return 0
 
@@ -287,7 +287,7 @@ var/global/list/alert_overlays_global = list()
 			update_icon()
 			return
 
-	if(iscrowbar(C) || (istype(C,/obj/item/weapon/fireaxe) && C.wielded))
+	if(C.is_crowbar(user) || (istype(C,/obj/item/weapon/fireaxe) && C.wielded))
 		force_open(user, C)
 		return
 
@@ -299,7 +299,7 @@ var/global/list/alert_overlays_global = list()
 								"<span class='notice'>You begin slicing through \the [src].</span>", \
 								"<span class='warning'>You hear slicing noises.</span>")
 			playsound(src, 'sound/items/Welder2.ogg', 100, 1)
-			if(do_after(user, src, 50))
+			if(do_after(user, src, 50 * C.toolspeed))
 				if(!istype(src))
 					return
 				user.visible_message("<span class='warning'>[user] slices through \the [src]!</span>", \
@@ -320,7 +320,7 @@ var/global/list/alert_overlays_global = list()
 		if(blocked)
 			user.visible_message("<span class='attack'>\The [user] starts to deconstruct \the [src] with \a [C].</span>",\
 			"You begin to deconstruct \the [src] with \the [C].")
-			if(do_after(user, src, 5 SECONDS))
+			if(do_after(user, src, 5 SECONDS * C.toolspeed))
 				new/obj/item/firedoor_frame(get_turf(src))
 				qdel(src)
 			return

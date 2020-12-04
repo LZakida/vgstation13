@@ -219,8 +219,8 @@
 
 /obj/machinery/computer/turbine_computer/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_screwdriver(user))
-		playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-		if(do_after(user, src, 20))
+		playsound(src, I.usesound, 50, 1)
+		if(do_after(user, src, 20 * I.toolspeed))
 			if (src.stat & BROKEN)
 				to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )

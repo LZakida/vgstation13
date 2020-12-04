@@ -51,14 +51,14 @@ var/list/solars_list = list()
 			anchored = 1
 			user.visible_message("<span class='notice'>[user] wrenches [src] down.</span>", \
 			"<span class='notice'>You wrench [src] down.</span>")
-			playsound(src, 'sound/items/Ratchet.ogg', 75, 1)
+			playsound(src, W.usesound, 75, 1)
 			return 1
 	else
 		if(W.is_wrench(user))
 			anchored = 0
 			user.visible_message("<span class='notice'>[user] unwrenches [src] from the ground.</span>", \
 			"<span class='notice'>You unwrench [src] from the ground.</span>")
-			playsound(src, 'sound/items/Ratchet.ogg', 75, 1)
+			playsound(src, W.usesound, 75, 1)
 			return 1
 
 		if(istype(W, /obj/item/stack/sheet/glass))
@@ -86,7 +86,7 @@ var/list/solars_list = list()
 				"<span class='notice'>You insert the electronics into [src].</span>")
 				return 1
 	else
-		if(iscrowbar(W))
+		if(W.is_crowbar(user))
 			new /obj/item/weapon/tracker_electronics(src.loc)
 			tracker = 0
 			user.visible_message("<span class='notice'>[user] takes the electronics out of [src].</span>", \

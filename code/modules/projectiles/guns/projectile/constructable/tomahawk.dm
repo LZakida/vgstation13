@@ -13,7 +13,7 @@
 	if(istype(W, /obj/item/weapon/surgicaldrill))
 		to_chat(user, "You begin drilling a hole through the handle of \the [src].")
 		playsound(user, 'sound/machines/juicer.ogg', 50, 1)
-		if(do_after(user, src, 30))
+		if(do_after(user, src, 30 * W.toolspeed))
 			to_chat(user, "You drill a hole through the handle of \the [src].")
 			if(src.loc == user)
 				user.drop_item(src, force_drop = 1)

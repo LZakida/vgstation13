@@ -105,9 +105,9 @@
 	to_chat(user, "<span class='info'>It needs some metal sheets applied as plating.</span>")
 
 /obj/structure/conveyor_assembly/attackby(obj/item/P, mob/user)
-	if(iscrowbar(P))
-		playsound(src, 'sound/items/Crowbar.ogg', 75, 1)
-		if(do_after(user, src, 10))
+	if(P.is_crowbar(user))
+		playsound(src, P.usesound, 75, 1)
+		if(do_after(user, src, 10 * P.toolspeed))
 			to_chat(user, "<span class='notice'>You unhinge the frame.</span>")
 			getFromPool(/obj/item/stack/conveyor_assembly, src.loc)
 			qdel(src)
@@ -115,7 +115,7 @@
 	else if(istype(P, /obj/item/stack/sheet/metal))
 		var/obj/item/stack/S = P
 		if(S.amount > 4)
-			playsound(src, 'sound/items/Ratchet.ogg', 75, 1)
+			playsound(src, P.usesound, 75, 1)
 			if(do_after(user, src, 30) && S.amount > 4)
 				S.use(4)
 				to_chat(user, "<span class='notice'>You add the plates to \the [src].</span>")

@@ -51,9 +51,12 @@
 		qdel(src)
 	else if(istype(W, /obj/item/weapon/pen) || istype(W, /obj/item/device/flashlight/pen))
 		set_tiny_label(user, maxlength=32)
-	else if(iswirecutter(W))
-		remove_label()
-		to_chat(user, "<span class='notice'>You cut the tag off the bodybag.</span>")
+//	else if(iswirecutter(W))
+	else if(istype(W, /obj/item))
+		var/obj/item/I = W
+		if(I.is_wirecutter(user))
+			remove_label()
+			to_chat(user, "<span class='notice'>You cut the tag off the bodybag.</span>")
 
 /obj/structure/closet/body_bag/set_labeled()
 	..()

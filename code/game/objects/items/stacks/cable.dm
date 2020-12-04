@@ -36,6 +36,7 @@ var/global/list/datum/stack_recipe/cable_recipes = list ( \
 	slot_flags = SLOT_BELT
 	item_state = "coil_red"
 	attack_verb = list("whips", "lashes", "disciplines", "flogs")
+	usesound = 'sound/items/Deconstruct.ogg'
 
 /obj/item/stack/cable_coil/suicide_act(mob/user)
 	to_chat(viewers(user), "<span class='danger'>[user] is strangling \himself with the [src.name]! It looks like \he's trying to commit suicide.</span>")
@@ -120,7 +121,8 @@ var/global/list/datum/stack_recipe/cable_recipes = list ( \
 // - Wirecutters : Cut a piece off
 // - Cable coil : Merge the cables
 /obj/item/stack/cable_coil/attackby(obj/item/weapon/W, mob/user)
-	if((iswirecutter(W)) && (amount > 1))
+//	if((iswirecutter(W)) && (amount > 1))
+	if((W.is_wirecutter(user)) && (amount > 1))
 		use(1)
 		getFromPool(/obj/item/stack/cable_coil, user.loc, 1, _color)
 		to_chat(user, "<span class='notice'>You cut a piece off the cable coil.</span>")

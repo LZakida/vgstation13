@@ -83,8 +83,8 @@
 				return 1 // avoid afterattack() being called
 	if(W.is_wrench(user))
 		user.visible_message("<span class = 'warning'>[user] starts to deconstruct \the [src]!</span>","<span class = 'notice'>You start to deconstruct \the [src].</span>")
-		if(do_after(user, src, 5 SECONDS))
-			playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+		if(do_after(user, src, 5 SECONDS * W.toolspeed))
+			playsound(src, W.usesound, 50, 1)
 			drop_stack(sheet_type, loc, rand(3,4), user)
 			qdel(src)
 	else

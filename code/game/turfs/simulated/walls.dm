@@ -172,7 +172,7 @@
 		var/obj/item/weapon/solder/S = W
 		if(!S.remove_fuel(bullet_marks*2,user))
 			return
-		playsound(loc, 'sound/items/Welder.ogg', 100, 1)
+		playsound(loc, S.usesound, 100, 1)
 		to_chat(user, "<span class='notice'>You remove the bullet marks with \the [W].</span>")
 		bullet_marks = 0
 		icon = initial(icon)
@@ -223,18 +223,18 @@
 				to_chat(user, "<span class='notice'>You deform the wall back into its original shape")
 				engraving = null
 				engraving_quality = null
-				playsound(src, 'sound/items/Welder.ogg', 100, 1)
+				playsound(src, WT.usesound, 100, 1)
 				overlays.Cut()
 				return
 			user.visible_message("<span class='warning'>[user] begins slicing through \the [src]'s outer plating.</span>", \
 			"<span class='notice'>You begin slicing through \the [src]'s outer plating.</span>", \
 			"<span class='warning'>You hear welding noises.</span>")
-			playsound(src, 'sound/items/Welder.ogg', 100, 1)
+			playsound(src, WT.usesound, 100, 1)
 
-			if(do_after(user, src, 100))
+			if(do_after(user, src, 100 * WT.toolspeed))
 				if(!istype(src))
 					return
-				playsound(src, 'sound/items/Welder.ogg', 100, 1)
+				playsound(src, WT.usesound, 100, 1)
 				user.visible_message("<span class='warning'>[user] slices through \the [src]'s outer plating.</span>", \
 				"<span class='notice'>You slice through \the [src]'s outer plating.</span>", \
 				"<span class='warning'>You hear welding noises.</span>")
@@ -275,7 +275,7 @@
 
 		user.visible_message("<span class='warning'>[user] begins [PK.drill_verb] straight into \the [src].</span>", \
 		"<span class='notice'>You begin [PK.drill_verb] straight into \the [src].</span>")
-		playsound(src, PK.drill_sound, 100, 1)
+		playsound(src, PK.usesound, 100, 1)
 		if(do_after(user, src, PK.digspeed * 10))
 			user.visible_message("<span class='notice'>[user]'s [PK] tears though the last of \the [src], leaving nothing but a girder.</span>", \
 			"<span class='notice'>Your [PK] tears though the last of \the [src], leaving nothing but a girder.</span>")

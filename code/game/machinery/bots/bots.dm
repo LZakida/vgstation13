@@ -131,7 +131,7 @@
 	if(flags & INVULNERABLE)
 		return
 	user.delayNextAttack(W.attack_delay)
-	if((W.is_screwdriver(user) || iscrowbar(W)) && user.a_intent != I_HURT)
+	if((W.is_screwdriver(user) || W.is_crowbar(user)) && user.a_intent != I_HURT)
 		if(locked)
 			to_chat(user, "<span class='notice'>[src]'s maintenance panel is locked tight.</span>")
 		else
