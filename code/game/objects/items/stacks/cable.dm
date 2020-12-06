@@ -286,35 +286,44 @@ var/global/list/datum/stack_recipe/cable_recipes = list ( \
 /obj/item/stack/cable_coil/yellow
 	_color = "yellow"
 	icon_state = "coil_yellow"
+	item_state = "coil_yellow"
 
 /obj/item/stack/cable_coil/blue
 	_color = "blue"
 	icon_state = "coil_blue"
+	item_state = "coil_blue"
 
 /obj/item/stack/cable_coil/green
 	_color = "green"
 	icon_state = "coil_green"
+	item_state = "coil_green"
+
 
 /obj/item/stack/cable_coil/pink
 	_color = "pink"
 	icon_state = "coil_pink"
+	item_state = "coil_pink"
 
 /obj/item/stack/cable_coil/orange
 	_color = "orange"
 	icon_state = "coil_orange"
+	item_state = "coil_orange"
 
 /obj/item/stack/cable_coil/cyan
 	_color = "cyan"
 	icon_state = "coil_cyan"
+	item_state = "coil_cyan"
 
 /obj/item/stack/cable_coil/white
 	_color = "white"
 	icon_state = "coil_white"
+	item_state = "coil_white"
 
 /obj/item/stack/cable_coil/random/New(loc, amount, var/param_color = null)
 	..()
 	_color = pick("red","yellow","green","blue","pink")
 	icon_state = "coil_[_color]"
+	item_state = "coil_[_color]"
 
 /obj/item/stack/cable_coil/persistent/turf_place(turf/simulated/floor/F, mob/user, var/dirnew)	//for cable coil that needs to not be capable of being used up entirely
 	if(amount > 1)

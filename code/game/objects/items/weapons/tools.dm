@@ -400,6 +400,7 @@
 	desc = "Ensure the switch is safely in the off position before refueling."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "welder"
+	item_state = "welder"
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/misc_tools.dmi', "right_hand" = 'icons/mob/in-hand/right/misc_tools.dmi')
 	hitsound = 'sound/weapons/toolhit.ogg'
 	usesound = 'sound/items/Welder.ogg'

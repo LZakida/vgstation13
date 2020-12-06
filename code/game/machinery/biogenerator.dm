@@ -132,6 +132,13 @@
 	name="Utility Belt"
 	result=/obj/item/weapon/storage/belt/utility
 
+/datum/biogen_recipe/leather/hydrobelt
+	cost=300
+	id = "hydrobelt"
+	name = "Botanist belt"
+	result=/obj/item/weapon/storage/belt/botany
+
+
 /datum/biogen_recipe/leather/bandolier
 	cost = 300
 	id="bandolier"
