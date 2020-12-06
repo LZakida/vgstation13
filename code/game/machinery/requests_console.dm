@@ -427,7 +427,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 
 					//deconstruction and hacking
 /obj/machinery/requests_console/attackby(var/obj/item/weapon/O as obj, var/mob/user as mob)
-	if (iscrowbar(O))
+	if (O.is_crowbar(user))
 		if(open)
 			open = 0
 			icon_state="req_comp0"
@@ -449,7 +449,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			to_chat(user, "You can't do much with that.")
 	if(O.is_wrench(user) && open && !departmentType)
 		user.visible_message("<span class='notice'>[user] disassembles the [src]!</span>", "<span class='notice'>You disassemble the [src]</span>")
-		playsound(src, 'sound/items/Ratchet.ogg', 100, 1)
+		playsound(src, O.usesound, 100, 1)
 		new /obj/item/stack/sheet/metal (src.loc,2)
 		qdel(src)
 		return

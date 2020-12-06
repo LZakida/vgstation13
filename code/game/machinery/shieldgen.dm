@@ -277,7 +277,7 @@
 		var/obj/item/stack/cable_coil/coil = W
 		to_chat(user, "<span class='notice'>You begin to replace the wires.</span>")
 		//if(do_after(user, src, min(60, round( ((maxhealth/health)*10)+(malfunction*10) ))) //Take longer to repair heavier damage
-		if(do_after(user, src, 30))
+		if(do_after(user, src, 30 * W.toolspeed))
 			if(!src || !coil)
 				return
 			coil.use(1)

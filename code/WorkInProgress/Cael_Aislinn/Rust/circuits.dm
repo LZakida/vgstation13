@@ -33,6 +33,7 @@
 	desc = "A circuit board used to run the wall-mounted fuel port for a R-UST Mk. 7 engine."
 	icon_state = "card_mod"
 	origin_tech = Tc_ENGINEERING + "=4;" + Tc_MATERIALS + "=5"
+	usesound = 'sound/items/Deconstruct.ogg'
 
 //////////////////////////////////////
 // RUST Fuel Compressor board
@@ -42,6 +43,7 @@
 	desc = "A circuit board used to run the wall-mounted fuel rod assembler of a R-UST Mk. 7 engine."
 	icon_state = "card_mod"
 	origin_tech = Tc_MATERIALS + "=6;" + Tc_PLASMATECH + "=4"
+	usesound = 'sound/items/Deconstruct.ogg'
 
 //////////////////////////////////////
 // RUST Tokamak Core board

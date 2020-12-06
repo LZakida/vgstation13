@@ -9,6 +9,7 @@
 	attack_verb = list("whips", "lashes", "disciplines")
 	restraint_resist_time = 30 SECONDS
 	restraint_apply_sound = "rustle"
+	var/use_item_overlays = 0 // Do we have overlays for items held inside the belt?
 
 /obj/item/weapon/storage/belt/can_quick_store(var/obj/item/I)
 	return can_be_inserted(I,1)
@@ -16,11 +17,20 @@
 /obj/item/weapon/storage/belt/quick_store(var/obj/item/I)
 	return handle_item_insertion(I,0)
 
+/obj/item/weapon/storage/belt/update_icon()
+	if(use_item_overlays)
+		overlays.Cut()
+		for(var/obj/item/I in contents)
+			overlays += I.item_state ? "belt_[I.item_state]" : "belt_[I.icon_state]"
+
+	..()
+
 /obj/item/weapon/storage/belt/utility
 	name = "tool-belt" //Carn: utility belt is nicer, but it bamboozles the text parsing.
 	desc = "It has a tag that rates it for compatibility with standard tools, device analyzers, flashlights, cables, engineering tape, small fire extinguishers, compressed matter cartridges, light replacers, and fuel cans."
 	icon_state = "utilitybelt"
 	item_state = "utility"
+	use_item_overlays = 1
 	w_class = W_CLASS_LARGE
 	storage_slots = 14
 	max_combined_w_class = 200 //This actually doesn't matter as long as it is arbitrarily high, bar will be set by storage slots
@@ -61,6 +71,7 @@
 	new /obj/item/weapon/wirecutters(src)
 	new /obj/item/device/multitool(src)
 	new /obj/item/stack/cable_coil(src,30,pick("red","yellow","orange"))
+	update_icon()
 
 /obj/item/weapon/storage/belt/utility/full/New()
 	..()
@@ -70,7 +81,7 @@
 	new /obj/item/weapon/crowbar(src)
 	new /obj/item/weapon/wirecutters(src)
 	new /obj/item/stack/cable_coil(src,30,pick("red","yellow","orange"))
-
+	update_icon()
 
 /obj/item/weapon/storage/belt/utility/atmostech/New()
 	..()
@@ -80,6 +91,7 @@
 	new /obj/item/weapon/crowbar(src)
 	new /obj/item/weapon/wirecutters(src)
 	new /obj/item/device/t_scanner(src)
+	update_icon()
 
 /obj/item/weapon/storage/belt/utility/chief
 	name = "advanced tool-belt"
@@ -121,8 +133,8 @@
 
 /obj/item/weapon/storage/belt/utility/chief/full/New() //This is mostly for testing I guess
 	..()
-	new /obj/item/weapon/crowbar(src)
-	new /obj/item/weapon/screwdriver(src)
+	new /obj/item/weapon/crowbar/power(src)
+	new /obj/item/weapon/screwdriver/power(src)
 	new /obj/item/weapon/weldingtool/hugetank(src)
 	new /obj/item/weapon/wirecutters(src)
 	new /obj/item/weapon/wrench(src)
@@ -135,13 +147,14 @@
 	new /obj/item/device/silicate_sprayer(src)
 	new /obj/item/device/rcd/rpd(src)
 	new /obj/item/device/rcd/matter/engineering/pre_loaded(src)
-
+	update_icon()
 
 /obj/item/weapon/storage/belt/medical
 	name = "medical belt"
 	desc = "Can hold various medical equipment."
 	icon_state = "medicalbelt"
 	item_state = "medical"
+	use_item_overlays = 1
 	storage_slots = 21
 	max_combined_w_class = 21
 	allow_quick_gather = TRUE
@@ -170,7 +183,8 @@
 		"/obj/item/device/antibody_scanner",
 		"/obj/item/weapon/switchtool/surgery",
 		"/obj/item/weapon/grenade/chem_grenade",
-		"/obj/item/weapon/electrolyzer"
+		"/obj/item/weapon/electrolyzer",
+		"/obj/item/weapon/wrench/medical",
 	)
 
 /obj/item/weapon/storage/belt/slim
@@ -187,12 +201,14 @@
 	new /obj/item/weapon/crowbar(src)
 	new /obj/item/weapon/wirecutters(src)
 	new /obj/item/device/multitool(src)
+	update_icon()
 
 /obj/item/weapon/storage/belt/security
 	name = "security belt"
 	desc = "Can hold security gear like handcuffs and flashes."
 	icon_state = "securitybelt"
 	item_state = "security"//Could likely use a better one.
+	use_item_overlays = 1
 	storage_slots = 7
 	fits_max_w_class = 3
 	max_combined_w_class = 21
@@ -278,6 +294,7 @@
 	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away"
 	icon_state = "soulstonebelt"
 	item_state = "soulstonebelt"
+	use_item_overlays = 1
 	storage_slots = 6
 	can_only_hold = list(
 		"/obj/item/device/soulstone"
@@ -291,7 +308,7 @@
 	new /obj/item/device/soulstone(src)
 	new /obj/item/device/soulstone(src)
 	new /obj/item/device/soulstone(src)
-
+	update_icon()
 
 /obj/item/weapon/storage/belt/champion
 	name = "championship belt"
@@ -333,6 +350,7 @@
 /obj/item/weapon/storage/belt/silicon/New()
 	..()
 	new /obj/item/device/aicard(src) //One freebie card
+	update_icon()
 
 /obj/item/weapon/storage/belt/silicon/proc/GetCyberbeltMobs()
 	var/list/mobs = list()
@@ -467,6 +485,7 @@
 	desc = "A belt used to hold most janitorial supplies."
 	icon_state = "janibelt"
 	item_state = "janibelt"
+	use_item_overlays = 1
 	storage_slots = 8
 	fits_max_w_class = 5
 	can_only_hold = list(
@@ -481,3 +500,44 @@
 		"/obj/item/weapon/mop",
 		"/obj/item/weapon/storage/bag/trash")
 
+
+
+/obj/item/weapon/storage/belt/abductor
+	name = "agent belt"
+	desc = "A belt used by abductor agents."
+	icon = 'icons/obj/abductor.dmi'
+	icon_state = "belt"
+	item_state = "security"
+	fits_max_w_class = W_CLASS_SMALL
+	max_combined_w_class = 14
+
+/obj/item/weapon/storage/belt/abductor/full/New()
+	..()
+	new /obj/item/weapon/screwdriver/abductor(src)
+	new /obj/item/weapon/wrench/abductor(src)
+	new /obj/item/weapon/weldingtool/abductor(src)
+	new /obj/item/weapon/crowbar/abductor(src)
+	new /obj/item/weapon/wirecutters/abductor(src)
+//	new /obj/item/device/multitool/abductor(src)
+	new /obj/item/stack/cable_coil(src, 30, "white")
+	update_icon()
+
+obj/item/weapon/storage/belt/botany
+	name = "botanist belt"
+	desc = "Can hold various botanical supplies."
+	icon_state = "botanybelt"
+	item_state = "botany"
+	use_item_overlays = 1
+	can_only_hold = list(
+		"/obj/item/device/analyzer/plant_analyzer",
+		"/obj/item/weapon/minihoe",
+		"/obj/item/weapon/hatchet",
+		"/obj/item/weapon/reagent_containers/glass/bottle",
+		"/obj/item/weapon/lighter/zippo",
+		"/obj/item/weapon/storage/fancy/cigarettes",
+		"/obj/item/weapon/pickaxe/shovel/spade",
+		"/obj/item/device/flashlight/pen",
+		"/obj/item/seeds",
+		"/obj/item/weapon/wirecutters",
+        "/obj/item/weapon/wrench",
+	)

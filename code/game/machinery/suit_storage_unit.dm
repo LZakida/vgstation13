@@ -586,15 +586,15 @@
 		var/obj/item/weapon/solder/S = I
 		if(!S.remove_fuel(4,user))
 			return
-		playsound(loc, 'sound/items/Welder.ogg', 100, 1)
-		if(do_after(user, src,40))
-			playsound(loc, 'sound/items/Welder.ogg', 100, 1)
+		playsound(loc, S.usesound, 100, 1)
+		if(do_after(user, src,40 * I.toolspeed))
+			playsound(loc, S.usesound, 100, 1)
 			stat &= !BROKEN
 			to_chat(user, "<span class='notice'>You repair the blown out electronics in the suit storage unit.</span>")
-	if((stat & NOPOWER) && iscrowbar(I) && !islocked)
+	if((stat & NOPOWER) && I.is_crowbar(user) && !islocked)
 		playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>You begin prying the equipment out of the suit storage unit</span>")
-		if(do_after(user, src,20))
+		if(do_after(user, src,20 * I.toolspeed))
 			dump_everything()
 			update_icon()
 	if(stat & NOPOWER)
@@ -615,7 +615,7 @@
 			to_chat(user, "<span class='red'>The unit's storage area is too cluttered.</span>")
 			return
 		visible_message("[user] starts putting [G.affecting.name] into the Suit Storage Unit.")
-		if(do_after(user, src, 20))
+		if(do_after(user, src, 20 * I.toolspeed))
 			if(!G || !G.affecting)
 				return //derpcheck
 			var/mob/M = G.affecting

@@ -180,7 +180,7 @@
 			else
 				screwed = 1
 			to_chat(user, "<span class='info'>You [screwed ? "screw" : "unscrew"] the battery panel.</span>")
-	else if (iscrowbar(W))
+	else if (W.is_crowbar(user))
 		if(!locked)
 			if(!screwed)
 				if(!suspension_field)

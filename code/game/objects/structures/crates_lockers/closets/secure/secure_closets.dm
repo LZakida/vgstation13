@@ -22,7 +22,7 @@
 /obj/structure/closet/secure_closet/can_open()
 	if(!..())
 		return 0
-	if(src.locked)	
+	if(src.locked)
 		return 0
 	return 1
 
@@ -63,9 +63,9 @@
 			var/obj/item/weapon/solder/S = W
 			if(!S.remove_fuel(4,user))
 				return
-			playsound(loc, 'sound/items/Welder.ogg', 100, 1)
-			if(do_after(user, src,40))
-				playsound(loc, 'sound/items/Welder.ogg', 100, 1)
+			playsound(loc, S.usesound, 100, 1)
+			if(do_after(user, src,40 * S.toolspeed))
+				playsound(loc, S.usesound, 100, 1)
 				broken = 0
 				to_chat(user, "<span class='notice'>You repair the electronics inside the locking mechanism!</span>")
 				icon_state = icon_closed
@@ -90,7 +90,7 @@
 			update_icon()
 			M.visible_message("<span class='warning'>[src] has been [welded?"welded shut":"unwelded"] by [user.name].</span>", 1, "You hear welding.", 2)
 		if(W.is_screwdriver(user) && !locked && has_lockless_type)
-			remove_lock(user)
+			remove_lock(user, W)
 			return
 		togglelock(user)
 

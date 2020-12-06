@@ -52,11 +52,11 @@
 		var/obj/item/weapon/circuitboard/airlock/C = circuit
 		switch(build_state)
 			if(1)
-				if(iscrowbar(P))
+				if(P.is_crowbar(user))
 					build_path = 0
 					new /obj/item/stack/sheet/glass/glass(get_turf(src))
 					icon_state = "box_0"
-					playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+					playsound(src, P.usesound, 50, 1)
 				if(istype(P, /obj/item/weapon/circuitboard/airlock) && P:icon_state != "door_electronics_smoked")
 					if (!C)
 						if(user.drop_item(P, src))
@@ -72,7 +72,7 @@
 					qdel(src)
 				return
 			if (2)
-				if(iscrowbar(P))
+				if(P.is_crowbar(user))
 					if (C != null)
 						C.forceMove(get_turf(src))
 						C.installed = 0
@@ -80,14 +80,14 @@
 						circuit = null
 					build_state--
 					icon_state = "box_glass"
-					playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+					playsound(src, P.usesound, 50, 1)
 				if(P.is_screwdriver(user) && C)
 					var/obj/structure/displaycase/new_display_case = new(get_turf(src))
 					new_display_case.circuit = C
 					C.forceMove(new_display_case)
 					circuit = null
 					C = null
-					playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+					playsound(src, P.usesound, 50, 1)
 					qdel(src)
 				return
 		return
@@ -98,9 +98,9 @@
 			if(istype(P, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/C = P
 				if(C.amount >= 5)
-					playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
+					playsound(src, C.usesound, 50, 1)
 					to_chat(user, "<span class='notice'>You start to add cables to the frame.</span>")
-					if(do_after(user, src, 20))
+					if(do_after(user, src, 20 * C.toolspeed))
 						if(C && C.amount >= 5) // Check again
 							C.use(5)
 							to_chat(user, "<span class='notice'>You add cables to the frame.</span>")
@@ -117,7 +117,7 @@
 				return
 			else
 				if(P.is_wrench(user))
-					playsound(src, 'sound/items/Ratchet.ogg', 75, 1)
+					playsound(src, P.usesound, 75, 1)
 					to_chat(user, "<span class='notice'>You dismantle the frame.</span>")
 					drop_stack(sheet_type, get_turf(src), 5, user)
 					qdel(src)
@@ -130,7 +130,7 @@
 							user << "<span class='warning'>You can't let go of \the [B]!</span>"
 							return
 
-						playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
+						playsound(src, B.usesound, 50, 1)
 						to_chat(user, "<span class='notice'>You add the circuit board to the frame.</span>")
 						circuit = P
 						set_build_state(3)
@@ -147,8 +147,9 @@
 					else
 						to_chat(user, "<span class='warning'>This frame does not accept circuit boards of this type!</span>")
 				else
-					if(iswirecutter(P))
-						playsound(src, 'sound/items/Wirecutter.ogg', 50, 1)
+//					if(iswirecutter(P))
+					if(P.is_wirecutter(user))
+						playsound(src, P.usesound, 50, 1)
 						to_chat(user, "<span class='notice'>You remove the cables.</span>")
 						set_build_state(1)
 						var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( src.loc )
@@ -156,8 +157,8 @@
 
 		if(3)
 			if(!..())
-				if(iscrowbar(P))
-					playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+				if(P.is_crowbar(user))
+					playsound(src, P.usesound, 50, 1)
 					set_build_state(2)
 					circuit.forceMove(src.loc)
 					circuit = null
@@ -181,7 +182,7 @@
 								component_check = 0
 								break
 						if(component_check)
-							playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+							playsound(src, P.usesound, 50, 1)
 							var/obj/machinery/new_machine = new src.circuit.build_path(src.loc)
 							for(var/obj/O in new_machine.component_parts)
 								returnToPool(O)
@@ -328,9 +329,9 @@ to destroy them and players will be able to make replacements.
 		var/obj/item/weapon/solder/S = O
 		if(!S.remove_fuel(4,user))
 			return
-		playsound(loc, 'sound/items/Welder.ogg', 50, 1)
+		playsound(loc, S.usesound, 50, 1)
 		soldering = 1
-		if(do_after(user, src,40))
+		if(do_after(user, src,40 * S.toolspeed))
 			var/boardType = allowed_boards[t]
 			var/obj/item/I = new boardType(get_turf(user))
 			to_chat(user, "<span class='notice'>You fashion a crude [I] from the blank circuitboard.</span>")

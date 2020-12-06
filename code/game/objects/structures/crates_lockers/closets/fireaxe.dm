@@ -59,7 +59,7 @@
 			visible_message("<span class='notice'>[user] starts fiddling with \the [src]'s locking module.</span>", \
 			"<span class='notice'>You start disabling \the [src]'s locking module.</span>")
 			playsound(user, 'sound/machines/lockreset.ogg', 50, 1)
-			if(do_after(user, src, 50))
+			if(do_after(user, src, 50 * O.toolspeed))
 				locked = 0
 				visible_message("<span class='notice'>[user] disables \the [src]'s locking module.</span>", "<span class='notice'>You disable \the [src]'s locking module.</span>")
 				update_icon()
@@ -115,7 +115,7 @@
 				else
 					visible_message("<span class='notice'>[user] starts to fiddle with [src]'s locking module.</span>", \
 					"<span class='notice'>You start to re-enable [src]'s locking module.</span>")
-					if(do_after(user, src, 50))
+					if(do_after(user, src, 50 * O.toolspeed))
 						locked = 1
 						visible_message("<span class='notice'>[user] re-enables [src]'s locking module.</span>", \
 						"<span class='notice'>You re-enable [src]'s locking module.</span>")
@@ -134,7 +134,7 @@
 	else
 		if(O.is_wrench(user) && src.localopened && !src.fireaxe)
 			to_chat(user, "<span class='notice'>You disassemble \the [src].</span>")
-			playsound(src, 'sound/items/Ratchet.ogg', 100, 1)
+			playsound(src, O.usesound, 100, 1)
 			new /obj/item/stack/sheet/plasteel (src.loc,2)
 			qdel(src)
 		if(smashed)

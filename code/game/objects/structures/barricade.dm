@@ -68,13 +68,13 @@
 
 /obj/structure/window/barricade/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
-	if(iscrowbar(W) && user.a_intent == I_HURT && !busy) //Only way to deconstruct, needs harm intent
-		playsound(loc, 'sound/items/Crowbar.ogg', 75, 1)
+	if(W.is_crowbar(user) && user.a_intent == I_HURT && !busy) //Only way to deconstruct, needs harm intent
+		playsound(loc, W.usesound, 75, 1)
 		user.visible_message("<span class='warning'>[user] starts struggling to pry \the [src] back into planks.</span>", \
 		"<span class='notice'>You start struggling to pry \the [src] back into planks.</span>")
 		busy = 1
 
-		if(do_after(user, src, 50)) //Takes a while because it is a barricade instant kill
+		if(do_after(user, src, 50 * W.toolspeed)) //Takes a while because it is a barricade instant kill
 			playsound(loc, 'sound/items/Deconstruct.ogg', 75, 1)
 			user.visible_message("<span class='warning'>[user] finishes turning \the [src] back into planks.</span>", \
 			"<span class='notice'>You finish turning \the [src] back into planks.</span>")

@@ -33,12 +33,12 @@
 	update_icon()
 
 /obj/machinery/power/solar/panel/attackby(obj/item/weapon/W, mob/user)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		var/turf/T = get_turf(src)
 		var/obj/item/stack/sheet/glass/G = solar_assembly.glass_type
 		to_chat(user, "<span class='notice'>You begin taking the [initial(G.name)] off the [src].</span>")
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
-		if(do_after(user, src, 50))
+		if(do_after(user, src, 50 * W.toolspeed))
 			if(solar_assembly)
 				solar_assembly.forceMove(T)
 				solar_assembly.give_glass()

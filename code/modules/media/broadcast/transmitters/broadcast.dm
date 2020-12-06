@@ -93,7 +93,7 @@
 
 /obj/machinery/media/transmitter/broadcast/attackby(var/obj/item/W, mob/user)
 	. = ..()
-	if(panel_open && iswiretool(W))
+	if(panel_open && iswiretool(W, user))
 		attack_hand(user)
 	if(issolder(W))
 		if(integrity>=100)
@@ -102,9 +102,9 @@
 		var/obj/item/weapon/solder/S = W
 		if(!S.remove_fuel(4,user))
 			return
-		playsound(loc, 'sound/items/Welder.ogg', 100, 1)
-		if(do_after(user, src,40))
-			playsound(loc, 'sound/items/Welder.ogg', 100, 1)
+		playsound(loc, S.usesound, 100, 1)
+		if(do_after(user, src,40 * S.toolspeed))
+			playsound(loc, S.usesound, 100, 1)
 			integrity = 100
 			to_chat(user, "<span class='notice'>You repair the blown fuses on [src].</span>")
 

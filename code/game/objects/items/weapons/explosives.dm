@@ -47,7 +47,7 @@
 	if(I.is_screwdriver(user))
 		open_panel = !open_panel
 		to_chat(user, "<span class='notice'>You [open_panel ? "open" : "close"] the wire panel.</span>")
-	else if(iswiretool(I))
+	else if(iswiretool(I, user))
 		wires.Interact(user)
 	else
 		..()

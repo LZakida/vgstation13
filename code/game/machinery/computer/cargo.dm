@@ -196,8 +196,8 @@ For vending packs, see vending_packs.dm*/
 		C.contraband_enabled = 1
 		return
 	if(I.is_screwdriver(user))
-		playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
-		if(do_after(user, src, 20))
+		playsound(loc, I.usesound, 50, 1)
+		if(do_after(user, src, 20 * I.toolspeed))
 			if (stat & BROKEN)
 				to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( loc )

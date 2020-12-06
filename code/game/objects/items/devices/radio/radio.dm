@@ -542,7 +542,7 @@
 	user.set_machine(src)
 	if(W.is_screwdriver(user))
 		if(illegalradio_construction == 0)
-			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+			playsound(src, W.usesound, 50, 1)
 			b_stat = !( b_stat )
 			if (b_stat)
 				user.show_message("<span class = 'notice'>\The [src] can now be attached and modified!</span>")
@@ -550,7 +550,7 @@
 				user.show_message("<span class = 'notice'>\The [src] can no longer be modified or attached!</span>")
 		else if(illegalradio_construction == 2)
 			to_chat(user, "You forcefully tighten the radio's back cover.")
-			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+			playsound(src, W.usesound, 50, 1)
 			if(src.loc == user)
 				user.drop_item(src, force_drop = 1)
 				var/obj/item/device/illegalradio/I = new (get_turf(user))
@@ -576,9 +576,10 @@
 		to_chat(user, "You add high-voltage wires to the radio.")
 		illegalradio_construction = 2
 		C.use(3)
-	else if(iswirecutter(W) && illegalradio_construction == 2 && b_stat)
+//	else if(iswirecutter(W) && illegalradio_construction == 2 && b_stat)
+	else if(W.is_wirecutter(user) && illegalradio_construction == 2 && b_stat)
 		to_chat(user, "You cut the extra wires out of the radio.")
-		playsound(user, 'sound/items/Wirecutter.ogg', 50, 1)
+		playsound(user, W.usesound, 50, 1)
 		illegalradio_construction = 1
 		var/obj/item/stack/cable_coil/C = new (get_turf(user))
 		C.amount = 3

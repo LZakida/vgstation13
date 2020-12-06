@@ -643,7 +643,7 @@ var/list/cyborg_list = list()
 		for(var/mob/O in viewers(user, null))
 			O.show_message(text("<span class='attack'>[user] has fixed some of the burnt wires on [src]!</span>"), 1)
 
-	else if(iscrowbar(W))	// crowbar means open or close the cover
+	else if(W.is_crowbar(user))	// crowbar means open or close the cover
 		if(opened)
 			if(cell)
 				to_chat(user, "You close the cover.")
@@ -656,7 +656,7 @@ var/list/cyborg_list = list()
 				to_chat(user, "You jam the crowbar into the robot and begin levering [mmi].")
 				if(can_diagnose())
 					to_chat(src, "<span class='alert' style=\"font-family:Courier\">Chassis disassembly in progress.</span>")
-				if(do_after(user, src,3))
+				if(do_after(user, src,3 * W.toolspeed))
 					to_chat(user, "You damage some parts of the chassis, but eventually manage to rip out [mmi]!")
 					var/obj/item/robot_parts/robot_suit/C = new/obj/item/robot_parts/robot_suit(loc)
 					C.l_leg = new/obj/item/robot_parts/l_leg(C)
@@ -746,7 +746,7 @@ var/list/cyborg_list = list()
 				to_chat(src, "<span class='info' style=\"font-family:Courier\">New cell installed. Type: [cell.name]. Charge: [cell.charge].</span>")
 		updateicon()
 
-	else if(iswiretool(W))
+	else if(iswiretool(W, user))
 		if(wiresexposed)
 			wires.Interact(user)
 		else

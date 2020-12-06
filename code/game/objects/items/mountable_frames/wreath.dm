@@ -19,10 +19,10 @@
 	icon_state = "wreath_bow"
 
 /obj/structure/wreath/wreath_bow/attackby(obj/item/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		to_chat(user, "You begin prying \the [src] off the wall.")
 		playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-		if(do_after(user, src,10))
+		if(do_after(user, src,10 * W.toolspeed))
 			to_chat(user, "<span class='notice'>You pry \the [src] off of the wall.</span>")
 			new /obj/item/mounted/frame/wreath/wreath_bow(get_turf(user))
 			qdel(src)
@@ -50,10 +50,10 @@
 	icon_state = "wreath_nobow"
 
 /obj/structure/wreath/wreath_nobow/attackby(obj/item/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		to_chat(user, "You begin prying \the [src] off the wall.")
 		playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-		if(do_after(user, src,10))
+		if(do_after(user, src,10 * W.toolspeed))
 			to_chat(user, "<span class='notice'>You pry \the [src] off of the wall.</span>")
 			new /obj/item/mounted/frame/wreath/wreath_nobow(get_turf(user))
 			qdel(src)

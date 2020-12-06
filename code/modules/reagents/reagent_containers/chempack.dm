@@ -218,7 +218,7 @@ obj/item/weapon/reagent_containers/chempack/verb/set_fill()
 				to_chat(user, "<span class='warning'>You can't perform maintenance on \the [src] while you're wearing it!</span>")
 				return
 			else
-				if (iscrowbar(W) && src.beaker && auxiliary)
+				if (W.is_crowbar(user) && src.beaker && auxiliary)
 					var/obj/item/weapon/reagent_containers/glass/B = beaker
 					if ((user.get_inactive_hand() == src) || (user.back == src))
 						B.forceMove(user.loc)
@@ -230,7 +230,7 @@ obj/item/weapon/reagent_containers/chempack/verb/set_fill()
 						var/obj/item/clothing/mask/chemmask/C = user.wear_mask
 						C.update_verbs()
 					return
-				else if (iscrowbar(W) && src.beaker && !auxiliary)
+				else if (W.is_crowbar(user) && src.beaker && !auxiliary)
 					to_chat(user, "<span class='warning'>The beaker is held tight by the bolts of the auxiliary chamber!</span>")
 					return
 				if (W.is_screwdriver(user) && src.beaker)
@@ -244,7 +244,7 @@ obj/item/weapon/reagent_containers/chempack/verb/set_fill()
 					user.update_inv_hands() //These procs are to force the item's in_hand mob overlay to update to reflect the different stages of building. It was the only way I could find to accomplish this.
 					return
 		if(1)
-			if (iscrowbar(W))
+			if (W.is_crowbar(user))
 				if (primed == 0)
 					stage = 2
 				else
@@ -265,12 +265,13 @@ obj/item/weapon/reagent_containers/chempack/verb/set_fill()
 					user.update_inv_hands()
 				return
 		if(2)
-			if (iswirecutter(W))
+//			if (iswirecutter(W))
+			if (W.is_wirecutter(user))
 				stage = 3
 				primed = 1
 				to_chat(user, "<span class='notice'>You reroute the connections within \the [src].</span>")
 				return
-			else if (iscrowbar(W))
+			else if (W.is_crowbar(user))
 				stage = 1
 				to_chat(user, "<span class='notice'>You close the maintenance panel of \the [src].</span>")
 				icon_state = "[initial(icon_state)]3"
@@ -287,7 +288,7 @@ obj/item/weapon/reagent_containers/chempack/verb/set_fill()
 					to_chat(user, "<span class='notice'>The bolts for the auxiliary chamber of \the [src] are now hidden.</span>")
 					safety = 0
 				return
-			else if (iscrowbar(W))
+			else if (W.is_crowbar(user))
 				stage = 1
 				to_chat(user, "<span class='notice'>You close the maintenance panel of \the [src].</span>")
 				icon_state = "[initial(icon_state)]3"

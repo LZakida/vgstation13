@@ -38,7 +38,7 @@
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
 			damage = 15
-			playsound(loc, 'sound/items/Welder.ogg', 100, 1)
+			playsound(loc, WT.usesound, 100, 1)
 		else
 			damage = W.force / SPIDERWEB_BRUTE_DIVISOR
 
@@ -109,7 +109,7 @@
 	pixel_x = rand(3,-3) * PIXEL_MULTIPLIER
 	pixel_y = rand(3,-3) * PIXEL_MULTIPLIER
 	processing_objects.Add(src)
-	
+
 /obj/effect/spider/eggcluster/Destroy()
 	processing_objects.Remove(src)
 	..()

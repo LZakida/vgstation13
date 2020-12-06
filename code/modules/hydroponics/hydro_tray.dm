@@ -261,7 +261,7 @@
 			return
 		playsound(loc, 'sound/items/shovel.ogg', 50, 1)
 		C.being_potted = TRUE
-		if(do_after(user, src, 50))
+		if(do_after(user, src, 50 * O.toolspeed))
 			user.visible_message(	"<span class='notice'>[user] transplants \the [seed.display_name] into \the [C].</span>",
 									"<span class='notice'>[bicon(src)] You transplant \the [seed.display_name] into \the [C].</span>",
 									"<span class='notice'>You hear a ratchet.</span>")

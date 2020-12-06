@@ -4,7 +4,7 @@
 	w_class = W_CLASS_SMALL
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "grenade"
-	item_state = "flashbang"
+	item_state = "grenade"
 	throw_speed = 4
 	throw_range = 20
 	flags = FPRINT

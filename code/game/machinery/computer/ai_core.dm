@@ -35,7 +35,7 @@
 
 /obj/structure/AIcore/attackby(var/obj/item/P, var/mob/user)
 	if(P.is_wrench(user))
-		wrenchAnchor(user, time_to_wrench = 2 SECONDS)
+		wrenchAnchor(user, P, time_to_wrench = 2 SECONDS)
 	switch(state)
 		if(NOCIRCUITBOARD)
 			if(iswelder(P))
@@ -48,41 +48,42 @@
 					qdel(src)
 			if(istype(P, /obj/item/weapon/circuitboard/aicore) && !circuit)
 				if(user.drop_item(P, src))
-					playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
+					playsound(loc, P.usesound, 50, 1)
 					to_chat(user, "<span class='notice'>You place the circuit board inside the frame.</span>")
 					circuit = P
 					state = UNSECURED_CIRCUITBOARD
 		if(UNSECURED_CIRCUITBOARD)
 			if(P.is_screwdriver(user) && circuit)
-				playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
+				playsound(loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You screw the circuit board into place.</span>")
 				state = SECURED_CIRCUITBOARD
-			if(iscrowbar(P) && circuit)
-				playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
+			if(P.is_crowbar(user) && circuit)
+				playsound(loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
 				state = NOCIRCUITBOARD
 				circuit.forceMove(loc)
 				circuit = null
 		if(SECURED_CIRCUITBOARD)
 			if(P.is_screwdriver(user) && circuit)
-				playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
+				playsound(loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You unfasten the circuit board.</span>")
 				state = UNSECURED_CIRCUITBOARD
 			if(iscablecoil(P))
 				var/obj/item/stack/cable_coil/cable_coil = P
 				if(cable_coil.amount >= 5)
-					playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
-					if(do_after(user, src, 2 SECONDS))
+					playsound(loc, cable_coil.usesound, 50, 1)
+					if(do_after(user, src, 2 SECONDS * P.toolspeed))
 						if(!src || state != SECURED_CIRCUITBOARD || !cable_coil || !cable_coil.use(5))
 							return
 						to_chat(user, "<span class='notice'>You add cables to the frame.</span>")
 						state = WIREDFRAME
 		if(WIREDFRAME)
-			if(iswirecutter(P))
+//			if(iswirecutter(P))
+			if(P.is_wirecutter(user))
 				if(brain)
 					to_chat(user, "Get that brain out of there first!")
 				else
-					playsound(loc, 'sound/items/Wirecutter.ogg', 50, 1)
+					playsound(loc, P.usesound, 50, 1)
 					to_chat(user, "<span class='notice'>You remove the cables.</span>")
 					state = SECURED_CIRCUITBOARD
 					drop_stack(/obj/item/stack/cable_coil, loc, 5, user)
@@ -90,7 +91,7 @@
 			if(istype(rglass))
 				if(rglass.amount >= 2)
 					playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
-					if(do_after(user, src, 2 SECONDS))
+					if(do_after(user, src, 2 SECONDS * P.toolspeed))
 						if(!src || state != WIREDFRAME || !rglass || !rglass.use(2))
 							return
 						to_chat(user, "<span class='notice'>You put in the glass panel.</span>")
@@ -118,20 +119,20 @@
 						brain = P
 						to_chat(user, "Added [P].")
 
-			if(iscrowbar(P) && brain)
-				playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
+			if(P.is_crowbar(user) && brain)
+				playsound(loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You remove the brain.</span>")
 				brain.forceMove(loc)
 				brain = null
 
 		if(GLASS_PANELED)
-			if(iscrowbar(P))
-				playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
+			if(P.is_crowbar(user))
+				playsound(loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You remove the glass panel.</span>")
 				state = WIREDFRAME
 				drop_stack(/obj/item/stack/sheet/glass/rglass, loc, 2, user)
 			else if(P.is_screwdriver(user))
-				playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
+				playsound(loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You connect the monitor.</span>")
 				var/mob/living/silicon/ai/A = new /mob/living/silicon/ai ( loc, laws, brain )
 				if(A) //if there's no brain, the mob is deleted and a structure/AIcore is created

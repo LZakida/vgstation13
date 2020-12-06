@@ -137,10 +137,10 @@
 	to_chat(user, "<span class='notice'>\The [src] is mounted securely. You'll need something to pry it off the wall.</span>")
 
 /obj/structure/trophy_mount/attackby(obj/item/weapon/W, mob/user)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		to_chat(user, "You begin prying \the [initial(name)] off the wall.")
 		playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-		if(do_after(user, src,10))
+		if(do_after(user, src,10 * W.toolspeed))
 			to_chat(user, "You pry \the [initial(name)] off of the wall.")
 			add_fingerprint(user)
 			var/obj/item/mounted/frame/trophy_mount/T = new(get_turf(user))

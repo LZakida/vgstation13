@@ -245,7 +245,7 @@
 	if(W.is_screwdriver(user))
 		user.visible_message("<span class='notice'>[user] screws [maintenance ? "closed" : "open"] \the [src]'s battery compartment.</span>", "<span class='notice'>You screw [maintenance ? "closed" : "open"] the battery compartment.</span>", "You hear screws being loosened.")
 		maintenance = !maintenance
-	else if(iscrowbar(W)&&maintenance)
+	else if(W.is_crowbar(user)&&maintenance)
 		if(internal_battery)
 			user.put_in_hands(internal_battery)
 			internal_battery = null

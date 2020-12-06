@@ -58,11 +58,11 @@
 	..()
 	if(W.is_screwdriver(user))
 		if(opened)
-			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+			playsound(src, W.usesound, 50, 1)
 			to_chat(user, "<span class = 'caution'>You secure the access port on \the [src].</span>")
 			opened = 0
 		else
-			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+			playsound(src, W.usesound, 50, 1)
 			to_chat(user, "<span class = 'caution'>You open \the [src]'s access port.</span>")
 			opened = 1
 	if(istype(W, /obj/item/bluespace_crystal) && opened)
@@ -75,7 +75,7 @@
 		W.forceMove(src)
 		amplifier=W
 		return
-	if(iscrowbar(W) && opened && amplifier)
+	if(W.is_crowbar(user) && opened && amplifier)
 		to_chat(user, "<span class='notice'>You carefully pry \the [amplifier] from \the [src].</span>")
 		var/obj/item/bluespace_crystal/C=amplifier
 		C.forceMove(get_turf(src))

@@ -146,9 +146,9 @@
 
 #define iscoin(A) is_type_in_list(A, list(/obj/item/weapon/coin, /obj/item/weapon/reagent_containers/food/snacks/chococoin))
 
-#define iswirecutter(A) istype(A, /obj/item/weapon/wirecutters)
+//#define iswirecutter(A) istype(A, /obj/item/weapon/wirecutters)
 
-#define iswiretool(A) (iswirecutter(A) || ismultitool(A) || issignaler(A))
+#define iswiretool(A, B) (A.is_wirecutter(B) || ismultitool(A) || issignaler(A))
 
 #define isbikehorn(A) istype(A, /obj/item/weapon/bikehorn)
 
@@ -160,7 +160,7 @@
 
 #define ismultitool(A) istype(A, /obj/item/device/multitool)
 
-#define iscrowbar(A) istype(A, /obj/item/weapon/crowbar)
+//#define iscrowbar(A) istype(A, /obj/item/weapon/crowbar)
 
 #define issolder(A) istype(A, /obj/item/weapon/solder)
 

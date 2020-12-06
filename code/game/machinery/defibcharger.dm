@@ -104,7 +104,7 @@ obj/machinery/recharger/defibcharger/wallcharger/attackby(obj/item/weapon/G as o
 			use_power = 2
 			update_icon()
 			has_beeped = FALSE
-	else if (G.is_screwdriver(user) || iscrowbar(G))
+	else if (G.is_screwdriver(user) || G.is_crowbar(user))
 		..()
 	else
 		to_chat(user, "<span class='warning'>\The [G] isn't a defibrillator, it won't fit!</span>")

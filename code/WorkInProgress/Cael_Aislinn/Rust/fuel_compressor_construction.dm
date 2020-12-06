@@ -43,13 +43,13 @@
 
 	if (istype(user, /mob/living/silicon) && get_dist(src,user)>1)
 		return src.attack_hand(user)
-	if (iscrowbar(W))
+	if (W.is_crowbar(user))
 		if(opened)
 			if(has_electronics & 1)
-				playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+				playsound(src, W.usesound, 50, 1)
 				to_chat(user, "You begin removing the circuitboard")//lpeters - fixed grammar issues
 
-				if(do_after(user, src, 50))
+				if(do_after(user, src, 50 * W.toolspeed))
 					user.visible_message(\
 						"<span class='warning'>[user.name] has removed the circuitboard from [src.name]!</span>",\
 						"<span class='notice'>You remove the circuitboard board.</span>")
@@ -101,8 +101,8 @@
 			to_chat(user, "<span class='warning'>You need more wires.</span>")
 			return
 		to_chat(user, "You start adding cables to the compressor frame...")
-		playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-		if(do_after(user, src, 20) && C.amount >= 10)
+		playsound(src, C.usesound, 50, 1)
+		if(do_after(user, src, 20 * C.toolspeed) && C.amount >= 10)
 			C.use(10)
 			user.visible_message(\
 				"<span class='warning'>[user.name] has added cables to the compressor frame!</span>",\
@@ -110,10 +110,11 @@
 			has_electronics &= 2
 		return
 
-	else if (iswirecutter(W) && opened && (has_electronics & 2))
+//	else if (iswirecutter(W) && opened && (has_electronics & 2))
+	else if (W.is_wirecutter(user) && opened && (has_electronics & 2))
 		to_chat(user, "You begin to cut the cables...")
 		playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-		if(do_after(user, src, 50))
+		if(do_after(user, src, 50 * W.toolspeed))
 			new /obj/item/stack/cable_coil(loc,10)
 			user.visible_message(\
 				"<span class='warning'>[user.name] cuts the cabling inside the compressor.</span>",\
@@ -123,7 +124,7 @@
 
 	else if (istype(W, /obj/item/weapon/module/rust_fuel_compressor) && opened && !(has_electronics & 1))
 		to_chat(user, "You try to insert the circuitboard into the frame...")
-		playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
+		playsound(src, W.usesound, 50, 1)
 		if(do_after(user, src, 10))
 			has_electronics &= 1
 			to_chat(user, "You place the circuitboard inside the frame.")

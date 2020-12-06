@@ -11,6 +11,8 @@
 
 	req_access = list(access_engine_equip)
 
+	usesound = 'sound/items/Screwdriver.ogg'
+
 	var/list/conf_access = null
 	var/one_access = 0 //if set to 1, door would receive req_one_access instead of req_access
 	var/last_configurator = null
@@ -30,9 +32,9 @@
 		if(icon_state == "door_electronics_smoked")
 			if(!S.remove_fuel(4,user))
 				return
-			playsound(loc, 'sound/items/Welder.ogg', 100, 1)
-			if(do_after(user, src,40))
-				playsound(loc, 'sound/items/Welder.ogg', 100, 1)
+			playsound(loc, S.usesound, 100, 1)
+			if(do_after(user, src,40 * S.toolspeed))
+				playsound(loc, S.usesound, 100, 1)
 				icon_state = "door_electronics"
 				to_chat(user, "<span class='notice'>You repair the blown fuses on the circuitboard.</span>")
 

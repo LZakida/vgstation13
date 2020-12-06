@@ -292,7 +292,7 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 
 		last_act = world.time
 
-		playsound(user, P.drill_sound, 20, 1)
+		playsound(user, P.usesound, 20, 1)
 
 		var/fail_message = ""
 		//handle any archaeological finds we might uncover
@@ -635,7 +635,7 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 		playsound(src, 'sound/effects/rustle1.ogg', 50, 1) //russle sounds sounded better
 
 		if(do_after(user, src, used_digging.digspeed) && user) //the better the drill, the faster the digging
-			playsound(src, 'sound/items/shovel.ogg', 50, 1)
+			playsound(src, used_digging.usesound, 50, 1)
 			to_chat(user, "<span class='notice'>You dug a hole.</span>")
 			gets_dug()
 
@@ -735,7 +735,7 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 		to_chat(user, "<span class='rose'>You start digging.<span>")
 		playsound(src, 'sound/effects/rustle1.ogg', 50, 1) //russle sounds sounded better
 		if(do_after(user, src, used_digging.digspeed) && user) //the better the drill, the faster the digging
-			playsound(src, 'sound/items/shovel.ogg', 50, 1)
+			playsound(src, used_digging.usesound, 50, 1)
 			to_chat(user, "<span class='notice'>You dug a hole.</span>")
 			gets_dug()
 	else

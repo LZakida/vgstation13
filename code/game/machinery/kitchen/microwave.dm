@@ -92,7 +92,7 @@
 				"<span class='notice'>[user] starts to fix part of the microwave.</span>", \
 				"<span class='notice'>You start to fix part of the microwave.</span>" \
 			)
-			if (do_after(user, src,20))
+			if (do_after(user, src,20 * O.toolspeed))
 				user.visible_message( \
 					"<span class='notice'>[user] fixes part of the microwave.</span>", \
 					"<span class='notice'>You have fixed part of the microwave.</span>" \
@@ -103,7 +103,7 @@
 				"<span class='notice'>[user] starts to fix part of the microwave.</span>", \
 				"<span class='notice'>You start to fix part of the microwave.</span>" \
 			)
-			if (do_after(user, src,20))
+			if (do_after(user, src,20 * O.toolspeed))
 				user.visible_message( \
 					"<span class='notice'>[user] fixes the microwave.</span>", \
 					"<span class='notice'>You have fixed the microwave.</span>" \

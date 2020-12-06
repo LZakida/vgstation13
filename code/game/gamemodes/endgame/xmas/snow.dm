@@ -279,7 +279,7 @@ var/list/snowsound = list('sound/misc/snow1.ogg', 'sound/misc/snow2.ogg', 'sound
 
 /obj/item/stack/sheet/snow/emag_act(mob/user)
 	to_chat(user, "<span class='warning'>You slide the emag across the snowball. Holy fuck. You are probably the most stupid person you've ever met.</span>")
-	
+
 /obj/item/stack/sheet/snow/proc/remove_snowball()
 	if(src && (src.loc == spawn_loc) && istype(src.loc,/turf))
 		qdel(src)
@@ -348,7 +348,7 @@ var/global/list/datum/stack_recipe/snow_recipes = list (
 	if (istype(W, /obj/item/stack/sheet/snow))
 		if (src.health < src.maxhealth)
 			visible_message("<span class='warning'>[user] begins to repair the [src]!</span>")
-			if(do_after(user, src, 20))
+			if(do_after(user, src, 20 * W.toolspeed))
 				src.health = src.maxhealth
 				W:use(1)
 				visible_message("<span class='warning'>[user] repairs the [src]</span>")

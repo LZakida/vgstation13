@@ -179,7 +179,7 @@
 			if (istext(glass))
 				user.visible_message("[user] welds the [glass] plating off the airlock assembly.", "You start to weld the [glass] plating off the airlock assembly.")
 
-				if (do_after(user, src, 40))
+				if (do_after(user, src, 40 * WT.toolspeed))
 					if (!src || !WT.isOn())
 						busy = FALSE
 						return
@@ -193,7 +193,7 @@
 			else if (glass == 1)
 				user.visible_message("[user] welds the glass panel out of the airlock assembly.", "You start to weld the glass panel out of the airlock assembly.")
 
-				if (do_after(user, src, 40))
+				if (do_after(user, src, 40 * WT.toolspeed))
 					if (!src || !WT.isOn())
 						busy = FALSE
 						return
@@ -204,7 +204,7 @@
 			else if (!anchored)
 				user.visible_message("[user] dissassembles the airlock assembly.", "You start to dissassemble the airlock assembly.")
 
-				if (do_after(user, src, 40))
+				if (do_after(user, src, 40 * WT.toolspeed))
 					if (!src || !WT.isOn())
 						busy = FALSE
 						return
@@ -222,13 +222,13 @@
 			return
 	else if(W.is_wrench(user) && state == 0)
 		busy = 1
-		playsound(src, 'sound/items/Ratchet.ogg', 100, 1)
+		playsound(src, W.usesound, 100, 1)
 		if(anchored)
 			user.visible_message("[user] unsecures the airlock assembly from the floor.", "You start to unsecure the airlock assembly from the floor.")
 		else
 			user.visible_message("[user] secures the airlock assembly to the floor.", "You start to secure the airlock assembly to the floor.")
 
-		if(do_after(user, src, 40))
+		if(do_after(user, src, 40 * W.toolspeed))
 			if(!src)
 				return
 			to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured the airlock assembly!</span>")
@@ -239,7 +239,7 @@
 		busy = 1
 		var/obj/item/stack/cable_coil/coil = W
 		user.visible_message("[user] wires the airlock assembly.", "You start to wire the airlock assembly.")
-		if(do_after(user, src, 40))
+		if(do_after(user, src, 40 * W.toolspeed))
 			if(!src)
 				return
 			coil.use(1)
@@ -247,12 +247,13 @@
 			to_chat(user, "<span class='notice'>You wire the Airlock!</span>")
 		busy = 0
 
-	else if(iswirecutter(W) && state == 1 )
+//	else if(iswirecutter(W) && state == 1 )
+	else if(W.is_wirecutter(user) && state == 1 )
 		busy = 1
-		playsound(src, 'sound/items/Wirecutter.ogg', 100, 1)
+		playsound(src, W.usesound, 100, 1)
 		user.visible_message("[user] cuts the wires from the airlock assembly.", "You start to cut the wires from airlock assembly.")
 
-		if(do_after(user, src, 40))
+		if(do_after(user, src, 40 * W.toolspeed))
 			if(!src)
 				return
 			to_chat(user, "<span class='notice'>You cut the airlock wires.!</span>")
@@ -262,7 +263,7 @@
 
 	else if(istype(W, /obj/item/weapon/circuitboard/airlock) && state == 1 && W:icon_state != "door_electronics_smoked")
 		busy = 1
-		playsound(src, 'sound/items/Screwdriver.ogg', 100, 1)
+		playsound(src, W.usesound, 100, 1)
 		user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 		user.drop_item(W, src, force_drop = 1)
 
@@ -279,12 +280,12 @@
 			W.forceMove(src.loc)
 		busy = 0
 
-	else if(iscrowbar(W) && state == 2 )
+	else if(W.is_crowbar(user) && state == 2 )
 		busy = 1
-		playsound(src, 'sound/items/Crowbar.ogg', 100, 1)
+		playsound(src, W.usesound, 100, 1)
 		user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to install electronics into the airlock assembly.")
 
-		if(do_after(user, src, 40))
+		if(do_after(user, src, 40 * W.toolspeed))
 			if(!src)
 				return
 			to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
@@ -325,10 +326,10 @@
 
 	else if(W.is_screwdriver(user) && state == 2 )
 		busy = 1
-		playsound(src, 'sound/items/Screwdriver.ogg', 100, 1)
+		playsound(src, W.usesound, 100, 1)
 		to_chat(user, "<span class='notice'>Now finishing the airlock.</span>")
 
-		if(do_after(user, src, 40))
+		if(do_after(user, src, 40 * W.toolspeed))
 			if(!src)
 				return
 			to_chat(user, "<span class='notice'>You finish the airlock!</span>")

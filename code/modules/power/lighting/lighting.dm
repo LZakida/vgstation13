@@ -34,9 +34,9 @@
 	src.add_fingerprint(user)
 	if (W.is_wrench(user))
 		if (src.stage == 1)
-			playsound(src, 'sound/items/Ratchet.ogg', 75, 1)
+			playsound(src, W.usesound, 75, 1)
 			to_chat(usr, "You begin deconstructing [src].")
-			if (!do_after(usr, src, 30))
+			if (!do_after(usr, src, 30 * W.toolspeed))
 				return
 			var/obj/item/stack/sheet/metal/M = getFromPool(/obj/item/stack/sheet/metal, get_turf(src))
 			M.amount = sheets_refunded
@@ -363,8 +363,9 @@ var/global/list/obj/machinery/light/alllights = list()
 			to_chat(user, "You hit the light!")
 	// attempt to deconstruct / stick weapon into light socket
 	else if(!current_bulb)
-		if(iswirecutter(W)) //If it's a wirecutter take out the wires
-			playsound(src, 'sound/items/Wirecutter.ogg', 75, 1)
+//		if(iswirecutter(W)) //If it's a wirecutter take out the wires
+		if(W.is_wirecutter(user)) //If it's a wirecutter take out the wires
+			playsound(src, W.usesound, 75, 1)
 			user.visible_message("[user.name] removes \the [src]'s wires.", \
 				"You remove \the [src]'s wires.", "You hear a noise.")
 			var/obj/machinery/light_construct/newlight = null

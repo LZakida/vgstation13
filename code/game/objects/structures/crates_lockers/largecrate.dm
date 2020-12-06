@@ -11,7 +11,7 @@
 	return
 
 /obj/structure/largecrate/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		new /obj/item/stack/sheet/wood(src)
 		var/turf/T = get_turf(src)
 		for(var/obj/O in contents)
@@ -34,7 +34,7 @@
 /obj/structure/largecrate/showers
 
 /obj/structure/largecrate/lisa/attackby(obj/item/weapon/W as obj, mob/user as mob)	//ugly but oh well
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		new /mob/living/simple_animal/corgi/Lisa(loc)
 	..()
 
@@ -43,7 +43,7 @@
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/cow/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		new /mob/living/simple_animal/cow(loc)
 	..()
 
@@ -52,7 +52,7 @@
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/goat/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		new /mob/living/simple_animal/hostile/retaliate/goat(loc)
 	..()
 
@@ -61,21 +61,21 @@
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/chick/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		var/num = rand(4, 6)
 		for(var/i = 0, i < num, i++)
 			new /mob/living/simple_animal/chick(loc)
 	..()
 
 /obj/structure/largecrate/hissing/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		var/num = rand(2, 4)
 		for(var/i = 1 to num)
 			new /mob/living/simple_animal/hostile/lizard(loc)
 	..()
 
 /obj/structure/largecrate/porcelain/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		var/obj/structure/toilet/T = new (loc)
 		T.anchored = 0
 		var/obj/structure/sink/S = new (loc)
@@ -83,7 +83,7 @@
 	..()
 
 /obj/structure/largecrate/showers/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		for(var/i = 0, i < 2, i++)
 			var/obj/machinery/shower/S = new (loc)
 			S.anchored = 0
@@ -95,7 +95,7 @@
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/skele_stand/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		new /obj/structure/skele_stand(loc)
 	..()
 
@@ -104,7 +104,7 @@
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/anomaly_container/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		new /obj/structure/anomaly_container(loc)
 	..()
 
@@ -112,6 +112,6 @@
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/cat/attackby(obj/item/weapon/W, mob/user)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		new /mob/living/simple_animal/cat/Proc(loc)
 	..()

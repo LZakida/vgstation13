@@ -268,10 +268,10 @@
 		if(n_name && Adjacent(user) && !user.stat)
 			name = "[n_name]"
 		return
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		to_chat(user, "You begin prying \the [src] off the wall.")
 		playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-		if(do_after(user, src,10))
+		if(do_after(user, src,10 * W.toolspeed))
 			to_chat(user, "<span class='notice'>You pry the button off of the wall.</span>")
 			var/obj/item/mounted/frame/driver_button/signaler_button/I = new (get_turf(user))
 			I.code = src.code

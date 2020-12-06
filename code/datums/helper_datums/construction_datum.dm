@@ -75,20 +75,13 @@
 	if(iswelder(used_atom))
 		playsound(holder, 'sound/items/Welder2.ogg', 50, 1)
 
-	else if(used_atom.is_wrench(user))
-		playsound(holder, 'sound/items/Ratchet.ogg', 50, 1)
-
-	else if(used_atom.is_screwdriver(user))
-		playsound(holder, 'sound/items/Screwdriver.ogg', 50, 1)
-
-	else if(iswirecutter(used_atom))
-		playsound(holder, 'sound/items/Wirecutter.ogg', 50, 1)
-
-	else if(istype(used_atom,/obj/item/weapon/circuitboard))
-		playsound(holder, 'sound/items/Deconstruct.ogg', 50, 1)
 
 	else if(iscablecoil(used_atom))
 		playsound(holder, 'sound/items/zip.ogg', 50, 1)
+
+
+	else
+		playsound(holder, used_atom.usesound, 50, 1)
 
 	construct_message(step, user)
 	return 1
@@ -143,7 +136,9 @@
 	holder.desc = step[Co_DESC]
 	return
 
-/datum/construction/proc/try_consume(mob/user as mob, atom/movable/used_atom, given_step)
+//datum/construction/proc/try_consume(mob/user as mob, atom/movable/used_atom, given_step)
+/datum/construction/proc/try_consume(mob/user as mob, obj/item/used_atom, given_step)
+
 	if(used_atom.construction_delay_mult && !used_atom.construction_delay_mult[Co_CON_SPEED])
 		to_chat(user, "<span class='warning'>This tool only works for deconstruction!</span>")//It doesn't technically have to be a tool to cause this message, but it wouldn't make sense for anything else to do so.
 
@@ -161,7 +156,7 @@
 			delay = given_step[Co_DELAY]
 	if(delay > 0)
 		start_construct_message(given_step, user, used_atom)
-		if(!do_after(user, src.holder, delay, needhand = 1))
+		if(!do_after(user, src.holder, delay * used_atom.toolspeed, needhand = 1))
 			return 0
 
 	var/amount = 0
@@ -302,7 +297,7 @@
 			replacetext(text, this_verb, final_verb)
 		*/
 
-/datum/construction/reversible/try_consume(mob/user as mob, atom/movable/used_atom, given_step, index, diff)
+/datum/construction/reversible/try_consume(mob/user as mob, var/obj/item/used_atom, given_step, index, diff)
 	//if we've made some progress on a step, we want to drop it
 	var/current_step = (diff == BACKWARD ? get_forward_step(index) : get_backward_step(index))
 	if(used_atom.construction_delay_mult && !used_atom.construction_delay_mult[diff == FORWARD ? Co_CON_SPEED : Co_DECON_SPEED])
@@ -334,7 +329,7 @@
 			delay = given_step[Co_DELAY]
 	if(delay > 0)
 		start_construct_message(given_step, user, used_atom)
-		if(!do_after(user, src.holder, delay, needhand = 1))
+		if(!do_after(user, src.holder, delay * used_atom.toolspeed, needhand = 1))
 			return 0
 
 	var/amount = 0

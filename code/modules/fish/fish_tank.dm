@@ -691,8 +691,8 @@
 	if(O.is_wrench(user))
 		if (water_level == 0)
 			to_chat(user, "<span class='notice'>Now disassembling \the [src].</span>")
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
-			if(do_after(user,50, target = src))
+			playsound(src.loc, O.usesound, 50, 1)
+			if(do_after(user,50 * O.toolspeed, target = src))
 				destroy(1)
 		else
 			to_chat(user, "<span class='warning'>\The [src] must be empty before you disassemble it!</span>")

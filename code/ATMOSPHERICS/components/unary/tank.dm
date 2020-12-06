@@ -177,7 +177,7 @@
 	if (istype(W, /obj/item/device/analyzer) && get_dist(user, src) <= 1)
 		var/obj/item/device/analyzer/analyzer = W
 		user.show_message(analyzer.output_gas_scan(air_contents, src, 0), 1)
-	
+
 	//deconstruction
 	if(iswelder(W) && !anchored)
 		var/obj/item/weapon/weldingtool/WT = W
@@ -186,7 +186,7 @@
 		playsound(src, 'sound/items/Welder2.ogg', 100, 1)
 		user.visible_message("<span class='notice'>[user] starts disassembling \the [src].</span>", \
 							"<span class='notice'>You start disassembling \the [src].</span>")
-		if(do_after(user, src, 40))
+		if(do_after(user, src, 40 * W.toolspeed))
 			user.visible_message("<span class='warning'>[user] dissasembles \the [src].</span>", \
 			"<span class='notice'>You dissasemble \the [src].</span>")
 			//getFromPool(/obj/item/stack/sheet/metal, get_turf(src), 5)

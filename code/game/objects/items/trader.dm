@@ -403,7 +403,7 @@
 	if(!allowed(user))
 		to_chat(user,"<span class='warning'>\The [src]'s secure bolting system flashes hostily.</span>")
 		//Not using elseif here because we want it to continue to attack_hand
-	if(iscrowbar(W) && allowed(user))
+	if(W.is_crowbar(user) && allowed(user))
 		new /obj/item/stack/sheet/metal(src)
 		var/turf/T = get_turf(src)
 		if(bonus_path)

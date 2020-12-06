@@ -98,7 +98,8 @@
 				to_chat(user, "You failed to salvage anything valuable from [src].")
 		else
 			return
-	if(iswirecutter(W))
+//	if(iswirecutter(W))
+	if(W.is_wirecutter(user))
 		if(isemptylist(wirecutters_salvage))
 			to_chat(user, "You don't see anything that can be cut with [W].")
 			return
@@ -110,7 +111,7 @@
 			check_salvage(user)
 		else
 			to_chat(user, "You failed to salvage anything valuable from [src].")
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		if(!isemptylist(crowbar_salvage))
 			var/obj/S = pick(crowbar_salvage)
 			if(S)

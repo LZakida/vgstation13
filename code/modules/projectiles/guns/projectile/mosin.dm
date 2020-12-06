@@ -69,7 +69,7 @@
 		if(getAmmo())
 			user.visible_message("<span class='danger'>Take the ammo out first.</span>", "<span class='danger'>You need to take the ammo out first.</span>")
 			return
-		if(do_after(user, src, 30))
+		if(do_after(user, src, 30 * A.toolspeed))
 			var/obj/item/weapon/gun/projectile/mosin/obrez/newObrez = new /obj/item/weapon/gun/projectile/mosin/obrez(get_turf(src))
 			for(var/obj/item/ammo_casing/AC in newObrez.loaded)
 				newObrez.loaded -= AC

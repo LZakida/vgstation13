@@ -465,7 +465,7 @@ var/global/num_vending_terminals = 1
 			to_chat(user, "<span class='notice'>You slot some cardboard into \the [src].</span>")
 			cardboard = 1
 			src.updateUsrDialog()
-	if(iswiretool(W))
+	if(iswiretool(W, user))
 		if(panel_open)
 			attack_hand(user)
 		return
@@ -1742,13 +1742,13 @@ var/global/num_vending_terminals = 1
 	..()
 	component_parts = 0
 
-/obj/machinery/vending/wallmed1/crowbarDestroy(mob/user)
+/obj/machinery/vending/wallmed1/crowbarDestroy(mob/user, var/obj/item/weapon/crowbar/C)
 	user.visible_message(	"[user] begins to pry out the NanoMed from the wall.",
 							"You begin to pry out the NanoMed from the wall...")
-	if(do_after(user, src, 40))
+	if(do_after(user, src, C.toolspeed * 40))
 		user.visible_message(	"[user] detaches the NanoMed from the wall.",
 								"You detach the NanoMed from the wall.")
-		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+		playsound(src, C.usesound, 50, 1)
 		new /obj/item/mounted/frame/wallmed(src.loc)
 
 		for(var/obj/I in src)
@@ -1760,13 +1760,13 @@ var/global/num_vending_terminals = 1
 		return 1
 	return -1
 
-/obj/machinery/vending/wallmed2/crowbarDestroy(mob/user)
+/obj/machinery/vending/wallmed2/crowbarDestroy(mob/user, var/obj/item/weapon/crowbar/C)
 	user.visible_message(	"[user] begins to pry out the NanoMed from the wall.",
 							"You begin to pry out the NanoMed from the wall...")
-	if(do_after(user, src, 40))
+	if(do_after(user, src, 40 * C.toolspeed))
 		user.visible_message(	"[user] detaches the NanoMed from the wall.",
 								"You detach the NanoMed from the wall.")
-		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+		playsound(src, C.usesound, 50, 1)
 		new /obj/item/mounted/frame/wallmed(src.loc)
 
 		for(var/obj/I in src)
@@ -1807,9 +1807,9 @@ var/global/num_vending_terminals = 1
 		if(0) // Empty hull
 			if(W.is_screwdriver(user))
 				to_chat(usr, "You begin removing screws from \the [src] backplate...")
-				if(do_after(user, src, 50))
+				if(do_after(user, src, 50 * W.toolspeed))
 					to_chat(usr, "<span class='notice'>You unscrew \the [src] from the wall.</span>")
-					playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+					playsound(src, W.usesound, 50, 1)
 					new /obj/item/mounted/frame/wallmed(get_turf(src))
 					qdel(src)
 				return 1
@@ -1819,7 +1819,7 @@ var/global/num_vending_terminals = 1
 					to_chat(user, "<span class='warning'>You cannot install this type of board into a NanoMed frame.</span>")
 					return
 				to_chat(usr, "You begin to insert \the [C] into \the [src].")
-				if(do_after(user, src, 10))
+				if(do_after(user, src, 10 * W.toolspeed))
 					if(user.drop_item(C, src))
 						to_chat(usr, "<span class='notice'>You secure \the [C]!</span>")
 						_circuitboard=C
@@ -1828,9 +1828,9 @@ var/global/num_vending_terminals = 1
 						update_icon()
 				return 1
 		if(1) // Circuitboard installed
-			if(iscrowbar(W))
+			if(W.is_crowbar(user))
 				to_chat(usr, "You begin to pry out \the [W] into \the [src].")
-				if(do_after(user, src, 10))
+				if(do_after(user, src, 10 * W.toolspeed))
 					playsound(src, 'sound/effects/pop.ogg', 50, 0)
 					build--
 					update_icon()
@@ -1848,8 +1848,8 @@ var/global/num_vending_terminals = 1
 			if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/C=W
 				to_chat(user, "You start adding cables to \the [src]...")
-				playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-				if(do_after(user, src, 20) && C.amount >= 5)
+				playsound(src, C.usesound, 50, 1)
+				if(do_after(user, src, 20 * W.toolspeed) && C.amount >= 5)
 					C.use(5)
 					build++
 					update_icon()
@@ -1857,9 +1857,10 @@ var/global/num_vending_terminals = 1
 						"<span class='warning'>[user.name] has added cables to \the [src]!</span>",\
 						"You add cables to \the [src].")
 		if(2) // Circuitboard installed, wired.
-			if(iswirecutter(W))
+//			if(iswirecutter(W))
+			if(W.is_wirecutter(user))
 				to_chat(usr, "You begin to remove the wiring from \the [src].")
-				if(do_after(user, src, 50))
+				if(do_after(user, src, 50 * W.toolspeed))
 					new /obj/item/stack/cable_coil(loc,5)
 					user.visible_message(\
 						"<span class='warning'>[user.name] cut the cables.</span>",\
@@ -1869,8 +1870,8 @@ var/global/num_vending_terminals = 1
 				return 1
 			if(W.is_screwdriver(user))
 				to_chat(user, "You begin to complete \the [src]...")
-				playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-				if(do_after(user, src, 20))
+				playsound(src, W.usesound, 50, 1)
+				if(do_after(user, src, 20 * W.toolspeed))
 					if(!_circuitboard)
 						_circuitboard=new boardtype(src)
 					build++
@@ -1882,8 +1883,8 @@ var/global/num_vending_terminals = 1
 		if(3) // Waiting for a recharge pack
 			if(W.is_screwdriver(user))
 				to_chat(user, "You begin to unscrew \the [src]...")
-				playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-				if(do_after(user, src, 30))
+				playsound(src, W.usesound, 50, 1)
+				if(do_after(user, src, 30 * W.toolspeed))
 					build--
 					update_icon()
 				return 1

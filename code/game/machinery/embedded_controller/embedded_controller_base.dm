@@ -39,9 +39,9 @@
 			if(0) // Empty hull
 				if(W.is_screwdriver(user))
 					to_chat(usr, "You begin removing screws from \the [src] backplate...")
-					if(do_after(user, src, 50))
+					if(do_after(user, src, 50 * W.toolspeed))
 						to_chat(usr, "<span class='notice'>You unscrew \the [src] from the wall.</span>")
-						playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+						playsound(src, W.usesound, 50, 1)
 						new /obj/item/mounted/frame/airlock_controller(get_turf(src))
 						qdel(src)
 					return 1
@@ -60,9 +60,9 @@
 							update_icon()
 					return 1
 			if(1) // Circuitboard installed
-				if(iscrowbar(W))
+				if(W.is_crowbar(user))
 					to_chat(usr, "You begin to pry out \the [W] into \the [src].")
-					if(do_after(user, src, 10))
+					if(do_after(user, src, 10 * W.toolspeed))
 						playsound(src, 'sound/effects/pop.ogg', 50, 0)
 						build--
 						update_icon()
@@ -80,8 +80,8 @@
 				if(istype(W, /obj/item/stack/cable_coil))
 					var/obj/item/stack/cable_coil/C=W
 					to_chat(user, "You start adding cables to \the [src]...")
-					playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-					if(do_after(user, src, 20) && C.amount >= 10)
+					playsound(src, C.usesound, 50, 1)
+					if(do_after(user, src, 20 * C.toolspeed) && C.amount >= 10)
 						C.use(5)
 						build++
 						update_icon()
@@ -89,9 +89,10 @@
 							"<span class='warning'>[user.name] has added cables to \the [src]!</span>",\
 							"You add cables to \the [src].")
 			if(2) // Circuitboard installed, wired.
-				if(iswirecutter(W))
+//				if(iswirecutter(W))
+				if(W.is_wirecutter(user))
 					to_chat(usr, "You begin to remove the wiring from \the [src].")
-					if(do_after(user, src, 50))
+					if(do_after(user, src, 50 * W.toolspeed))
 						new /obj/item/stack/cable_coil(loc,5)
 						user.visible_message(\
 							"<span class='warning'>[user.name] cut the cables.</span>",\
@@ -101,8 +102,8 @@
 					return 1
 				if(W.is_screwdriver(user))
 					to_chat(user, "You begin to complete \the [src]...")
-					playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-					if(do_after(user, src, 20))
+					playsound(src, W.usesound, 50, 1)
+					if(do_after(user, src, 20 * W.toolspeed))
 						if(!_circuitboard)
 							_circuitboard=new boardtype(src)
 						var/obj/machinery/embedded_controller/EC=new _circuitboard.build_path(get_turf(src))

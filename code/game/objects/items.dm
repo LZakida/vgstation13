@@ -47,7 +47,7 @@
 	var/obj/item/device/uplink/hidden/hidden_uplink = null // All items can have an uplink hidden inside, just remember to add the triggers.
 	var/icon_override = null  //Used to override hardcoded clothing dmis in human clothing proc.
 	var/list/species_fit = null //This object has a different appearance when worn by these species
-	var/surgery_speed = 1 //When this item is used as a surgery tool, multiply the delay of the surgery step by this much.
+//	var/surgery_speed = 1 //When this item is used as a surgery tool, multiply the delay of the surgery step by this much.
 	var/nonplant_seed_type
 
 	var/list/attack_verb // used in attack() to say how something was attacked "[x] [z.attack_verb] [y] with [z]". Present tense.
@@ -70,6 +70,10 @@
 	var/list/datum/disease2/disease/virus2 = list()
 	var/sterility = 0// 0 to 100. increase chances of preventing disease spread.
 	var/image/pathogen
+	//Tool variables
+	var/toolspeed = 1
+	var/usesound = null
+
 
 /obj/item/proc/return_thermal_protection()
 	return return_cover_protection(body_parts_covered) * (1 - heat_conductivity)
@@ -1435,6 +1439,12 @@ var/global/list/image/blood_overlays = list()
 /obj/item/proc/is_wrench(var/mob/user)
 	return FALSE
 
+/obj/item/proc/is_crowbar(var/mob/user)
+	return FALSE
+
+/obj/item/proc/is_wirecutter(var/mob/user)
+	return FALSE
+
 //This proc will be called when the person holding or equipping it talks.
 /obj/item/proc/affect_speech(var/datum/speech/speech, var/mob/living/L)
 	return
@@ -1482,3 +1492,6 @@ var/global/list/image/blood_overlays = list()
 				perp.infect_disease2(D, notes="(Contact, from picking up \a [src])")
 			else if (bleeding && (D.spread & SPREAD_BLOOD))//if we're covered with a blood-spreading disease, we may infect people with bleeding hands.
 				perp.infect_disease2(D, notes="(Blood, from picking up \a [src])")
+
+/obj/item/proc/pick_color()
+	return

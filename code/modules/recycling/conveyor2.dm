@@ -280,11 +280,13 @@
 	if(!isturf(over_location) || !Adjacent(user))
 		return
 	var/obj/O = user.get_active_hand()
-	if(iscrowbar(O))
-		update_dir(get_dir(src, over_location))
-		playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
-		to_chat(user, "You change the direction of \the [src] using \the [O].")
-		return
+	if(istype(O, /obj/item/))
+		var/obj/item/I = O
+		if(I.is_crowbar(user))
+			update_dir(get_dir(src, over_location))
+			playsound(src, I.usesound, 25, 1)
+			to_chat(user, "You change the direction of \the [src] using \the [O].")
+			return
 	return ..()
 
 /obj/machinery/conveyor/multitool_menu(var/mob/user,var/obj/item/device/multitool/P)
@@ -533,8 +535,8 @@
 		return .
 	if(W.is_wrench(user))
 		to_chat(user, "<span class='notice'>Deconstructing \the [src]...</span>")
-		playsound(src, 'sound/items/Ratchet.ogg', 100, 1)
-		if(do_after(user, src,50))
+		playsound(src, W.usesound, 100, 1)
+		if(do_after(user, src,50 * W.toolspeed))
 			to_chat(user, "<span class='notice'>You disassemble \the [src].</span>")
 			var/turf/T=get_turf(src)
 			new /obj/item/device/assembly/signaler(T)

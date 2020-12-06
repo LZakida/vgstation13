@@ -28,6 +28,7 @@
 	origin_tech = Tc_PROGRAMMING + "=2"
 	starting_materials = list(MAT_GLASS = 2000) // Recycle glass only
 	w_type = RECYK_ELECTRONIC
+	usesound = 'sound/items/Deconstruct.ogg'
 
 	var/id_tag = null
 	var/frequency = null
@@ -356,7 +357,7 @@
 		if(WT.remove_fuel(1,user))
 			var/obj/item/weapon/circuitboard/blank/B = new /obj/item/weapon/circuitboard/blank(src.loc)
 			to_chat(user, "<span class='notice'>You melt away the circuitry, leaving behind a blank.</span>")
-			playsound(B.loc, 'sound/items/Welder.ogg', 30, 1)
+			playsound(B.loc, WT.usesound, 30, 1)
 			if(user.get_inactive_hand() == src)
 				user.before_take_item(src)
 				user.put_in_hands(B)
@@ -388,7 +389,7 @@
 /obj/structure/computerframe/attackby(obj/item/P as obj, mob/user as mob)
 	switch(state)
 		if(0)
-			if(P.is_wrench(user) && wrenchAnchor(user))
+			if(P.is_wrench(user) && wrenchAnchor(user, P))
 				src.state = 1
 				return 1
 			if(iswelder(P))
@@ -397,14 +398,14 @@
 				if(WT.do_weld(user, src, 10, 0) && state == 0)
 					if(gcDestroyed)
 						return
-					playsound(src, 'sound/items/Welder.ogg', 50, 1)
+					playsound(src, WT.usesound, 50, 1)
 					user.visible_message("[user] welds the frame back into metal.", "You weld the frame back into metal.", "You hear welding.")
 					drop_stack(sheet_type, loc, 5, user)
 					state = -1
 					qdel(src)
 				return 1
 		if(1)
-			if(P.is_wrench(user) && wrenchAnchor(user))
+			if(P.is_wrench(user) && wrenchAnchor(user, P))
 				src.state = 0
 				return 1
 			if(istype(P, /obj/item/weapon/circuitboard) && !circuit)
@@ -413,7 +414,7 @@
 					if(!user.drop_item(B, src))
 						return
 
-					playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
+					playsound(src, B.usesound, 50, 1)
 					user.visible_message("[user] places \the [B] inside the frame.", "You place \the [B] inside the frame.", "You hear metallic sounds.")
 					src.icon_state = "1"
 					src.circuit = P
@@ -421,13 +422,13 @@
 					to_chat(user, "<span class='warning'>This frame does not accept circuit boards of this type!</span>")
 				return 1
 			if(P.is_screwdriver(user) && circuit)
-				playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+				playsound(src, P.usesound, 50, 1)
 				user.visible_message("[user] screws the circuit board into place.", "You screw the circuit board into place.", "You hear metallic sounds.")
 				src.state = 2
 				src.icon_state = "2"
 				return 1
-			if(iscrowbar(P) && circuit)
-				playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+			if(P.is_crowbar(user) && circuit)
+				playsound(src, P.usesound, 50, 1)
 				user.visible_message("[user] removes the circuit board.", "You remove the circuit board", "You hear metallic sounds.")
 				src.state = 1
 				src.icon_state = "0"
@@ -436,7 +437,7 @@
 				return 1
 		if(2)
 			if(P.is_screwdriver(user) && circuit)
-				playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+				playsound(src, P.usesound, 50, 1)
 				user.visible_message("[user] unfastens the circuit board.", "You unfasten the circuit board.", "You hear metallic sounds.")
 				src.state = 1
 				src.icon_state = "1"
@@ -447,8 +448,8 @@
 					to_chat(user, "<span class='warning'>You need at least 5 lengths of cable coil for this!</span>")
 					return 1
 				to_chat(user, "You begin to install wires into the frame.")
-				playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-				if (do_after(user, src, 20) && state == 2 && C.amount >= 5)
+				playsound(src, C.usesound, 50, 1)
+				if (do_after(user, src, 20 * C.toolspeed) && state == 2 && C.amount >= 5)
 					C.use(5)
 					user.visible_message("[user] installs wires into the frame.", "You install wires into the frame.", "You hear metallic sounds.")
 					src.state = 3
@@ -456,8 +457,9 @@
 
 				return 1
 		if(3)
-			if(iswirecutter(P))
-				playsound(src, 'sound/items/Wirecutter.ogg', 50, 1)
+//			if(iswirecutter(P))
+			if(P.is_wirecutter(user))
+				playsound(src, P.usesound, 50, 1)
 				user.visible_message("[user] unplugs the wires from the frame.", "You unplug the wires from the frame.", "You hear metallic sounds.")
 				src.state = 2
 				src.icon_state = "2"
@@ -479,15 +481,15 @@
 
 				return 1
 		if(4)
-			if(iscrowbar(P))
-				playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+			if(P.is_crowbar(user))
+				playsound(src, P.usesound, 50, 1)
 				user.visible_message("[user] removes the glass panel from the frame.", "You remove the glass panel from the frame.", "You hear metallic sounds.")
 				src.state = 3
 				src.icon_state = "3"
 				new /obj/item/stack/sheet/glass/glass( src.loc, 2 )
 				return 1
 			if(P.is_screwdriver(user))
-				playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+				playsound(src, P.usesound, 50, 1)
 				if(!circuit.build_path) // the board has been soldered away!
 					to_chat(user, "<span class='warning'>You connect the monitor, but nothing turns on!</span>")
 					return

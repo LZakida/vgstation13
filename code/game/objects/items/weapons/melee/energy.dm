@@ -267,7 +267,7 @@
 			sleep(1)
 
 /obj/item/weapon/melee/energy/sword/dualsaber/attackby(obj/item/I, mob/user)
-	if(I.is_screwdriver(user) && do_after(src, user, 1 SECONDS))
+	if(I.is_screwdriver(user) && do_after(src, user, 1 SECONDS * I.toolspeed))
 		to_chat(user, "<span class = 'notice'>You deconstruct \the [src] into its components.</span>")
 		for(var/obj/item/II in swords)
 			II.forceMove(get_turf(src))

@@ -125,16 +125,16 @@
 	qdel(connected)
 
 /obj/structure/morgue/attackby(obj/item/P, mob/user)
-	if(iscrowbar(P)&&!contents.len)
+	if(P.is_crowbar(user)&&!contents.len)
 		user.visible_message("<span class='notice'>\The [user] begins dismantling \the [src].</span>", "<span class='notice'>You begin dismantling \the [src].</span>")
-		if(do_after(user, src,50))
+		if(do_after(user, src,50 * P.toolspeed))
 			user.visible_message("<span class='notice'>\The [user] dismantles \the [src].</span>", "<span class='notice'>You dismantle \the [src].</span>")
 			playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
 			new /obj/structure/closet/body_bag(src.loc)
 			new /obj/item/stack/sheet/metal(src.loc,5)
 			qdel(src)
 	if(P.is_wrench(user))
-		playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(src, P.usesound, 50, 1)
 		if(dir==4)
 			dir=8
 		else

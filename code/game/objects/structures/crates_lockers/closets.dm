@@ -90,7 +90,7 @@
 	for(var/obj/structure/closet/closet in get_turf(src))
 		if(closet != src && !closet.wall_mounted)
 			return 0
-	
+
 	for(var/mob/living/carbon/carbon in src.loc)
 		if (carbon.mutual_handcuffs)
 			if (carbon.mutual_handcuffed_to.loc == src.loc || carbon.loc == src.loc)
@@ -218,7 +218,7 @@
 
 /obj/structure/closet/proc/add_lock(var/obj/item/weapon/circuitboard/airlock/E, var/mob/user)
 	if(has_lock_type && !electronics && E && E.icon_state != "door_electronics_smoked")
-		playsound(src, 'sound/items/Screwdriver.ogg', 100, 1)
+		playsound(src, E.usesound, 100, 1)
 		user.visible_message("[user] is installing electronics on \the [src].", "You start to install electronics into \the [src].")
 		if(do_after(user, src, 40))
 			var/obj/structure/closet/new_closet
@@ -247,11 +247,11 @@
 		to_chat(user, "<span class='notice'>There's no slot for the electronics</span>")
 
 
-/obj/structure/closet/proc/remove_lock(var/mob/user)
+/obj/structure/closet/proc/remove_lock(var/mob/user, /var/obj/item/weapon/screwdriver/S)
 	if(has_lockless_type)
-		playsound(src, 'sound/items/Screwdriver.ogg', 100, 1)
+		playsound(src, S.usesound, 100, 1)
 		user.visible_message("[user] is removing \the [src]'s electronics.", "You start removing \the [src]'s electronics.")
-		if(do_after(user, src, 40))
+		if(do_after(user, src, 40 * S.toolspeed))
 			var/obj/structure/closet/new_closet
 			new_closet = change_type(has_lockless_type)
 

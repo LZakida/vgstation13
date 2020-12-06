@@ -60,7 +60,7 @@ var/list/smes_list = list()
 	initialize()
 
 /obj/machinery/power/battery/smes/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
-	if(iscrowbar(W) && panel_open && terminal)
+	if(W.is_crowbar(user) && panel_open && terminal)
 		to_chat(user, "<span class='warning'>You must first cut the terminal from the SMES!</span>")
 		return 1
 	if(..())
@@ -82,14 +82,15 @@ var/list/smes_list = list()
 					"You made a terminal for the SMES.")
 				src.stat = 0
 				return 1
-		else if(iswirecutter(W) && terminal)
+//		else if(iswirecutter(W) && terminal)
+		else if(W.is_wirecutter(user) && terminal)
 			var/turf/T = get_turf(terminal)
 			if(T.intact)
 				to_chat(user, "<span class='warning'>You must remove the floor plating in front of the SMES first.</span>")
 				return
 			to_chat(user, "You begin to dismantle the SMES terminal...")
 			playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-			if (do_after(user, src, 50) && panel_open && terminal && !T.intact)
+			if (do_after(user, src, 50 * W.toolspeed) && panel_open && terminal && !T.intact)
 				if (prob(50) && electrocute_mob(usr, terminal.get_powernet(), terminal))
 					spark(src, 5)
 					return

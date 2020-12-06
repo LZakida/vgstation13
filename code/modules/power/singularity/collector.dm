@@ -69,7 +69,7 @@ var/global/list/rad_collectors = list()
 		if(user.drop_item(W, src))
 			src.P = W
 			update_icons()
-	else if(iscrowbar(W))
+	else if(W.is_crowbar(user))
 		if(P && !src.locked)
 			eject()
 			return 1

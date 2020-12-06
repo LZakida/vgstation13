@@ -110,8 +110,8 @@
 			return
 	else if(W.is_wrench(user))
 		user.visible_message("<span class='notice'>[user] begins to [anchored? "unfasten" : "fasten"] \the [src].</span>", "<span class='notice'>You begin to [anchored? "unfasten" : "fasten"] \the [src].</span>", "<span class='notice'>You hear a ratchet.</span>")
-		playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
-		if(do_after(user, src, 30))
+		playsound(src, W.usesound, 50, 1)
+		if(do_after(user, src, 30 * W.toolspeed))
 			user.visible_message("<span class='notice'>[user] begins to [anchored? "unfasten" : "fasten"] \the [src].</span>", "<span class='notice'>You [anchored? "unfasten" : "fasten"] \the [src].</span>", "<span class='notice'>You hear a ratchet.</span>")
 			if(anchored)
 				src.anchored = 0

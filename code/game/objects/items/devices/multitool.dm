@@ -20,6 +20,7 @@
 	throw_range				= 15
 	throw_speed				= 3
 	attack_delay			= 5
+	toolspeed = 1
 	starting_materials		= list(MAT_IRON = 50, MAT_GLASS = 20)
 	w_type					= RECYK_ELECTRONIC
 	melt_temperature		= MELTPOINT_SILICON
@@ -202,6 +203,22 @@ obj/item/device/multitool/ai_detect/examine(mob/user)
 			to_chat(usr, "<span class='info'>\The [src] is now fully charged.</span>")
 
 ////////////////////////////////////////////////////////////////////////
+/obj/item/device/multitool/cyborg
+	name = "multitool"
+	desc = "Optimised and stripped-down version of a regular multitool."
+	toolspeed = 0.5
+
+/*/obj/item/device/multitool/abductor
+	name = "alien multitool"
+	desc = "An omni-technological interface."
+	icon = 'icons/obj/abductor.dmi'
+	icon_state = "multitool"
+	toolspeed = 0.1
+	origin_tech = Tc_MAGNETS + "=5;" + Tc_ENGINEERING + "=5;" + Tc_ABDUCTOR + "=3"
+	shows_wire_information = TRUE
+I'm not mucking about with UI code right now-Quisoves
+*/
+
 #undef DETECT_TICKER_PERIOD
 #undef DETECT_AI
 #undef DETECT_PAI

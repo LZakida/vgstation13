@@ -44,7 +44,7 @@
 		user.visible_message("<span class='notice'>[user] starts digging out some snow with \the [W].</span>", \
 		"<span class='notice'>You start digging out some snow with \the [W].</span>")
 		user.delayNextAttack(20)
-		if(do_after(user, src, 20))
+		if(do_after(user, src, 20 * W.toolspeed))
 			user.visible_message("<span class='notice'>[user] digs out some snow with \the [W].</span>", \
 			"<span class='notice'>You dig out some snow with \the [W].</span>")
 			extract_snowballs(5, FALSE, user)

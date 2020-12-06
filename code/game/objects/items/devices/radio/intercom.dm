@@ -81,10 +81,11 @@
 /obj/item/device/radio/intercom/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	switch(buildstage)
 		if(3)
-			if(iswirecutter(W) && b_stat && wires.IsAllCut())
+//			if(iswirecutter(W) && b_stat && wires.IsAllCut())
+			if(W.is_wirecutter(user) && b_stat && wires.IsAllCut())
 				to_chat(user, "<span class='notice'>You cut out the intercoms wiring and disconnect its electronics.</span>")
-				playsound(src, 'sound/items/Wirecutter.ogg', 50, 1)
-				if(do_after(user, src, 10))
+				playsound(src, W.usesound, 50, 1)
+				if(do_after(user, src, 10 * W.toolspeed))
 					new /obj/item/stack/cable_coil(get_turf(src),5)
 					on = 0
 					b_stat = 1
@@ -96,8 +97,8 @@
 				return ..()
 		if(2)
 			if(W.is_screwdriver(user))
-				playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-				if(do_after(user, src, 10))
+				playsound(src, W.usesound, 50, 1)
+				if(do_after(user, src, 10 * W.toolspeed))
 					update_icon()
 					on = 1
 					b_stat = 0
@@ -114,22 +115,22 @@
 				if(coil.amount < 5)
 					to_chat(user, "<span class='warning'>You need more cable for this!</span>")
 					return
-				if(do_after(user, src, 10))
+				if(do_after(user, src, 10 * W.toolspeed))
 					coil.use(5)
 					to_chat(user, "<span class='notice'>You wire \the [src]!</span>")
 					buildstage = 2
 				return 1
-			if(iscrowbar(W))
+			if(W.is_crowbar(user))
 				to_chat(user, "<span class='notice'>You begin removing the electronics...</span>")
 				playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
-				if(do_after(user, src, 10))
+				if(do_after(user, src, 10 * W.toolspeed))
 					new /obj/item/weapon/intercom_electronics(get_turf(src))
 					to_chat(user, "<span class='notice'>The circuitboard pops out!</span>")
 					buildstage = 0
 				return 1
 		if(0)
 			if(istype(W,/obj/item/weapon/intercom_electronics))
-				playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
+				playsound(src, W.usesound, 50, 1)
 				if(do_after(user, src, 10))
 					qdel(W)
 					to_chat(user, "<span class='notice'>You insert \the [W] into \the [src]!</span>")
@@ -169,6 +170,7 @@
 	starting_materials = list(MAT_IRON = 50, MAT_GLASS = 50)
 	w_type = RECYK_ELECTRONIC
 	melt_temperature = MELTPOINT_SILICON
+	usesound = 'sound/items/Deconstruct.ogg'
 
 /obj/item/device/radio/intercom/medbay
 	name = "station intercom (Medbay)"

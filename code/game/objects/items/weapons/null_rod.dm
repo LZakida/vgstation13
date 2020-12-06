@@ -128,7 +128,7 @@
 		M.drop_item(src, force_drop = TRUE)
 		M.put_in_active_hand(holy_weapon)
 		qdel(src)
-		
+
 /obj/item/weapon/nullrod/sword
 	name = "holy avenger"
 	desc = "DEUS VULT!"
@@ -279,7 +279,7 @@
 	..()
 	if(istype(A, /obj/item/weapon/circular_saw) || istype(A, /obj/item/weapon/melee/energy) || istype(A, /obj/item/weapon/pickaxe/plasmacutter))
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
-		if(do_after(user, src, 30))
+		if(do_after(user, src, 30 * A.toolspeed))
 			new /obj/item/weapon/nullrod/mosinnagant/obrez(get_turf(src))
 			qdel(src)
 			to_chat(user, "<span class='warning'>You shorten the barrel of \the [src]!</span>")

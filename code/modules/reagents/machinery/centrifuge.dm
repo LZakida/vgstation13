@@ -13,7 +13,7 @@
 	to_chat(user, "<span class='info'>It contains [cans.len] empty containers[beaker ? " and an active container!" : "."]</span>")
 
 /obj/structure/centrifuge/attackby(obj/item/weapon/reagent_containers/W as obj, mob/user as mob)
-	if(iscrowbar(W))
+	if(W.is_crowbar(user))
 		var/obj/structure/toilet/T = new /obj/structure/toilet(src.loc)
 		T.open = 1
 		T.cistern = 1

@@ -87,15 +87,15 @@
 	if (W.is_wrench(user))
 		if(!is_open_container())
 			user.visible_message("[user] begins to unwrench the fill cap on \the [src].","<span class='notice'>You begin to unwrench the fill cap on \the [src].</span>")
-			if(do_after(user, src, 25))
+			if(do_after(user, src, 25 * W.toolspeed))
 				user.visible_message("[user] removes the fill cap on \the [src].","<span class='notice'>You remove the fill cap on \the [src].</span>")
-				playsound(src,'sound/items/Ratchet.ogg', 100, 1)
+				playsound(src,W.usesound, 100, 1)
 				flags |= OPENCONTAINER
 		else
 			user.visible_message("[user] begins to seal the fill cap on \the [src].","<span class='notice'>You begin to seal the fill cap on \the [src].</span>")
-			if(do_after(user, src, 25))
+			if(do_after(user, src, 25 * W.toolspeed))
 				user.visible_message("[user] fastens the fill cap on \the [src].","<span class='notice'>You fasten the fill cap on \the [src].</span>")
-				playsound(src,'sound/items/Ratchet.ogg', 100, 1)
+				playsound(src,W.usesound, 100, 1)
 				flags &= ~OPENCONTAINER
 		return
 

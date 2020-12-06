@@ -32,14 +32,14 @@
 		adjust_health(rand(5,15))
 		return
 	if(W.sharpness_flags & (SERRATED_BLADE|CHOPWOOD)) //Guaranteed, but takes some work
-		if(do_after(user, src, rand(10,30)))
+		if(do_after(user, src, rand(10,30) * W.toolspeed))
 			if(prob(30))
 				user.visible_message("<span class = 'warning'>\The [user] chops through \the [src] with \the [W].</span>",\
 				"<span class = 'notice'>You saw through \the [src].</span>")
 			adjust_health(rand(25,50))
 			return
 	if(W.sharpness_flags & HOT_EDGE)
-		if(do_after(user, src, rand(5,15))) //Guaranteed, rarer sharpness flag so less time taken
+		if(do_after(user, src, rand(5,15) * W.toolspeed)) //Guaranteed, rarer sharpness flag so less time taken
 			if(prob(30))
 				user.visible_message("<span class = 'warning'>\The [user] sears through \the [src] with \the [W].</span>",\
 				"<span class = 'notice'>You use \the [W]'s hot edge to burn through \the [src].</span>")
@@ -48,7 +48,7 @@
 	var/weapon_temp = W.is_hot()
 	if(weapon_temp >= AUTOIGNITION_WOOD)//Yes it's not technically wood, but fibrous chitin's pretty close when held above a flame
 		var/coeff = 1*weapon_temp/AUTOIGNITION_WOOD //The hotter it is, the less time it takes
-		if(do_after(user, src, (rand(30,60)/coeff)))
+		if(do_after(user, src, (rand(30,60)/coeff) * W.toolspeed))
 			if(prob(30))
 				user.visible_message("<span class = 'warning'>\The [user] burns away \the [src] with \the [W].</span>",\
 				"<span class = 'notice'>You use \the [W] to burn away \the [src].</span>")
