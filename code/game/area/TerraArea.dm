@@ -275,4 +275,21 @@
 /area/maintenance/pointless/dafuq //OR IS IT?!?!?!?!?
 	name = "Da fuq"
 
+
+//CARGO SHAFT YES
+
+/area/maintenance/cargobot
+	name = "Delivery Bot Tunnel"
+	//ambient_sounds = list(put some new stuff here fgt)
+
+/area/maintenance/cargobot/fore
+	icon_state = "fmaint"
+/area/maintenance/cargobot/aft
+	icon_state = "amaint"
+/area/maintenance/cargobot/port //not used by rock2, but some other schmuck can if they want
+	icon_state = "pmaint"
+/area/maintenance/cargobot/star //ditto^
+	icon_state = "smaint"
+/area/maintenance/cargobot/center
+	icon_state = "maintcentral"
 //butts
