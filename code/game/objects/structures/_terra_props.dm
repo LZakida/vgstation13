@@ -51,11 +51,11 @@
 		user.visible_message("<span class='warning'>[user] bashes \the [src] like a retard.</span>","<span class='notice'>You whack the [src] with whatever the fuck you were holding.</span>")
 
 /obj/structure/suplexd/proc/can_has_loots()
-	for(var/obj/item/L in loot)
+	for(var/L in loot)
 		new L(loc)
 /obj/structure/suplexd/Destroy()
-	..()
 	new /obj/item/stack/rods(loc)
+	..()
 
 
 //this should also be yeeted if hit by a hulk/admin bus/equivalent fuckery; hitting a wall should explode it into ~5 different metal rod items that get tossed nearby a short ways
