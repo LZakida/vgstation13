@@ -243,6 +243,16 @@
 	desc = "A direction sign, pointing out which way escape shuttle dock is."
 	icon_state = "direction_evac"
 
+/obj/structure/sign/directions/supply
+	name = "Cargo"
+	desc = "A direction sign, pointing out which way Cargo is."
+	icon_state = "direction_supp"
+
+/obj/structure/sign/directions/bridge
+	name = "Bridge"
+	desc = "A direction sign, pointing out which way the bridge is."
+	icon_state = "direction_brdg"
+
 /obj/structure/sign/crime
 	name = "CRIME DOES NOT PAY"
 	desc = "A warning sign which suggests that you reconsider your poor life choices."
