@@ -51,7 +51,9 @@
 /area/exterior/rockstat/cargo //that area outside cargo, yes
 	name = "Cargo Exterior"
 	icon_state = "dark128"
-
+/area/exterior/rockstat/salvage //that area outside the salvage dock, yes
+	name = "Salvage Dock Exterior"
+	icon_state = "green"
 
 //TERRALABS AREAS -- Oh fuck
 
@@ -175,11 +177,38 @@
 	icon_state = "engine_control"
 
 
-//OTHER MISCELLANY- QUI IS RESPONSIBLE FOR THIS PROBABLY
+//OTHER MISCELLANY
 
-/area/aisat/communications
+/area/aisat/communications //- QUI IS RESPONSIBLE FOR THIS PROBABLY
     name = "\improper AI Satellite Communications"
     icon_state = "storage"
+
+/area/hallway/secondary/garden //why the fuck was this originally an instance of ../secondary/construction? the fuck are you buggernuts at Paradise smoking?
+	name = "Garden"
+	icon_state = "hydro"
+
+/area/blueshield  //this got removed and I want it back chew my pingas
+	name = "Blueshield's office"
+	icon_state = "blueold"
+
+/area/crew_quarters/mimeoffice
+	name = "Mime's Office"
+	icon = 'icons/turf/areas2.dmi'
+	icon_state = "..."
+/area/crew_quarters/clownoffice
+	name = "Clown's Office"
+	icon = 'icons/turf/areas2.dmi'
+	icon_state = "honk"
+
+/area/civilian  //base area since it doesn't exist and hey maybe silly inheritance shenanigans can ensue??
+	name = "blarg"
+	icon_state = "crew_quarters"
+
+/area/civilian/petstore
+	name = "Pet Store"
+//	icon_state = "chungus"
+/area/civilian/chang
+	name = "Mr. Chang's"
 
 
 // SALVAGE - Salvage captain and all associated areas
