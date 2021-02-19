@@ -40,6 +40,7 @@
 	name = "propulsion"
 	icon_state = "propulsion"
 	opacity = 1
+	var/obj/item/projectile/fire_breath/fiyah = /obj/item/projectile/fire_breath/shuttle_exhaust
 
 /obj/structure/shuttle/engine/heater/DIY
 	name = "shuttle engine pre-igniter"
@@ -134,7 +135,7 @@
 		return
 	var/turf/target = get_edge_target_turf(src,dir)
 	var/turf/T = get_turf(src)
-	var/obj/item/projectile/fire_breath/A = new /obj/item/projectile/fire_breath/shuttle_exhaust(T)
+	var/obj/item/projectile/fire_breath/A = new fiyah(T)
 	A.max_range = forward
 
 	for(var/i=0, i<2, i++)
@@ -150,7 +151,7 @@
 
 		target = get_edge_target_turf(src,reverse_direction(dir))
 		sleep(6)
-		A = new /obj/item/projectile/fire_breath/shuttle_exhaust(T)
+		A = new fiyah(T)
 		A.max_range = backward
 
 /obj/structure/shuttle/engine/propulsion/left

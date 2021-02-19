@@ -164,6 +164,7 @@
 #include "code\ATMOSPHERICS\components\binary_devices\pump.dm"
 #include "code\ATMOSPHERICS\components\binary_devices\valve.dm"
 #include "code\ATMOSPHERICS\components\binary_devices\volume_pump.dm"
+#include "code\ATMOSPHERICS\components\Terra\T_unary.dm"
 #include "code\ATMOSPHERICS\components\trinary_devices\filter.dm"
 #include "code\ATMOSPHERICS\components\trinary_devices\mixer.dm"
 #include "code\ATMOSPHERICS\components\trinary_devices\t_valve.dm"

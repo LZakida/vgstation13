@@ -302,7 +302,7 @@
 
 //Macro for AREAS!
 
-#define isspace(A) (A.type == /area)
+#define isspace(A) (A.type == /area/space)
 
 //This one returns the "space" area
 //#define get_space_area (get_area(locate(1,1,2))) //xd

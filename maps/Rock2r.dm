@@ -24,7 +24,8 @@
 			name = "spacePirateShip" ;
 			},
 		)
-	enabled_jobs = list(/datum/job/trader)
+	enabled_jobs = list(/datum/job/trader, /datum/job/clown/rock)
+	disabled_jobs = list(/datum/job/clown)
 
 	load_map_elements = list(
 	/datum/map_element/dungeon/holodeck
@@ -35,6 +36,9 @@
 
 	center_x = 226
 	center_y = 254
+
+/datum/job/clown/rock
+	minimal_access = list(access_clown, access_theatre, access_maint_tunnels)
 
 ////////////////////////////////////////////////////////////////
 #include "Rock2r.dmm"

@@ -28,7 +28,9 @@
 	icon_state = "dark128"
 
 
-//EXTERIOR AREAS -- For use with places that have no actual station on them but still are part of the station
+//EXTERIOR AREAS -- For use with places that are exterior,
+//hm yes
+//the floor here is made out of floor
 
 /area/exterior/rockstat
 	name = "Rockstation Exterior Cave"
@@ -36,6 +38,8 @@
 
 //Rockstation uninhabited cavern-type area things of doom go here
 //They extend the area directly above here - add more if needed I guess
+//DEPRECATED!! These no longer are in use on rock2 and are hereby marked for deletial
+/*
 /area/exterior/rockstat/pocket
 	name = "uninhabited cave"
 /area/exterior/rockstat/pocket/_1
@@ -47,13 +51,24 @@
 /area/exterior/rockstat/pocket/_7
 /area/exterior/rockstat/pocket/_8
 /area/exterior/rockstat/pocket/_9
+*/
+
+//Space area wot once was in para and VG evidently intended to use
+/area/space
+	icon = 'icons/turf/areas2.dmi'
+	icon_state = "space"
+//idk why I do this
+/area/space/surface
+	name = "surface"
+	icon_state = "space2"
 
 /area/exterior/rockstat/cargo //that area outside cargo, yes
 	name = "Cargo Exterior"
 	icon_state = "dark128"
+/*
 /area/exterior/rockstat/salvage //that area outside the salvage dock, yes
 	name = "Salvage Dock Exterior"
-	icon_state = "green"
+	icon_state = "green" */ //DEPRECATED!! y i do dis
 
 //TERRALABS AREAS -- Oh fuck
 

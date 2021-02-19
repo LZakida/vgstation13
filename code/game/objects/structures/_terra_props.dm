@@ -99,6 +99,14 @@
 		*A temporary solution will be implemented below. It will be expanded upon/improved/replaced at some point. maybe.*/
 	//at which point it defined the two light vars above
 
+//shuttle engine shenanigans
+/obj/structure/shuttle/engine/propulsion/precise
+	fiyah = /obj/item/projectile/fire_breath/straight/shuttle_exhaust
+
+/obj/item/projectile/fire_breath/straight/shuttle_exhaust
+	fire_blast_type = /obj/effect/fire_blast/no_spread/shuttle
+/obj/effect/fire_blast/no_spread/shuttle
+	icon = 'icons/effects/fireblue.dmi'
 
 //=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
 //					BUTT STUFF!
