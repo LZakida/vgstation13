@@ -1165,6 +1165,7 @@
 #include "code\game\objects\structures\vehicles\carts\mining_cart.dm"
 #include "code\game\shuttles\cargo.dm"
 #include "code\game\shuttles\emergency.dm"
+#include "code\game\shuttles\engineering.dm"
 #include "code\game\shuttles\mining.dm"
 #include "code\game\shuttles\misc.dm"
 #include "code\game\shuttles\research.dm"

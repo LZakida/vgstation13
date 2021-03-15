@@ -192,40 +192,6 @@
 	icon_state = "engine_control"
 
 
-//OTHER MISCELLANY
-
-/area/aisat/communications //- QUI IS RESPONSIBLE FOR THIS PROBABLY
-    name = "\improper AI Satellite Communications"
-    icon_state = "storage"
-
-/area/hallway/secondary/garden //why the fuck was this originally an instance of ../secondary/construction? the fuck are you buggernuts at Paradise smoking?
-	name = "Garden"
-	icon_state = "hydro"
-
-/area/blueshield  //this got removed and I want it back chew my pingas
-	name = "Blueshield's office"
-	icon_state = "blueold"
-
-/area/crew_quarters/mimeoffice
-	name = "Mime's Office"
-	icon = 'icons/turf/areas2.dmi'
-	icon_state = "..."
-/area/crew_quarters/clownoffice
-	name = "Clown's Office"
-	icon = 'icons/turf/areas2.dmi'
-	icon_state = "honk"
-
-/area/civilian  //base area since it doesn't exist and hey maybe silly inheritance shenanigans can ensue??
-	name = "blarg"
-	icon_state = "crew_quarters"
-
-/area/civilian/petstore
-	name = "Pet Store"
-//	icon_state = "chungus"
-/area/civilian/chang
-	name = "Mr. Chang's"
-
-
 // SALVAGE - Salvage captain and all associated areas
 
 /area/salvage //intended for station dock
@@ -302,10 +268,31 @@
 	name = "Abandoned Emergency Shelter"
 	requires_power = 0
 
+
+// RANDOM-GEN AREAS THAT ARE NOT SALVAGE-RELATED
+
+/area/space/random
+	icon_state = "wat"
+/area/space/random/stationsats/telecom
+//	icon_state = does anyone actually give an eighth of a fuck if these differ or not?
+/area/space/random/stationsats/AI
+//	icon_state = does anyone actually give an eighth of a fuck if these differ or not?
+
 //Derelicts
 /area/derelict/jettison
 	name = "Jettisonned Station Engine"
 	icon_state = "engine"
+
+
+//OTHER SHUTTLE AREAS
+/area/shuttle/engieshuttle
+	name = "Engineering Shuttle"
+	icon_state = "shuttle"
+/*
+/area/shuttle/FTL goes here
+
+/area/shuttle/asdf
+*/
 
 
 //ABSOLUTELY POINTLESS!
@@ -336,4 +323,54 @@
 	icon_state = "smaint"
 /area/maintenance/cargobot/center
 	icon_state = "maintcentral"
+
+
+//TELELELELELELELELELELELELELELEcoms
+
+/area/tcommsat/powercontrol //Tcomm satellite only has 4 areas and it needs at least 6
+	name = "Telecoms Power Control"
+	icon_state = "tcomsatwest"	//temporary, since this isn't always going to be on this side in all maps, right?
+/area/tcommsat/generic
+	name = "Telecoms"
+	icon_state = "tcomsatcham" //temporary?
+/area/tcommsat/storage  //did I say 6 I meant more than that clearly		hey I did say 'at leat' tho
+	name = "Telecoms Storage"
+	icon_state = "tcomsatstore"	//I only made this a separate area cuz I noticed the icon state already existed
+/area/tcommsat/engishuttle	//this area exists because LZ is a spooby
+	name = "Telecom Engineer Shuttle Dock"
+	icon_state = "tcomsateast"	//temporary, since this isn't always going to be on the oh who the fuck am I kidding I'm the only fucktard that wanted to do this in the first place nobody else wants the engi shuttle here in the first place right? --LZ
+
+
+//OTHER MISCELLANY
+
+/area/aisat/communications //- QUI IS RESPONSIBLE FOR THIS PROBABLY
+    name = "\improper AI Satellite Communications"
+    icon_state = "storage"
+
+/area/hallway/secondary/garden //why the fuck was this originally an instance of ../secondary/construction? the fuck are you buggernuts at Paradise smoking?
+	name = "Garden"
+	icon_state = "hydro"
+
+/area/blueshield  //this got removed and I want it back chew my pingas
+	name = "Blueshield's office"
+	icon_state = "blueold"
+
+/area/crew_quarters/mimeoffice
+	name = "Mime's Office"
+	icon = 'icons/turf/areas2.dmi'
+	icon_state = "..."
+/area/crew_quarters/clownoffice
+	name = "Clown's Office"
+	icon = 'icons/turf/areas2.dmi'
+	icon_state = "honk"
+
+/area/civilian  //base area since it doesn't exist and hey maybe silly inheritance shenanigans can ensue??
+	name = "blarg"
+	icon_state = "crew_quarters"
+
+/area/civilian/petstore
+	name = "Pet Store"
+//	icon_state = "chungus"
+/area/civilian/chang
+	name = "Mr. Chang's"
 //butts
