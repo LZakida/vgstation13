@@ -341,11 +341,31 @@
 	icon_state = "tcomsateast"	//temporary, since this isn't always going to be on the oh who the fuck am I kidding I'm the only fucktard that wanted to do this in the first place nobody else wants the engi shuttle here in the first place right? --LZ
 
 
-//OTHER MISCELLANY
+//AI SATELLITE AREAS - Since this got removed,,,,, Fuck
 
-/area/aisat/communications //- QUI IS RESPONSIBLE FOR THIS PROBABLY
+/area/aisat
+	name = "\improper AI Satellite Exterior"
+	icon_state = "yellow"
+
+/area/aisat/communications //- QUI IS RESPONSIBLE FOR THIS PROBABLY - lol old comment. Also, this area not relevant if the AI sat and telecoms are on the same Zlevel, so hey!
     name = "\improper AI Satellite Communications"
     icon_state = "storage"
+
+/area/aisat/maintenance
+	name = "\improper AI Satellite Maintenance"
+	icon_state = "storage"
+
+/area/aisat/engiestation
+	name = "\improper AI Satellite Engineering Outpost"
+	icon_state = "construction"
+
+/area/aisat/entrance
+	name = "\improper AI Satellite Entrance"
+	icon_state = "ai_foyer"
+/area/aisat/entrance/control //this is for my own sanity reeeeeeeee  --LZ
+	name = "\improper AI Satellite Control Room"
+
+//OTHER MISCELLANY
 
 /area/hallway/secondary/garden //why the fuck was this originally an instance of ../secondary/construction? the fuck are you buggernuts at Paradise smoking?
 	name = "Garden"

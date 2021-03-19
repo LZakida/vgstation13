@@ -39,6 +39,7 @@
 
 /datum/job/clown/rock
 	minimal_access = list(access_clown, access_theatre, access_maint_tunnels)
+	must_be_map_enabled = TRUE
 
 ////////////////////////////////////////////////////////////////
 #include "Rock2r.dmm"
