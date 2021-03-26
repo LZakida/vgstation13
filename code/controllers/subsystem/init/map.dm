@@ -14,6 +14,7 @@ var/datum/subsystem/map/SSmap
 
 
 /datum/subsystem/map/Initialize(timeofday)
+	generate_station()
 	if (config.enable_roundstart_away_missions)
 		log_startup_progress("Attempting to generate an away mission...")
 		createRandomZlevel()

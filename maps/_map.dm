@@ -102,6 +102,9 @@
 	var/can_enlarge = TRUE //can map elements expand this map? turn off for surface maps
 	var/datum/climate/climate = null //use for weather cycle
 
+	var/list/spawnblacklist = list()
+	var/list/spawnwhitelist = list()
+
 /datum/map/New()
 	. = ..()
 

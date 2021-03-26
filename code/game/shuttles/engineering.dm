@@ -10,7 +10,7 @@ var/global/datum/shuttle/engineering/engineering_shuttle = new(starting_area = /
 	add_dock(/obj/docking_port/destination/engie/tcom)
 	add_dock(/obj/docking_port/destination/engie/ai)
 
-/obj/machinery/computer/shuttle_control/engineering/New() //Main shuttle_control code is in code/game/machinery/computer/shuttle_computer.dm
+/obj/machinery/computer/shuttle_control/engineering/New() //Main shuttle_control code is in code/game/machinery/computer/shuttle_computers.dm
 	link_to(engineering_shuttle)
 	.=..()
 

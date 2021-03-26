@@ -373,7 +373,7 @@
 "hi" = (/obj/structure/bed/chair{dir = 1},/turf/simulated/floor/plating,/area/tcommsat/engishuttle)
 "hj" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/light{dir = 1},/turf/simulated/floor/plating/airless,/area/tcommsat/powercontrol)
 "hk" = (/obj/machinery/atmospherics/pipe/simple/heat_exchanging/hidden,/turf/simulated/floor/bluegrid,/area/tcommsat/chamber)
-"hl" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/simulated/floor,/area/tcommsat/entrance)
+"hl" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/item/beacon/bluespace_beacon,/turf/simulated/floor,/area/tcommsat/entrance)
 "hm" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/machinery/light_switch{pixel_y = -29},/turf/simulated/floor/plating,/area/tcommsat/powercontrol)
 "hn" = (/obj/effect/decal/warning_stripes{tag = "icon-warning (SOUTHWEST)"; icon_state = "warning"; dir = 10},/obj/machinery/light_switch{pixel_y = -29},/turf/simulated/floor,/area/tcommsat/entrance)
 "ho" = (/obj/structure/closet/malf/suits,/turf/simulated/floor,/area/tcommsat/entrance)

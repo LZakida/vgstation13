@@ -61,7 +61,7 @@
 "bi" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/simulated/floor/plating/airless,/area/space)
 "bj" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/simulated/floor/plating/airless,/area/space)
 "bk" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/simulated/floor/plating/airless,/area/space)
-"bl" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/simulated/floor/plating,/area/aisat)
+"bl" = (/obj/machinery/camera{dir = 8; name = "AI Solar Control"},/turf/simulated/floor/plating,/area/aisat/entrance/control)
 "bm" = (/turf/simulated/wall,/area/aisat)
 "bn" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/simulated/floor/plating/airless,/area/space)
 "bo" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/light{dir = 1},/obj/machinery/atmospherics/pipe/manifold/supply/hidden{dir = 1},/turf/simulated/floor{icon_state = "dark"; dir = 6},/area/turret_protected/aisat)
@@ -220,9 +220,9 @@
 "el" = (/obj/machinery/light,/turf/simulated/floor,/area/aisat/engiestation)
 "em" = (/obj/machinery/atmospherics/unary/vent_pump/on/mapping{dir = 1},/turf/simulated/floor,/area/aisat/engiestation)
 "en" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/plating,/area/aisat/engiestation)
-"eo" = (/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 4},/turf/simulated/floor,/area/aisat/engiestation)
+"eo" = (/obj/structure/lattice,/obj/machinery/airlock_sensor/airlock_exterior{frequency = 1439; id_tag = "ai_ext_sensor"; master_tag = "ai_airlock_control"; name = "AI Sat Exterior"; pixel_x = -4; pixel_y = -20},/turf/space,/area/space)
 "ep" = (/obj/machinery/atmospherics/pipe/simple/general/hidden{dir = 4},/turf/simulated/floor,/area/aisat/engiestation)
-"eq" = (/obj/machinery/door/airlock/external,/obj/machinery/atmospherics/pipe/simple/general/hidden{dir = 4},/turf/simulated/floor,/area/aisat/engiestation)
+"eq" = (/obj/machinery/door/airlock/external{frequency = 1439; icon_state = "door_locked"; id_tag = "ai_ext_door"; locked = 1; name = "AI Satellite External Airlock"},/turf/simulated/floor/plating,/area/aisat/engiestation)
 "er" = (/obj/machinery/atmospherics/pipe/simple/general/hidden{dir = 10},/turf/simulated/floor,/area/aisat/engiestation)
 "es" = (/obj/machinery/portable_atmospherics/canister/air,/obj/machinery/atmospherics/unary/portables_connector{dir = 1},/turf/simulated/floor,/area/aisat/engiestation)
 "et" = (/obj/machinery/light,/turf/simulated/floor{dir = 2; icon_state = "blue"},/area/aisat/engiestation)
@@ -253,7 +253,7 @@
 "eS" = (/obj/machinery/vending/coffee,/turf/simulated/floor{dir = 8; icon_state = "bluecorner"},/area/aisat/engiestation)
 "eT" = (/obj/structure/table,/obj/item/weapon/reagent_containers/food/drinks/coffee,/turf/simulated/floor{icon_state = "blue"; dir = 4},/area/aisat/engiestation)
 "eU" = (/obj/machinery/vending/snack,/turf/simulated/floor{icon_state = "blue"; dir = 8},/area/aisat/engiestation)
-"eV" = (/obj/machinery/camera{dir = 1; name = "AI Satellite Engineer Outpost West"},/turf/simulated/floor,/area/aisat/engiestation)
+"eV" = (/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 4; id_tag = "ai_pump"},/turf/simulated/floor,/area/aisat/engiestation)
 "eW" = (/obj/machinery/vending/cola,/turf/simulated/floor{icon_state = "blue"; dir = 10},/area/aisat/engiestation)
 "eX" = (/obj/structure/disposalpipe/trunk,/obj/machinery/disposal,/turf/simulated/floor{dir = 2; icon_state = "blue"},/area/aisat/engiestation)
 "eY" = (/obj/machinery/light_switch{pixel_y = -25},/obj/machinery/camera{dir = 1; name = "AI Satellite Engineer Outpost South"},/turf/simulated/floor{dir = 2; icon_state = "blue"},/area/aisat/engiestation)
@@ -268,6 +268,14 @@
 "fh" = (/obj/machinery/computer/shuttle_control/engineering,/turf/simulated/floor,/area/aisat/engiestation)
 "fi" = (/obj/structure/table,/obj/item/weapon/storage/box/drinkingglasses,/turf/simulated/floor,/area/aisat/engiestation)
 "fj" = (/obj/machinery/light/small{dir = 4},/turf/simulated/floor/plating,/area/aisat/engiestation)
+"fk" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/machinery/camera{dir = 1; name = "AI Exterior Power"},/turf/simulated/floor/plating,/area/aisat)
+"fl" = (/obj/machinery/camera{dir = 8; name = "AI Chamber Exterior W"},/turf/space,/area/turret_protected/ai)
+"fm" = (/obj/structure/lattice,/obj/machinery/camera{dir = 4; name = "AI Chamber Exterior E"},/turf/space,/area/turret_protected/ai)
+"fn" = (/obj/machinery/atmospherics/pipe/simple/general/hidden{dir = 4},/obj/machinery/light/small{dir = 1},/turf/simulated/floor,/area/aisat/engiestation)
+"fo" = (/obj/machinery/atmospherics/pipe/simple/general/hidden{dir = 4},/obj/machinery/door/airlock/external{frequency = 1439; icon_state = "door_locked"; id_tag = "ai_int_door"; locked = 1; name = "AI Satellite Internal Airlock"},/turf/simulated/floor,/area/aisat/engiestation)
+"fp" = (/obj/machinery/embedded_controller/radio/airlock_controller{frequency = 1439; id_tag = "ai_airlock_control"; name = "AI Satellite Airlock Control"; pixel_y = -21; tag_airpump = "ai_pump"; tag_chamber_sensor = "ai_c_sensor"; tag_exterior_door = "ai_ext_door"; tag_exterior_sensor = "ai_ext_sensor"; tag_interior_door = "ai_int_door"; tag_interior_sensor = "ai_int_sensor"},/turf/simulated/floor,/area/aisat/engiestation)
+"fq" = (/obj/machinery/camera{dir = 1; name = "AI Satellite Engineer Outpost West"},/obj/machinery/airlock_sensor/airlock_interior{frequency = 1439; id_tag = "ai_int_sensor"; master_tag = "ai_airlock_control"; name = "AI Sat Interior"; pixel_x = -22},/turf/simulated/floor,/area/aisat/engiestation)
+"fr" = (/obj/structure/lattice,/obj/machinery/airlock_sensor/airlock_exterior{frequency = 1439; id_tag = "ai_ext_sensor"; master_tag = "ai_airlock_control"; name = "AI Sat Exterior"; pixel_x = -4; pixel_y = 20},/turf/space,/area/space)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -287,11 +295,11 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaamanasaaaaaaaaaaataaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaamanasataaaaatatatatauataaaaaaaaaaataaaaatamanalaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatamanalaaaaaaaaatavavawavavaaaaaaaaataaatatamanalaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxatamanalaaaaaaaaayavazaAazavayatatatatatatatamanalaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxatahanalaaaaaaaaayaBaCaDazazayaaaaaaatatatatahanalaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxatahanalaaaaaaaaayaBaCaDazblayaaaaaaatatatatahanalaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxatahanalataaaaaaayaEaFaIaKaJayaaaaatatatataaahanalaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaataxaaahanaGaHagagaLaLaMaNaLaOaPaLaLaHaHaHaHagaaahanasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaataxaaahaQaRaRaRaRaWbobrbzbzcDbxbBbDbLbSbTbTbValahanasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatamcaaSaqaqaqaLcbbzbzcGbzcccHaLaTbladaUcdalahanasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatamcaaSaqaqaqaLcbbzbzcGbzcccHaLaTfkadaUcdalahanasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaVaVaVaVaVaVaVaVaVaVaVaVaVaVaVaVatataaaaahcaalaaaaaaaLcecfckbzclcncIaLadadadahcdalahanaXataVaVaVaVaVaVaVaVaVaVaVaVaVaVaVaVaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaYaZaZaZaZaZaZaZaZaZaZaZaZaZaZbabbatatatbceBbmbmbmbmaLcocPdnbzdudvbzaLbmbmbmbmeLasahanaXbdbebebebebebebebebebebebebebebebfaaaaaaaaaaaaaa
 aaaaaaaaaaaaaabgbgbgbgbgbgbgbgbgbgbgbgbgbgbgbgbhaaaaaaahcaalaaaaaacLcvcLcLcMcLcLcLcLaaataaamcdasahanalbhbgbgbgbgbgbgbgbgbgbgbgbgbgbgbgbgaaaaaaaaaaaaaa
@@ -299,7 +307,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabhaaaaaaahcaasatatatcLcEcOdwcQcRcQ
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabibjbjbjbkcFalaaatcLcLcJcQcTcTcTcQcKcLcLatatamcdasambtbnbfaaaaaaaaaaataaaaaaaaataaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabhaaaaaaahcNalaaaacLcLcUcTdxcVcTcTcWcLcLatatamcdasamanalbhaaaaaaaaaaataaaaaaaaataaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaVaVaVaVaVaVaVaVaVaVaVaVaVaVaVaVbhaaaaaaahcNalaaaacLcLcQcTcXcXcXcTcQcLcLataaamcdalamanalbhaVaVaVaVaVaVaVaVaVaVaVaVaVaVaVaVaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaYaZaZaZaZaZaZaZaZaZaZaZaZaZaZbabpatatatbccNalaaaacLcYcZdacXdbcXdccZddcLataaamcdalamanasbqbebebebebebebebebebebebebebebebfaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaYaZaZaZaZaZaZaZaZaZaZaZaZaZaZbabpatatatbccNalaaflcLcYcZdacXdbcXdccZddcLfmaaamcdalamanasbqbebebebebebebebebebebebebebebebfaaaaaaaaaaaaaa
 aaaaaaaaaaaaaabgbgbgbgbgbgbgbgbgbgbgbgbgbgbgbgatataaaaahcNasatatcLcLcQdedfdgdhdicQcLcLatatamcdalamanasatbgbgbgbgbgbgbgbgbgbgbgbgbgbgbgbgaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatbccNalaaatcLcLdjcTcTdkcTcTdlcLcLatatamcdasamanasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaataxaaahcNasaaatcLcLcQdmdydzdAdocQcLcLatatamcdasahanasaaaaaaaaataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -312,12 +320,12 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabwatcgcgcgcgcgchcidZaoapadapbAcwebdKeced
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabwaacgczcAcBcgcCeiejasatadaabAekdMdNdOcpbAaaaaataaaacgdseaciehcgevewexbPatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabwatcgeyeyeyciciemezcgcgcgcgbAbAcqcqcqbAbAatatatatatcgcgcgeAcidtcicifgbPatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatbZatcgeCeCeDcicicieEeFeGeHeIcgatatataaatatatataaaaatatatcgcifhcgeJeKfibPatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatcgeMeMeNcicicicicicieOePcgatataaaaaaataaaaaaaaaaatatcgeQeRbPbPbPbPbPatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacgencgcgcgcicicicicgeScicieOeTcgataaaaaaaaataaaaaaaaaaatatcgencybPataaaaaaatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeneoepeqepercicicicgeUcicicicucgatatatatatatatatatatatatatcgcxfjcgatatatatatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaencicicgeVeselcicicgeWeteXeYeZcgataaaaatataaaaaaaaaaaaaaatcgcxcxcgataaaaaaatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacgcgencgcgcgcgcgcgcgcgcgfacgcgcgataaaaatataaaaaaaaaaaaatatcgencycgataaaaaaatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatatatatatatatatatatfbatatatataaaaatataaaaaaaaaaaaaaaaaaeuaaaaaaaaaaaaaabwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatateocgeMeMeNcicicicicicieOePcgatataaaaaaataaaaaaaaaaatatcgeQeRbPbPbPbPbPatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacgeqcgcgcgcicicicicgeScicieOeTcgataaaaaaaaataaaaaaaaaaatatcgencybPataaaaaaatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeneVfnfoepercicicicgeUcicicicucgatatatatatatatatatatatatatcgcxfjcgatatatatatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaenfpcicgfqeselcicicgeWeteXeYeZcgataaaaatataaaaaaaaaaaaaaatcgcxcxcgataaaaaaatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacgcgeqcgcgcgcgcgcgcgcgcgfacgcgcgataaaaatataaaaaaaaaaaaatatcgencycgataaaaaaatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatfratatatatatatatatfbatatatataaaaatataaaaaaaaaaaaaaaaaaeuaaaaaaaaaaaaaabwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacjbFbFbFbFbFbFbFbFbFbFfcbFbFbFbFbFbFbFbFbFbGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatatataaaaaaaaaaaafdataaaaaaaaatataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabZataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
