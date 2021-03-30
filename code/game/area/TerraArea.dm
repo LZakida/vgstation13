@@ -393,4 +393,7 @@
 //	icon_state = "chungus"
 /area/civilian/chang
 	name = "Mr. Chang's"
+
+/area/mine/podbay
+	name = "Mining Podbay"
 //butts
