@@ -127,7 +127,7 @@
 	name = "maintenance"
 	icon_state = "maintcentral"
 
-/area/mine/dangerous/explored/geostatexterior
+/area/mine/explored/geostatexterior //this formerly was /area/mine/dangerous/explored/geostatexterior. However, VG code does not make the 'dangerous' distinction as Paradise did. This change is to prevent unexpected buttsex.
 	name = "Geostation Exterior"
 	icon_state = "cave"
 

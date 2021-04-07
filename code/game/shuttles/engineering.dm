@@ -2,6 +2,8 @@ var/global/datum/shuttle/engineering/engineering_shuttle = new(starting_area = /
 
 /datum/shuttle/engineering
 	name = "engineering shuttle"
+	can_link_to_computer = LINK_FREE
+
 
 /datum/shuttle/engineering/initialize()
 	.=..()

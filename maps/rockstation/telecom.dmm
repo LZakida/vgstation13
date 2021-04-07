@@ -58,7 +58,7 @@
 "bf" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced,/turf/space,/area/turret_protected/tcomsat)
 "bg" = (/obj/structure/table/reinforced,/obj/item/weapon/paper_bin,/obj/item/weapon/pen/blue,/turf/simulated/floor,/area/tcommsat/computer)
 "bh" = (/obj/machinery/newscaster{dir = 4; pixel_x = -28},/obj/structure/table/reinforced,/obj/item/device/multitool,/turf/simulated/floor,/area/tcommsat/computer)
-"bi" = (/turf/space,/turf/simulated/shuttle/wall{icon_state = "swall_s6"},/area/shuttle/engieshuttle)
+"bi" = (/obj/machinery/light{dir = 4; icon_state = "ltube1"},/obj/machinery/computer/shuttle_control/engineering,/turf/simulated/floor/plating,/area/tcommsat/engishuttle)
 "bj" = (/obj/structure/window/reinforced,/turf/space,/area/turret_protected/tcomsat)
 "bk" = (/obj/machinery/light{dir = 1},/turf/simulated/floor,/area/tcommsat/lounge)
 "bl" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 6},/turf/simulated/floor{dir = 1; icon_state = "dark vault corner"},/area/turret_protected/tcomsat)
@@ -71,9 +71,7 @@
 "bs" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/grille,/turf/simulated/floor/plating/airless,/area/space)
 "bt" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/simulated/floor/plating/airless,/area/space)
 "bu" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/simulated/floor/plating/airless,/area/space)
-"bv" = (/turf/simulated/shuttle/wall{icon_state = "swall12"},/area/shuttle/engieshuttle)
 "bw" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/grille,/turf/simulated/floor/plating/airless,/area/space)
-"bx" = (/obj/machinery/door/airlock/external,/obj/docking_port/shuttle,/turf/simulated/shuttle/plating,/area/shuttle/engieshuttle)
 "by" = (/turf/simulated/wall/r_wall,/area/tcommsat/lounge)
 "bz" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/obj/structure/grille,/turf/simulated/floor/plating/airless,/area/space)
 "bA" = (/obj/structure/bed,/obj/item/weapon/bedsheet/orange,/obj/machinery/status_display{pixel_y = 32},/turf/simulated/floor,/area/tcommsat/lounge)
@@ -81,16 +79,11 @@
 "bC" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/simulated/floor{dir = 1; icon_state = "dark vault corner"},/area/turret_protected/tcomsat)
 "bD" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1},/turf/space,/area/turret_protected/tcomsat)
 "bE" = (/obj/structure/bed,/obj/item/weapon/bedsheet/red,/turf/simulated/floor,/area/tcommsat/lounge)
-"bF" = (/turf/space,/turf/simulated/shuttle/wall{icon_state = "swall_s10"},/area/shuttle/engieshuttle)
-"bG" = (/obj/structure/shuttle/engine/propulsion{dir = 8},/turf/simulated/shuttle/plating,/area/shuttle/engieshuttle)
 "bH" = (/turf/simulated/wall/r_wall,/area/tcommsat/computer)
 "bI" = (/turf/simulated/floor,/area/tcommsat/lounge)
 "bJ" = (/turf/simulated/floor,/area/tcommsat/computer)
-"bK" = (/turf/simulated/shuttle/wall,/area/shuttle/engieshuttle)
-"bL" = (/turf/simulated/shuttle/floor{icon_state = "floor2"},/area/shuttle/engieshuttle)
 "bM" = (/turf/simulated/wall/r_wall,/area/tcommsat/chamber)
 "bN" = (/obj/machinery/door/window/brigdoor{name = "Telecom Server Access"; req_access_txt = "61"},/obj/machinery/door/window/brigdoor{dir = 8; name = "Telecom Server Access"; req_access_txt = "61"},/turf/simulated/floor{dir = 1; icon_state = "dark vault corner"},/area/tcommsat/chamber)
-"bO" = (/obj/structure/bed/chair{dir = 4},/turf/simulated/shuttle/floor{icon_state = "floor2"},/area/shuttle/engieshuttle)
 "bP" = (/obj/structure/grille,/turf/simulated/floor/plating/airless,/area/space)
 "bQ" = (/obj/machinery/light_switch{pixel_y = 29},/turf/simulated/floor,/area/tcommsat/computer)
 "bR" = (/turf/simulated/floor/bluegrid,/area/tcommsat/chamber)
@@ -100,8 +93,6 @@
 "bV" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/obj/structure/grille,/turf/simulated/floor/plating/airless,/area/space)
 "bW" = (/turf/simulated/floor{icon_state = "dark"; dir = 6},/area/tcommsat/chamber)
 "bX" = (/obj/structure/window/reinforced{dir = 1},/turf/space,/area/turret_protected/tcomsat)
-"bY" = (/obj/machinery/computer/station_alert,/turf/simulated/shuttle/floor{icon_state = "floor2"},/area/shuttle/engieshuttle)
-"bZ" = (/turf/simulated/shuttle/wall{icon_state = "swall1"},/area/shuttle/engieshuttle)
 "ca" = (/obj/item/device/radio/intercom{dir = 4; name = "Station Intercom (General)"; pixel_x = 0; pixel_y = 24},/turf/simulated/floor/bluegrid,/area/tcommsat/chamber)
 "cb" = (/obj/structure/table,/obj/item/device/flashlight/lamp,/turf/simulated/floor,/area/tcommsat/computer)
 "cc" = (/obj/machinery/pda_multicaster/prebuilt,/turf/simulated/floor{icon_state = "dark"},/area/tcommsat/chamber)
@@ -141,9 +132,6 @@
 "cK" = (/obj/machinery/telecomms/server/presets/supply,/turf/simulated/floor{icon_state = "dark"},/area/tcommsat/chamber)
 "cL" = (/obj/machinery/telecomms/server/presets/common,/turf/simulated/floor{icon_state = "dark"},/area/tcommsat/chamber)
 "cM" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/engine,/area/tcommsat/lounge)
-"cN" = (/obj/machinery/computer/shuttle_control/engineering,/turf/simulated/shuttle/floor{icon_state = "floor2"},/area/shuttle/engieshuttle)
-"cO" = (/obj/structure/grille,/obj/structure/shuttle/window,/turf/simulated/shuttle/plating,/area/shuttle/engieshuttle)
-"cP" = (/obj/machinery/computer/atmos_alert,/turf/simulated/shuttle/floor{icon_state = "floor2"},/area/shuttle/engieshuttle)
 "cQ" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/lattice,/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/space,/area/turret_protected/tcomsat)
 "cR" = (/obj/machinery/light/small{dir = 8},/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 4; id_tag = "tcom_pump"},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/simulated/floor/plating,/area/tcommsat/powercontrol)
 "cS" = (/turf/simulated/floor,/area/tcommsat/entrance)
@@ -224,7 +212,6 @@
 "ep" = (/obj/effect/spawner/window/reinforced,/obj/structure/cable{icon_state = "0-4"; d2 = 4},/obj/structure/cable{d2 = 8; icon_state = "0-8"},/obj/machinery/atmospherics/pipe/manifold/insulated/hidden{dir = 8},/turf/simulated/floor/plating,/area/tcommsat/chamber)
 "eq" = (/obj/structure/lattice,/obj/structure/window/reinforced{dir = 8},/obj/machinery/light{dir = 4; icon_state = "ltube1"},/turf/space,/area/turret_protected/tcomsat)
 "er" = (/obj/machinery/requests_console{announcementConsole = 1; department = "Telecoms Admin"; departmentType = 5; name = "Telecoms RC"; pixel_x = -32; pixel_y = 0},/turf/simulated/floor,/area/tcommsat/computer)
-"es" = (/turf/simulated/shuttle/wall{tag = "icon-swall2"; icon_state = "swall2"; dir = 3},/area/shuttle/engieshuttle)
 "et" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/lattice,/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 5},/obj/machinery/light{dir = 8},/turf/space,/area/turret_protected/tcomsat)
 "eu" = (/obj/item/device/radio/intercom{dir = 4; name = "Station Intercom (General)"; pixel_x = -31},/obj/machinery/computer/telecomms/monitor{network = "tcommsat"},/turf/simulated/floor,/area/tcommsat/computer)
 "ev" = (/obj/structure/table,/obj/item/weapon/storage/fancy/cigarettes,/turf/simulated/floor,/area/tcommsat/lounge)
@@ -243,7 +230,6 @@
 "eI" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor,/area/tcommsat/computer)
 "eJ" = (/obj/machinery/power/apc{cell_type = 5000; dir = 4; name = "Telecoms Control Room APC"; pixel_x = 26; pixel_y = 0},/obj/structure/cable{d2 = 8; icon_state = "0-8"},/obj/structure/cable,/turf/simulated/floor,/area/tcommsat/computer)
 "eK" = (/obj/effect/decal/warning_stripes{tag = "icon-warning (NORTHWEST)"; icon_state = "warning"; dir = 9},/obj/machinery/turret{lasertype = 0},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
-"eL" = (/turf/space,/turf/simulated/shuttle/wall{icon_state = "swall_s5"},/area/shuttle/engieshuttle)
 "eM" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/simulated/wall/r_wall,/area/tcommsat/lounge)
 "eN" = (/obj/effect/decal/warning_stripes{tag = "icon-warning_corner (NORTH)"; icon_state = "warning_corner"; dir = 1},/obj/machinery/power/apc{dir = 1; name = "_North APC"; pixel_y = 24},/obj/structure/cable{icon_state = "0-4"; d2 = 4},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
 "eO" = (/obj/effect/decal/warning_stripes{tag = "icon-warning_corner (EAST)"; icon_state = "warning_corner"; dir = 4},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 6},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/machinery/camera{dir = 2; name = "Telecom Turret Control North"},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
@@ -383,14 +369,12 @@
 "hs" = (/obj/effect/decal/cleanable/generic,/turf/simulated/floor/plating,/area/tcommsat/engishuttle)
 "ht" = (/obj/machinery/camera{dir = 8; name = "Engineer Shuttle Dock - Telecom Satellite"},/turf/simulated/floor/plating,/area/tcommsat/engishuttle)
 "hu" = (/obj/structure/rack,/obj/item/clothing/suit/fire/firefighter,/obj/item/weapon/tank/oxygen,/obj/item/clothing/mask/gas,/obj/item/weapon/extinguisher,/obj/item/clothing/head/hardhat/red,/obj/item/clothing/glasses/scanner/meson,/turf/simulated/floor/plating,/area/tcommsat/engishuttle)
-"hv" = (/obj/machinery/light{dir = 4; icon_state = "ltube1"},/turf/simulated/floor/plating,/area/tcommsat/engishuttle)
 "hw" = (/obj/effect/decal/warning_stripes{tag = "icon-warning (SOUTHWEST)"; icon_state = "warning"; dir = 10},/obj/structure/closet/crate,/obj/item/device/aicard,/obj/item/device/multitool,/obj/machinery/camera{dir = 4; name = "Telecom Teleporter South"},/turf/simulated/floor,/area/tcommsat/entrance)
 "hx" = (/obj/effect/decal/warning_stripes{tag = "icon-warning (SOUTHEAST)"; icon_state = "warning"; dir = 6},/obj/structure/closet/emcloset,/obj/machinery/light{dir = 4; icon_state = "ltube1"},/turf/simulated/floor,/area/tcommsat/entrance)
 "hy" = (/obj/machinery/computer/teleporter,/turf/simulated/floor/plating,/area/tcommsat/entrance)
 "hz" = (/obj/machinery/teleport/station,/turf/simulated/floor/plating,/area/tcommsat/entrance)
 "hA" = (/obj/machinery/teleport/hub,/turf/simulated/floor/plating,/area/tcommsat/entrance)
 "hB" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/machinery/camera{dir = 1; name = "Telecomms Server Room South"},/turf/simulated/floor/bluegrid,/area/tcommsat/chamber)
-"hC" = (/turf/space,/turf/simulated/shuttle/wall{icon_state = "swall_s9"},/area/shuttle/engieshuttle)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -448,16 +432,16 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabzducRcVcXcYcZdadbdccwcwcwftgY
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabzdudddfdudCdBdBdBhccwcwhrfHhdhehfcwcwcwcwdvgZgZhadNdFdFdvbzaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadOdudDdududJdEdEdEdQcwcHcSfvgYcScShgcwgOgPdvhihidFdNdFhsdvbzaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadThjdVdLdudJdefxfxfyfzfAfBfChldpdpdpdqdodYdZeaeaeaebdFhtdvbzaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadWdWecdWduedeedBdBhmcwhndycScScScShocwdRhpdvhudFdFdFdFhvdvbzaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadWdWecdWduedeedBdBhmcwhndycScScScShocwdRhpdvhudFdFdFdFbidvbzaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadWdWecdWdudududududucwcwhwdzdzdzhxcwcwcwcwdvegeheiehehejdvbzaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaekdUeldUembababababadHcwcwhyhzhAcwcwcwazazaZendFdFeoasbwbabsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaararbwbrcwcwcwcwcwaZbabababsdvdFdFeoasasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaararaabwbabadKbababsaaaaasasdveoaMdvasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaaaasaaaaamaaaaasaaaaasaabibvbxbvbvbvbFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaasahaxaxbtaxaxagasaaasaabGbKbLbObLbYbZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaatbuavaaaaaaatbuavaaaraabGbKbLbObOcNcOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaatbuavaaaaaaatbuavaaaraabGbKbLbObLcPesaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaatbuavaaaaaaatbuavaaaraaeLbvbvbvbvbvhCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaaaasaaaaamaaaaasaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaasahaxaxbtaxaxagasaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaatbuavaaaaaaatbuavaaaraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaatbuavaaaaaaatbuavaaaraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaatbuavaaaaaaatbuavaaaraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaatbuavaaaaaaatbuavaaaraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaatbuavaaaaaaatbuavaaaraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaraaatbuavaaaaaaatbuavaaaraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

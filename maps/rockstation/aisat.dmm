@@ -226,7 +226,7 @@
 "er" = (/obj/machinery/atmospherics/pipe/simple/general/hidden{dir = 10},/turf/simulated/floor,/area/aisat/engiestation)
 "es" = (/obj/machinery/portable_atmospherics/canister/air,/obj/machinery/atmospherics/unary/portables_connector{dir = 1},/turf/simulated/floor,/area/aisat/engiestation)
 "et" = (/obj/machinery/light,/turf/simulated/floor{dir = 2; icon_state = "blue"},/area/aisat/engiestation)
-"eu" = (/obj/docking_port/destination/engie/ai,/turf/space,/area/space)
+"eu" = (/obj/machinery/door/airlock/external,/obj/docking_port/destination/engie/ai{dir = 2},/turf/simulated/floor/plating,/area/aisat/engiestation)
 "ev" = (/obj/structure/table,/obj/item/weapon/storage/box/lights/mixed,/obj/item/weapon/storage/box/mousetraps,/obj/item/weapon/storage/toolbox/emergency,/obj/item/weapon/storage/belt/utility,/obj/item/weapon/reagent_containers/glass/paint/remover,/turf/simulated/floor,/area/aisat/engiestation)
 "ew" = (/obj/structure/table,/obj/structure/extinguisher_cabinet{pixel_x = -5; pixel_y = 30},/obj/machinery/cell_charger,/turf/simulated/floor,/area/aisat/engiestation)
 "ex" = (/obj/effect/decal/cleanable/cobweb2,/obj/structure/dispenser,/turf/simulated/floor,/area/aisat/engiestation)
@@ -324,8 +324,8 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatateocgeMeMeNcicicicicicieOePcgatataaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacgeqcgcgcgcicicicicgeScicieOeTcgataaaaaaaaataaaaaaaaaaatatcgencybPataaaaaaatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeneVfnfoepercicicicgeUcicicicucgatatatatatatatatatatatatatcgcxfjcgatatatatatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaenfpcicgfqeselcicicgeWeteXeYeZcgataaaaatataaaaaaaaaaaaaaatcgcxcxcgataaaaaaatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacgcgeqcgcgcgcgcgcgcgcgcgfacgcgcgataaaaatataaaaaaaaaaaaatatcgencycgataaaaaaatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatfratatatatatatatatfbatatatataaaaatataaaaaaaaaaaaaaaaaaeuaaaaaaaaaaaaaabwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacgcgeqcgcgcgcgcgcgcgcgcgfacgcgcgataaaaatataaaaaaaaaaaaatatcgeucycgataaaaaaatbwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatfratatatatatatatatfbatatatataaaaatataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacjbFbFbFbFbFbFbFbFbFbFfcbFbFbFbFbFbFbFbFbFbGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabwataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatatataaaaaaaaaaaafdataaaaaaaaatataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabZataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

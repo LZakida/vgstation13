@@ -585,6 +585,7 @@
 #include "code\game\jobs\job_objectives\_TODO.dm"
 #include "code\game\jobs\job_objectives\hop.dm"
 #include "code\game\jobs\job_objectives\science.dm"
+#include "code\game\machinery\_terra_machs.dm"
 #include "code\game\machinery\adv_med.dm"
 #include "code\game\machinery\ai_slipper.dm"
 #include "code\game\machinery\airlock_control.dm"
