@@ -4,7 +4,7 @@
 
 
 //This is actually a turf, oh what the fuck!
-/turf/space/crack
+/turf/space/crack //THIS DOES NOT WORK. FIX. FUCKER.  --LZ, to himself. What a wanker.
 	name = "cracked earth"
 	desc = "A crack in the floor, it probably exposes to space somewhere."
 	icon_state = "crack"
@@ -178,5 +178,29 @@
 	light_range = 3
 	var/out_get //this variable is for being able to define a destination. Previously it was hardcoded to go to only one place. Now it can be modified to yeet elsewhere. Yay.
 //to be completed. At least we can now tell people to get out
+
+
+
+//=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+//					SPAWNERS!
+//=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+/obj/abstract/map/spawner/hazardvest //random hazard vest spawn
+	name = "random hazard vest"
+	amount = 1 //DON'T FUCKING CHANGE THIS REEE
+	chance = 100 //only spawns one, and always spawns one.
+	to_spawn = list(
+		/obj/item/clothing/suit/storage/hazardvest
+	)
+	/* This list will contain, once I program them in, all of the special vests from the paracode.
+	They will be something like:
+		/obj/item/clothing/suit/storage/hazardvest/terraform
+		/obj/item/clothing/suit/storage/hazardvest/terraform/addict
+		/obj/item/clothing/suit/storage/hazardvest/lz
+		/obj/item/clothing/suit/storage/hazardvest/doorkeeper
+		/obj/item/clothing/suit/storage/hazardvest/tauka (yes even though he's a faggort)
+		/obj/item/clothing/suit/storage/hazardvest/qui
+	They will have either two or three lines to double/triple their weight unless they are one of the OP ones or the base one. Yes, the stock vanilla one as defined above is still going to be on the list.
+	may make a ../hazardvest/highrisk spawner that has loaded equivalents if I feel like it.
+	*/
 
 //buttes

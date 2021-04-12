@@ -41,7 +41,7 @@
 #define MAT_PHAZON		/datum/material/phazon
 #define MAT_PLASMA		/datum/material/plasma
 #define MAT_CLOWN		/datum/material/clown
-#define MAT_MIME		/datum/material/mime/
+#define MAT_MIME		/datum/material/mime
 #define MAT_PLASTIC		/datum/material/plastic
 #define MAT_CARDBOARD   /datum/material/cardboard
 #define MAT_WOOD		/datum/material/wood
