@@ -534,7 +534,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		var/desired_num_sheets = text2num(href_list["lathe_ejectsheet_amt"])
 		if (desired_num_sheets <= 0)
 			return
-		var/matID=href_list["lathe_ejectsheet"]
+		var/matID=text2path(href_list["lathe_ejectsheet"])
 		var/datum/material/M=linked_lathe.materials.getMaterial(matID)
 		if(!istype(M))
 			warning("PROTOLATHE: Unknown material [matID]! ([href])")
@@ -554,7 +554,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		var/desired_num_sheets = text2num(href_list["imprinter_ejectsheet_amt"])
 		if (desired_num_sheets <= 0)
 			return
-		var/matID=href_list["imprinter_ejectsheet"]
+		var/matID=text2path(href_list["imprinter_ejectsheet"])
 		var/datum/material/M=linked_imprinter.materials.getMaterial(matID)
 		if(!istype(M))
 			warning("IMPRINTER: Unknown material [matID]! ([href])")

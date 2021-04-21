@@ -217,7 +217,7 @@
 /obj/machinery/r_n_d/fabricator/proc/output_part_cost(var/datum/design/part)
 	var/output = ""
 	for(var/M in part.materials)
-		if(copytext(M,1,2) == "$")
+		if(ispath(M,/datum/material))
 			if(!(research_flags & IGNORE_MATS))
 				var/datum/material/material=materials.getMaterial(M)
 				output += "[output ? " | " : null][get_resource_cost_w_coeff(part,M)] [material.processed_name]"
@@ -232,7 +232,7 @@
 			return 0
 
 	for(var/M in part.materials)
-		if(copytext(M,1,2) == "$" && !(research_flags & IGNORE_MATS))
+		if(ispath(M,/datum/material) && !(research_flags & IGNORE_MATS))
 			materials.removeAmount(M, get_resource_cost_w_coeff(part, M))
 
 		else if(!(research_flags & IGNORE_CHEMS))
@@ -261,7 +261,7 @@
 		if(gibmats.has_bluespace_bin())
 			for(var/gib in part.materials)
 				if (gibmats.check_mat(part,gib) && !src.check_mat(part,gib))//they have what we need && we don't need more
-					if(copytext(gib,1,2) == "$" && !(research_flags & IGNORE_MATS))
+					if(ispath(gib,/datum/material) && !(research_flags & IGNORE_MATS))
 						var/bluespaceamount = src.get_resource_cost_w_coeff(part, gib)
 						gibmats.materials.removeAmount(gib,bluespaceamount)
 						src.materials.addAmount(gib,bluespaceamount)
@@ -269,7 +269,7 @@
 
 //Returns however much of that material we have
 /obj/machinery/r_n_d/fabricator/proc/check_mats(var/material)
-	if(copytext(material,1,2) == "$")//It's iron/gold/glass
+	if(ispath(material,/datum/material))//It's iron/gold/glass
 		return materials.getAmount(material)
 	else
 		var/reagent_total = 0
@@ -290,7 +290,7 @@
 
 
 /obj/machinery/r_n_d/fabricator/proc/check_mat(var/datum/design/being_built, var/M)
-	if(copytext(M,1,2) == "$")
+	if(ispath(M,/datum/material))
 		if(src.research_flags & IGNORE_MATS)
 			return 1
 		return round(materials.storage[M] / get_resource_cost_w_coeff(being_built, M))
@@ -338,7 +338,7 @@
 		if(!being_built.materials)
 			being_built.materials = getFromPool(/datum/materials, being_built)
 		for(var/matID in part.materials)
-			if(copytext(matID, 1, 2) != "$") //it's not a material, let's ignore it
+			if(!ispath(matID,/datum/material)) //it's not a material, let's ignore it
 				continue
 			being_built.materials.storage = initial_materials.Copy()
 			being_built.materials.addAmount(matID, get_resource_cost_w_coeff(part,matID)) //slap in what we built with - matching the cost
@@ -607,7 +607,7 @@
 		var/num = input("Enter amount to eject", "Amount", "5") as num
 		if(num)
 			amount = clamp(round(text2num(num), 1), 0, 50)
-		remove_material(href_list["eject"], amount)
+		remove_material(text2path(href_list["eject"]), amount)
 		return 1
 
 	if(href_list["build"])
